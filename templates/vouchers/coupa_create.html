@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Registrar Consumo Coupa - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h1 class="h3 fw-bold mb-1">Registro de Consumo Coupa Directo</h1>
+                <p class="text-muted small mb-0">Registra entregas directas vinculadas a órdenes Coupa con números de serie y salida inmediata de Kárdex.</p>
+            </div>
+            <a href="{% url 'vouchers:list' %}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left me-1"></i> Volver a Vales
+            </a>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+
+            <!-- General Info Card -->
+            <div class="ssit-card p-4 mb-4">
+                <h5 class="fw-bold mb-3 text-info d-flex align-items-center">
+                    <i class="bi bi-cart-check me-2"></i> 1. Datos de la Orden Coupa
+                </h5>
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        {{ form.coupa_id|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-8">
+                        {{ form.destination_center|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-4">
+                        {{ form.shipping_type|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-8">
+                        {{ form.project_name|as_crispy_field }}
+                    </div>
+                    <div class="col-12">
+                        {{ form.comments|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Series & Items Card -->
+            <div class="ssit-card p-4 mb-4">
+                <h5 class="fw-bold mb-3 text-info d-flex align-items-center">
+                    <i class="bi bi-upc-scan me-2"></i> 2. Piezas y Números de Serie Surtidos
+                </h5>
+                <div class="table-responsive ssit-table-responsive mb-3">
+                    <table class="table table-bordered align-middle" id="coupa-items-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 50%;">Modelo de Equipo (Catálogo) <span class="text-danger">*</span></th>
+                                <th style="width: 50%;">Número de Serie Físico <span class="text-danger">*</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <select name="model_ids[]" class="form-select form-select-sm" required>
+                                        <option value="">Selecciona un modelo...</option>
+                                        {% for eq in equipment_models %}
+                                            <option value="{{ eq.id }}">{{ eq.name }} ({{ eq.brand }} {{ eq.model }})</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" name="serial_numbers[]" class="form-control form-control-sm font-monospace" placeholder="Ingresa número de serie..." required>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="d-flex justify-content-end gap-2 mb-5">
+                <a href="{% url 'vouchers:list' %}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-info px-4 text-dark fw-bold">
+                    <i class="bi bi-check2-circle me-1"></i> Registrar Consumo y Generar Salida
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

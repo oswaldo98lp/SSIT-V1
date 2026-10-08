@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+{% load core_tags %}
+
+{% block title %}Bandeja de Taller Habilitado - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row g-3 mb-4">
+    <div class="col-12 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+        <div>
+            <h1 class="h3 fw-bold mb-1">Taller Habilitado y Reparación</h1>
+            <p class="text-muted small mb-0">
+                Diagnóstico técnico, reparación de equipos y validación de taller (Pantallas 8 y 9)
+            </p>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="?stage=POR_REPARAR" class="btn btn-sm {% if stage_filter == 'POR_REPARAR' %}btn-primary{% else %}btn-outline-secondary{% endif %}">
+                Por Reparar
+            </a>
+            <a href="?stage=DEFINIDO" class="btn btn-sm {% if stage_filter == 'DEFINIDO' %}btn-info text-white{% else %}btn-outline-secondary{% endif %}">
+                Definidos / Validar
+            </a>
+            <a href="?stage=CONFIRMADO_JEFE" class="btn btn-sm {% if stage_filter == 'CONFIRMADO_JEFE' %}btn-success{% else %}btn-outline-secondary{% endif %}">
+                Listos para Almacén
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="ssit-card p-0 overflow-hidden mb-4">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th class="ps-3">Caso</th>
+                    <th>Equipo / Modelo</th>
+                    <th>Número de Serie</th>
+                    <th>Origen</th>
+                    <th>Ingeniero Asignado</th>
+                    <th>Folio Reparación</th>
+                    <th>Definición</th>
+                    <th class="text-end pe-3">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for case in page_obj %}
+                    <tr>
+                        <td class="ps-3 fw-bold">#{{ case.id }}</td>
+                        <td>
+                            <div class="fw-semibold text-light">{{ case.returned_model.name|default:case.returned_model_text|default:"Sin modelo" }}</div>
+                            <small class="text-muted">{{ case.returned_brand|default:case.returned_model.brand|default:"-" }}</small>
+                        </td>
+                        <td>
+                            <span class="badge bg-secondary font-monospace">{{ case.returned_serial }}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-dark border border-secondary">{{ case.origin_region.code }}</span>
+                        </td>
+                        <td>
+                            {% if case.assigned_engineer %}
+                                <span class="small">{{ case.assigned_engineer.get_full_name }}</span>
+                            {% else %}
+                                <span class="badge bg-warning text-dark">Sin Asignar</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            <span class="font-monospace small text-muted">{{ case.repair_folio|default:"-" }}</span>
+                        </td>
+                        <td>
+                            {% if case.definition %}
+                                <span class="badge bg-info text-dark">{{ case.get_definition_display }}</span>
+                            {% else %}
+                                <span class="text-muted small">Pendiente</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-end pe-3">
+                            <div class="d-flex justify-content-end gap-1">
+                                {% if case.stage == 'CONFIRMADO' or not case.assigned_engineer %}
+                                    <a href="{% url 'cases:assign_engineer' pk=case.id %}" class="btn btn-sm btn-outline-info" title="Asignar Ingeniero">
+                                        <i class="bi bi-person-plus"></i>
+                                    </a>
+                                {% endif %}
+
+                                {% if case.stage == 'POR_REPARAR' %}
+                                    <a href="{% url 'cases:technical_diagnosis' pk=case.id %}" class="btn btn-sm btn-primary" title="Definir Diagnóstico">
+                                        <i class="bi bi-tools me-1"></i> Diagnóstico
+                                    </a>
+                                {% endif %}
+
+                                {% if case.stage == 'DEFINIDO' %}
+                                    <form method="POST" action="{% url 'cases:boss_confirm' pk=case.id %}" class="d-inline">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-sm btn-success" title="Confirmar Jefe de Taller">
+                                            <i class="bi bi-check-all me-1"></i> Validar
+                                        </button>
+                                    </form>
+                                {% endif %}
+
+                                <a href="{% url 'cases:case_detail' pk=case.id %}" class="btn btn-sm btn-outline-light" title="Ver Detalle">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center py-5 text-muted">
+                            <i class="bi bi-tools fs-1 text-info d-block mb-2"></i>
+                            No hay casos en taller para el filtro seleccionado.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% if page_obj.has_other_pages %}
+<nav class="d-flex justify-content-center">
+    <ul class="pagination pagination-sm">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&stage={{ stage_filter }}">Anterior</a></li>
+        {% endif %}
+        <li class="page-item disabled"><span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span></li>
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&stage={{ stage_filter }}">Siguiente</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% endblock %}

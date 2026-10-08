@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+{% load core_tags %}
+
+{% block title %}Registrar Devolución de Equipo - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <a href="{% url 'cases:case_list' %}" class="btn btn-outline-secondary btn-sm mb-2">
+                    <i class="bi bi-arrow-left me-1"></i> Volver a Devoluciones
+                </a>
+                <h1 class="h3 fw-bold mb-0">Registrar Devolución de Equipo</h1>
+                <p class="text-muted small mb-0">Capture los datos del equipo devuelto desde centro o campo para su recepción y dictamen.</p>
+            </div>
+        </div>
+
+        <div class="ssit-card p-4 mb-4">
+            <form method="POST" id="case-return-form">
+                {% csrf_token %}
+                {{ form.item_id }}
+
+                {% if form.non_field_errors %}
+                    <div class="alert alert-danger">
+                        {% for error in form.non_field_errors %}
+                            <div>{{ error }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12">
+                        <h5 class="border-bottom pb-2 text-primary fw-semibold">1. Datos de Origen y Equipo</h5>
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold">Región de Origen *</label>
+                        {{ form.origin_region }}
+                        {% if form.origin_region.errors %}<div class="text-danger small">{{ form.origin_region.errors.0 }}</div>{% endif %}
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold">Modelo de Equipo Identificado *</label>
+                        {{ form.returned_model }}
+                        {% if form.returned_model.errors %}<div class="text-danger small">{{ form.returned_model.errors.0 }}</div>{% endif %}
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold">Número de Serie Devuelto *</label>
+                        {{ form.returned_serial }}
+                        <small class="text-muted">Se registrará en mayúsculas automáticamente.</small>
+                        {% if form.returned_serial.errors %}<div class="text-danger small">{{ form.returned_serial.errors.0 }}</div>{% endif %}
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold">Marca (Opcional)</label>
+                        {{ form.returned_brand }}
+                        {% if form.returned_brand.errors %}<div class="text-danger small">{{ form.returned_brand.errors.0 }}</div>{% endif %}
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12">
+                        <h5 class="border-bottom pb-2 text-primary fw-semibold">2. Logística y Envío</h5>
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label class="form-label fw-semibold">Ruta de Atención *</label>
+                        {{ form.route }}
+                        {% if form.route.errors %}<div class="text-danger small">{{ form.route.errors.0 }}</div>{% endif %}
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label class="form-label fw-semibold">Tipo de Envío *</label>
+                        {{ form.shipping_type }}
+                        {% if form.shipping_type.errors %}<div class="text-danger small">{{ form.shipping_type.errors.0 }}</div>{% endif %}
+                    </div>
+
+                    <div class="col-12 col-md-4">
+                        <label class="form-label fw-semibold">Folio de Envío (EM / SA / Guía)</label>
+                        {{ form.shipping_folio }}
+                        <small class="text-muted">Ejemplo: EM-2026-001 o número de rastreo.</small>
+                        {% if form.shipping_folio.errors %}<div class="text-danger small">{{ form.shipping_folio.errors.0 }}</div>{% endif %}
+                    </div>
+
+                    <div class="col-12 col-md-6" id="stock-direct-group">
+                        <label class="form-label fw-semibold">Motivo de Stock Directo</label>
+                        {{ form.stock_direct_reason }}
+                        {% if form.stock_direct_reason.errors %}<div class="text-danger small">{{ form.stock_direct_reason.errors.0 }}</div>{% endif %}
+                    </div>
+
+                    <div class="col-12 col-md-6">
+                        <div class="form-check mt-md-4">
+                            {{ form.applies_workshop_entry }}
+                            <label class="form-check-label fw-semibold" for="{{ form.applies_workshop_entry.id_for_label }}">
+                                ¿Aplica entrada a Taller Habilitado?
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6" id="applies-reason-group">
+                        <label class="form-label fw-semibold">Motivo por el que Aplica a Taller</label>
+                        {{ form.applies_reason }}
+                        {% if form.applies_reason.errors %}<div class="text-danger small">{{ form.applies_reason.errors.0 }}</div>{% endif %}
+                    </div>
+                </div>
+
+                <div class="row g-3 mb-4">
+                    <div class="col-12">
+                        <h5 class="border-bottom pb-2 text-primary fw-semibold">3. Diagnóstico Inicial y Falla</h5>
+                    </div>
+
+                    <div class="col-12">
+                        <label class="form-label fw-semibold">Descripción de la Falla u Observaciones</label>
+                        {{ form.failure }}
+                        {% if form.failure.errors %}<div class="text-danger small">{{ form.failure.errors.0 }}</div>{% endif %}
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{% url 'cases:case_list' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="bi bi-save me-1"></i> Guardar y Generar Formato PDF
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

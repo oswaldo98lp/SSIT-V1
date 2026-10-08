@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}Resumen de Zonas | Admón Almacén SSIT 2.0{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item"><a href="{% url 'reports:dashboard' %}" class="text-secondary text-decoration-none">Reportes</a></li>
+                        <li class="breadcrumb-item active text-light" aria-current="page">Resumen de Zonas</li>
+                    </ol>
+                </nav>
+                <h2 class="h3 fw-bold mb-0 text-light"><i class="bi bi-pie-chart text-primary me-2"></i>Resumen Consolidado por Zona</h2>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="?{{ request.GET.urlencode }}&export=xlsx" class="btn btn-success">
+                    <i class="bi bi-file-earmark-excel me-1"></i> Exportar a Excel (XLSX)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="card bg-dark border-secondary mb-4 shadow-sm">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-12 col-md-8">
+                    <label class="form-label text-secondary small">{{ form.zone.label }}</label>
+                    {{ form.zone }}
+                </div>
+                <div class="col-12 col-md-4 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary flex-grow-1">
+                        <i class="bi bi-filter me-1"></i> Filtrar Zona
+                    </button>
+                    <a href="{% url 'reports:zone_summary' %}" class="btn btn-outline-secondary" title="Limpiar">
+                        <i class="bi bi-x-circle"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Métricas por Zona -->
+    <div class="row g-4">
+        {% for z in zone_metrics %}
+        <div class="col-12 col-lg-6">
+            <div class="card bg-dark border-secondary shadow-sm h-100">
+                <div class="card-header border-secondary bg-transparent d-flex justify-content-between align-items-center">
+                    <h5 class="fw-bold text-light mb-0"><i class="bi bi-geo-alt text-primary me-2"></i>{{ z.zone_name }}</h5>
+                    <span class="badge bg-primary">{{ z.regions_count }} Regiones</span>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="p-3 bg-dark border border-secondary rounded">
+                                <div class="text-secondary small">Total Vales Creados</div>
+                                <div class="fs-4 fw-bold text-warning">{{ z.vouchers_count }}</div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-dark border border-secondary rounded">
+                                <div class="text-secondary small">Vales Surtidos</div>
+                                <div class="fs-4 fw-bold text-success">{{ z.vouchers_supplied }}</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-3 bg-dark border border-secondary rounded">
+                                <div class="text-secondary small">Casos Devolución</div>
+                                <div class="fs-4 fw-bold text-info">{{ z.cases_count }}</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-3 bg-dark border border-secondary rounded">
+                                <div class="text-secondary small">Equipos Reparados</div>
+                                <div class="fs-4 fw-bold text-success">{{ z.cases_repaired }}</div>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="p-3 bg-dark border border-secondary rounded">
+                                <div class="text-secondary small">Huesario / Scrap</div>
+                                <div class="fs-4 fw-bold text-danger">{{ z.cases_scrap }}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="card bg-dark border-secondary p-5 text-center text-secondary">
+                <i class="bi bi-pie-chart fs-1 mb-2"></i>
+                No se encontraron zonas operativas registradas.
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

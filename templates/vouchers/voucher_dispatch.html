@@ -1,0 +1,183 @@
+{% extends "base.html" %}
+
+{% block title %}Surtir Vale #{{ voucher.id }} - {{ APP_NAME }}{% endblock %}
+
+{% block extra_head %}
+<!-- Signature Pad JS via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/signature_pad@4.1.7/dist/signature_pad.umd.min.js"></script>
+{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h1 class="h3 fw-bold mb-1">Surtido de Material &bull; Vale #{{ voucher.id }}</h1>
+                <p class="text-muted small mb-0">Captura el número de serie de cada pieza física entregada y registra la firma de conformidad.</p>
+            </div>
+            <a href="{% url 'vouchers:detail' voucher.id %}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left me-1"></i> Cancelar y Volver
+            </a>
+        </div>
+
+        <form method="POST" id="dispatch-form">
+            {% csrf_token %}
+            <input type="hidden" name="signature_data" id="id_signature_data">
+
+            <!-- Summary Card -->
+            <div class="ssit-card p-3 mb-4 bg-light">
+                <div class="row g-2 small">
+                    <div class="col-6 col-md-3">
+                        <span class="text-muted">Folio de Reporte:</span> <strong>{{ voucher.report_folio|default:"Sin Folio" }}</strong>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <span class="text-muted">Región:</span> <strong>{{ voucher.region.code }}</strong>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <span class="text-muted">Centro Destino:</span> <strong>{{ voucher.destination_center }}</strong>
+                    </div>
+                    <div class="col-6 col-md-3">
+                        <span class="text-muted">Solicitado por:</span> <strong>{{ voucher.requested_by.full_name }}</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items Serial Number Capture -->
+            <div class="ssit-card p-4 mb-4">
+                <h5 class="fw-bold mb-3 text-primary d-flex align-items-center">
+                    <i class="bi bi-upc-scan me-2"></i> 1. Captura de Números de Serie por Partida
+                </h5>
+                <div class="table-responsive ssit-table-responsive">
+                    <table class="table table-bordered align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 35%;">Partida / Modelo</th>
+                                <th style="width: 30%;">Número de Serie Físico <span class="text-danger">*</span></th>
+                                <th style="width: 15%;">Condición</th>
+                                <th style="width: 20%;">Almacén Origen</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for line in lines %}
+                                <tr>
+                                    <td>
+                                        <strong>{{ line.equipment_model.name|default:line.requested_text }}</strong>
+                                        {% if line.equipment_model %}
+                                            <div class="small text-muted">{{ line.equipment_model.brand }} {{ line.equipment_model.model }}</div>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <input 
+                                            type="text" 
+                                            name="serial_number_{{ line.id }}" 
+                                            class="form-control form-control-sm font-monospace" 
+                                            placeholder="Ingresa o escanea serie..." 
+                                            required>
+                                    </td>
+                                    <td>
+                                        <select name="condition_{{ line.id }}" class="form-select form-select-sm">
+                                            <option value="RECUPERADO" selected>Recuperado</option>
+                                            <option value="NUEVO">Nuevo</option>
+                                        </select>
+                                    </td>
+                                    <td>
+                                        <select name="warehouse_{{ line.id }}" class="form-select form-select-sm">
+                                            <option value="STOCK" selected>Stock</option>
+                                            <option value="PROYECTOS">Proyectos</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center text-muted py-3">No hay líneas pendientes de surtido en este vale.</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Receptor & Signature Section -->
+            <div class="ssit-card p-4 mb-4">
+                <h5 class="fw-bold mb-3 text-primary d-flex align-items-center">
+                    <i class="bi bi-pen-fill me-2"></i> 2. Persona que Recibe y Firma Digital
+                </h5>
+                
+                <div class="row g-3 mb-4">
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold">Usuario que Recibe el Equipo <span class="text-danger">*</span></label>
+                        <select name="received_by_id" class="form-select" required>
+                            <option value="">Selecciona quién recibe...</option>
+                            {% for u in users %}
+                                <option value="{{ u.id }}" {% if u.id == voucher.requested_by.id %}selected{% endif %}>
+                                    {{ u.full_name|default:u.email }} {% if u.region %}({{ u.region.code }}){% endif %}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <label class="form-label fw-semibold">Observaciones de Entrega</label>
+                        <input type="text" name="comments" class="form-control" placeholder="Notas al momento del surtido...">
+                    </div>
+                </div>
+
+                <div class="mb-2">
+                    <label class="form-label fw-semibold d-flex justify-content-between align-items-center">
+                        <span>Firma de Conformidad en Pantalla:</span>
+                        <button type="button" class="btn btn-outline-secondary btn-sm" id="clear-sig-btn">
+                            <i class="bi bi-eraser me-1"></i> Limpiar Firma
+                        </button>
+                    </label>
+                    <div class="border rounded bg-white p-1 text-center" style="touch-action: none;">
+                        <canvas id="signature-canvas" width="600" height="180" class="w-100" style="max-height: 180px; border: 1px dashed #cbd5e1;"></canvas>
+                    </div>
+                    <div class="form-text small text-muted">Dibuja la firma del receptor usando el dedo en pantalla táctil o el puntero del mouse.</div>
+                </div>
+            </div>
+
+            <!-- Submit Buttons -->
+            <div class="d-flex justify-content-end gap-2 mb-5">
+                <a href="{% url 'vouchers:detail' voucher.id %}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-success btn-lg px-4" id="submit-dispatch-btn">
+                    <i class="bi bi-check2-circle me-1"></i> Completar Surtido y Generar PDF
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const canvas = document.getElementById("signature-canvas");
+    if (!canvas) return;
+
+    // Ajustar resolución del canvas para pantallas retina / móvil
+    function resizeCanvas() {
+        const ratio = Math.max(window.devicePixelRatio || 1, 1);
+        canvas.width = canvas.offsetWidth * ratio;
+        canvas.height = canvas.offsetHeight * ratio;
+        canvas.getContext("2d").scale(ratio, ratio);
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    const signaturePad = new SignaturePad(canvas, {
+        backgroundColor: "rgb(255, 255, 255)",
+        penColor: "rgb(15, 23, 42)"
+    });
+
+    document.getElementById("clear-sig-btn").addEventListener("click", () => {
+        signaturePad.clear();
+    });
+
+    document.getElementById("dispatch-form").addEventListener("submit", (e) => {
+        if (!signaturePad.isEmpty()) {
+            const dataUrl = signaturePad.toDataURL("image/png");
+            document.getElementById("id_signature_data").value = dataUrl;
+        }
+    });
+});
+</script>
+{% endblock %}

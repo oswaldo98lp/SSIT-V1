@@ -1,0 +1,99 @@
+{% extends "base.html" %}
+{% load core_tags %}
+
+{% block title %}Catálogo de Componentes UI - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row g-3 mb-4">
+    <div class="col-12">
+        <h1 class="h3 fw-bold mb-1">Catálogo de Componentes de Interfaz</h1>
+        <p class="text-muted small">
+            Demostración visual de las 21 reglas de formato de AppSheet, modales dinámicos HTMX y componentes responsive.
+        </p>
+    </div>
+</div>
+
+<!-- Section 1: 21 Visual Badges -->
+<div class="ssit-card p-4 mb-4">
+    <h5 class="fw-bold mb-3 d-flex align-items-center">
+        <i class="bi bi-tags-fill text-primary me-2"></i> Badges de Estado (21 Reglas de Formato de AppSheet)
+    </h5>
+    <p class="text-muted small mb-3">
+        Implementados mediante la etiqueta de plantilla <code>{% verbatim %}{% status_badge "CODIGO" %}{% endverbatim %}</code>.
+    </p>
+    
+    <div class="d-flex flex-wrap gap-2 align-items-center">
+        {% for key in badge_keys %}
+            <div>{% status_badge key %}</div>
+        {% endfor %}
+    </div>
+</div>
+
+<!-- Section 2: HTMX Dynamic Modal Trigger -->
+<div class="ssit-card p-4 mb-4">
+    <h5 class="fw-bold mb-3 d-flex align-items-center">
+        <i class="bi bi-window-stack text-primary me-2"></i> Diálogo Modal Dinámico (HTMX)
+    </h5>
+    <p class="text-muted small mb-3">
+        Carga el contenido del modal bajo demanda desde el servidor sin refrescar la página.
+    </p>
+    <button class="btn btn-primary" hx-get="{% url 'core:htmx_modal_demo' %}" hx-target="#modal-dialog-content">
+        <i class="bi bi-lightning-fill me-1"></i> Abrir Modal de Prueba HTMX
+    </button>
+</div>
+
+<!-- Section 3: Responsive Table Example -->
+<div class="ssit-card p-4 mb-4">
+    <h5 class="fw-bold mb-3 d-flex align-items-center">
+        <i class="bi bi-table text-primary me-2"></i> Tabla de Ejemplo con Badges y Acciones Móviles
+    </h5>
+    <div class="table-responsive ssit-table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>Folio / ID</th>
+                    <th>Tipo / Origen</th>
+                    <th>Estado</th>
+                    <th>Responsable</th>
+                    <th class="text-end">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="fw-semibold">VALE-2026-001</td>
+                    <td>Vale Estándar</td>
+                    <td>{% status_badge "PENDIENTE_SURTIDO" %}</td>
+                    <td>Ing. Soporte Sintético</td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-primary" hx-get="{% url 'core:htmx_modal_demo' %}" hx-target="#modal-dialog-content">
+                            <i class="bi bi-box-seam me-1"></i> Surtir
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">CASO-2026-042</td>
+                    <td>Devolución Centro</td>
+                    <td>{% status_badge "REPARACION" %}</td>
+                    <td>Técnico Taller</td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-info" hx-get="{% url 'core:htmx_modal_demo' %}" hx-target="#modal-dialog-content">
+                            <i class="bi bi-tools me-1"></i> Asignar
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-semibold">CASO-2026-089</td>
+                    <td>Garantía</td>
+                    <td>{% status_badge "GARANTIA_NUEVO" %}</td>
+                    <td>Almacén General</td>
+                    <td class="text-end">
+                        <button class="btn btn-sm btn-outline-success" hx-get="{% url 'core:htmx_modal_demo' %}" hx-target="#modal-dialog-content">
+                            <i class="bi bi-check2-circle me-1"></i> Confirmar
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

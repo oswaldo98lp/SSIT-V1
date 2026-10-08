@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <title>Formato de Devolución #{{ case.id }} - {{ app_name }}</title>
+    <style>
+        @page {
+            size: letter portrait;
+            margin: 1.5cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #1a202c;
+            line-height: 1.4;
+            font-size: 11pt;
+        }
+        .header-table {
+            width: 100%;
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #0369a1;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 10pt;
+            color: #64748b;
+        }
+        .case-id-badge {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #0f172a;
+            text-align: right;
+        }
+        .info-grid {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        .info-grid td {
+            padding: 5px 8px;
+            vertical-align: top;
+            font-size: 10pt;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #475569;
+            width: 25%;
+        }
+        .info-val {
+            color: #0f172a;
+            width: 25%;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 20px;
+        }
+        .items-table th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: bold;
+            font-size: 9.5pt;
+            border: 1px solid #cbd5e1;
+            padding: 8px;
+            text-align: left;
+        }
+        .items-table td {
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            font-size: 9.5pt;
+        }
+        .qr-section {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background-color: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 6px;
+        }
+        .qr-img {
+            max-width: 140px;
+            height: auto;
+            margin-bottom: 5px;
+        }
+        .signatures-container {
+            width: 100%;
+            margin-top: 25px;
+            border-collapse: collapse;
+        }
+        .signature-box {
+            width: 48%;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+            vertical-align: top;
+        }
+        .sig-line {
+            border-top: 1px dashed #94a3b8;
+            margin-top: 50px;
+            padding-top: 5px;
+            font-size: 9pt;
+            font-weight: bold;
+        }
+        .footer-note {
+            font-size: 8pt;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 25px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <table class="header-table">
+        <tr>
+            <td>
+                <div class="title">{{ app_name }}</div>
+                <div class="subtitle">Comprobante de Devolución de Equipo y Retorno de Material</div>
+            </td>
+            <td class="case-id-badge">
+                CASO #{{ case.id }}<br>
+                <span style="font-size: 9pt; font-weight: normal; color: #64748b;">Etapa: {{ case.stage }}</span>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Info Block -->
+    <table class="info-grid">
+        <tr>
+            <td class="info-label">Fecha de Registro:</td>
+            <td class="info-val">{{ case.created_at|date:"d/m/Y H:i" }}</td>
+            <td class="info-label">Región de Origen:</td>
+            <td class="info-val"><strong>{{ case.origin_region.code }}</strong> - {{ case.origin_region.name }}</td>
+        </tr>
+        <tr>
+            <td class="info-label">Ubicación Operativa:</td>
+            <td class="info-val">{{ case.get_location_display }}</td>
+            <td class="info-label">Ruta de Atención:</td>
+            <td class="info-val"><strong>{{ case.get_route_display }}</strong></td>
+        </tr>
+        <tr>
+            <td class="info-label">Tipo de Envío:</td>
+            <td class="info-val">{{ case.get_shipping_type_display }}</td>
+            <td class="info-label">Folio de Envío:</td>
+            <td class="info-val"><strong>{{ case.shipping_folio|default:"Sin Folio" }}</strong></td>
+        </tr>
+        {% if case.repair_folio %}
+        <tr>
+            <td class="info-label">Folio de Reparación:</td>
+            <td class="info-val"><strong>{{ case.repair_folio }}</strong></td>
+            <td class="info-label">Fecha Folio:</td>
+            <td class="info-val">{{ case.folio_date|date:"d/m/Y"|default:"-" }}</td>
+        </tr>
+        {% endif %}
+    </table>
+
+    <!-- Equipo Detalle -->
+    <h3 style="font-size: 11pt; color: #0f172a; margin-bottom: 8px; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px;">
+        Datos del Equipo Devuelto
+    </h3>
+    <table class="items-table">
+        <thead>
+            <tr>
+                <th style="width: 30%;">Modelo Identificado</th>
+                <th style="width: 25%;">Número de Serie</th>
+                <th style="width: 20%;">Marca</th>
+                <th style="width: 25%;">Falla Reportada</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>{{ case.returned_model.name|default:case.returned_model_text|default:"N/A" }}</strong></td>
+                <td style="font-family: monospace; font-weight: bold; color: #0284c7;">{{ case.returned_serial }}</td>
+                <td>{{ case.returned_brand|default:case.returned_model.brand|default:"-" }}</td>
+                <td>{{ case.failure|default:"No especificada" }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- QR Code Section for Tracking -->
+    <div class="qr-section">
+        {% if qr_base64 %}
+            <img src="{{ qr_base64 }}" class="qr-img" alt="Código QR de Retorno">
+        {% elif case.return_qr %}
+            <img src="{{ case.return_qr.url }}" class="qr-img" alt="Código QR de Retorno">
+        {% endif %}
+        <div style="font-size: 8.5pt; color: #475569; font-weight: bold;">
+            CÓDIGO DE RASTREO Y VERIFICACIÓN QR
+        </div>
+        <div style="font-size: 7.5pt; color: #64748b; font-family: monospace;">
+            DEV-{{ case.id }} | S/N: {{ case.returned_serial }} | {{ case.origin_region.code }}
+        </div>
+    </div>
+
+    <!-- Signatures -->
+    <table class="signatures-container">
+        <tr>
+            <!-- Enviado por -->
+            <td class="signature-box" style="margin-right: 4%;">
+                <div style="font-size: 9pt; color: #64748b; font-weight: bold; margin-bottom: 5px;">ENVIADO / ENTREGADO POR</div>
+                <div style="font-size: 10pt; font-weight: bold; margin-top: 15px;">
+                    Soporte Técnico / Centro
+                </div>
+                <div style="font-size: 8.5pt; color: #64748b;">
+                    Región: {{ case.origin_region.name }}
+                </div>
+                <div class="sig-line">Firma de Entrega / Remitente</div>
+            </td>
+
+            <td style="width: 4%;"></td>
+
+            <!-- Recibido en Almacén / Taller -->
+            <td class="signature-box">
+                <div style="font-size: 9pt; color: #64748b; font-weight: bold; margin-bottom: 5px;">RECIBIDO EN ALMACÉN / TALLER</div>
+                <div style="font-size: 10pt; font-weight: bold; margin-top: 15px;">
+                    {{ case.received_by.full_name|default:"Recepción Central" }}
+                </div>
+                <div style="font-size: 8.5pt; color: #64748b;">
+                    Estatus: {{ case.return_status }}
+                </div>
+                <div class="sig-line">Firma y Sello de Recepción</div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Footer Note -->
+    <div class="footer-note">
+        Este documento ampara el retorno y recepción de equipo para dictamen técnico o reingreso a stock. Generado el {{ generated_at|date:"d/m/Y H:i:s" }} por {{ app_name }}.
+    </div>
+
+</body>
+</html>

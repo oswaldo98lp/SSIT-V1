@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+
+{% block title %}Bitácora de Taller | Admón Almacén SSIT 2.0{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item"><a href="{% url 'reports:dashboard' %}" class="text-secondary text-decoration-none">Reportes</a></li>
+                        <li class="breadcrumb-item active text-light" aria-current="page">Bitácora de Taller</li>
+                    </ol>
+                </nav>
+                <h2 class="h3 fw-bold mb-0 text-light"><i class="bi bi-tools text-success me-2"></i>Bitácora de Taller y Diagnósticos</h2>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="?{{ request.GET.urlencode }}&export=xlsx" class="btn btn-success">
+                    <i class="bi bi-file-earmark-excel me-1"></i> Exportar a Excel (XLSX)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="card bg-dark border-secondary mb-4 shadow-sm">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.start_date.label }}</label>
+                    {{ form.start_date }}
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.end_date.label }}</label>
+                    {{ form.end_date }}
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.workshop_region.label }}</label>
+                    {{ form.workshop_region }}
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.stage.label }}</label>
+                    {{ form.stage }}
+                </div>
+                <div class="col-12 d-flex justify-content-end gap-2">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-filter me-1"></i> Filtrar Bitácora
+                    </button>
+                    <a href="{% url 'reports:workshop_report' %}" class="btn btn-outline-secondary" title="Limpiar">
+                        <i class="bi bi-x-circle"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla -->
+    <div class="card bg-dark border-secondary shadow-sm">
+        <div class="card-header border-secondary bg-transparent d-flex justify-content-between align-items-center">
+            <span class="text-secondary small fw-bold text-uppercase">Casos Registrados ({{ page_obj.paginator.count }})</span>
+            <span class="badge bg-secondary">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover table-striped mb-0 align-middle">
+                <thead>
+                    <tr class="text-secondary small text-uppercase">
+                        <th>ID</th>
+                        <th>Fecha Registro</th>
+                        <th>Región Origen</th>
+                        <th>Taller Asignado</th>
+                        <th>Artículo Devuelto</th>
+                        <th>Serie</th>
+                        <th>Etapa</th>
+                        <th>Definición Técnica</th>
+                        <th>Técnico</th>
+                        <th>Folio Reparación</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for c in page_obj %}
+                    <tr>
+                        <td class="fw-bold text-light">#{{ c.id }}</td>
+                        <td class="small">{{ c.created_at|date:"d/m/Y H:i" }}</td>
+                        <td><span class="badge bg-dark border text-light">{{ c.origin_region.code }}</span></td>
+                        <td><span class="badge bg-secondary">{{ c.workshop_region.code|default:"-" }}</span></td>
+                        <td class="text-light fw-medium">{{ c.returned_model.name|default:c.returned_model_text }}</td>
+                        <td><code class="text-info">{{ c.returned_serial }}</code></td>
+                        <td><span class="badge bg-info text-dark">{{ c.stage }}</span></td>
+                        <td>
+                            {% if c.definition == "REPARADO" %}
+                                <span class="badge bg-success">Reparado</span>
+                            {% elif c.definition == "HUESARIO" %}
+                                <span class="badge bg-danger">Huesario</span>
+                            {% elif c.definition == "GARANTIA" %}
+                                <span class="badge bg-primary">Garantía</span>
+                            {% else %}
+                                <span class="text-secondary">-</span>
+                            {% endif %}
+                        </td>
+                        <td class="small">{{ c.assigned_engineer.get_full_name|default:"-" }}</td>
+                        <td><code class="text-warning">{{ c.repair_folio|default:"-" }}</code></td>
+                        <td>
+                            <a href="{% url 'cases:case_detail' c.id %}" class="btn btn-outline-info btn-sm" title="Ver Caso">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="11" class="text-center text-secondary py-4">
+                            <i class="bi bi-tools fs-2 d-block mb-2"></i>
+                            No se encontraron casos de taller con los filtros especificados.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        {% if page_obj.has_other_pages %}
+        <div class="card-footer border-secondary bg-transparent d-flex justify-content-center">
+            <nav aria-label="Paginación de bitácora">
+                <ul class="pagination pagination-sm mb-0">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link bg-dark border-secondary text-light" href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Anterior</a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item disabled">
+                        <span class="page-link bg-dark border-secondary text-info">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+                    </li>
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link bg-dark border-secondary text-light" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Siguiente</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

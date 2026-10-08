@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+{% load core_tags %}
+
+{% block title %}Caso #{{ case.id }} ({{ case.returned_serial }}) - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row g-3 justify-content-center">
+    <div class="col-12 col-xl-10">
+
+        <!-- Top Header & Actions -->
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-3 mb-4">
+            <div>
+                <a href="{% url 'cases:case_list' %}" class="btn btn-outline-secondary btn-sm mb-2">
+                    <i class="bi bi-arrow-left me-1"></i> Volver a Devoluciones
+                </a>
+                <div class="d-flex align-items-center gap-3">
+                    <h1 class="h3 fw-bold mb-0">Caso de Equipo #{{ case.id }}</h1>
+                    {% status_badge case.stage %}
+                </div>
+                <div class="text-muted small mt-1 font-monospace">
+                    Serie: <strong class="text-primary">{{ case.returned_serial }}</strong> | Origen: {{ case.origin_region.code }} - {{ case.origin_region.name }}
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex flex-wrap gap-2">
+                {% if case.return_pdf %}
+                    <a href="{{ case.return_pdf.url }}" target="_blank" class="btn btn-outline-info btn-sm">
+                        <i class="bi bi-file-earmark-pdf me-1"></i> PDF de Devolución
+                    </a>
+                {% endif %}
+
+                {% if can_dictamen %}
+                    <a href="{% url 'cases:warehouse_dictamen' pk=case.id %}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-check2-circle me-1"></i> Dictaminar (Almacén)
+                    </a>
+                    <a href="{% url 'cases:request_review' pk=case.id %}" class="btn btn-outline-danger btn-sm">
+                        <i class="bi bi-question-circle me-1"></i> Solicitar Revisión
+                    </a>
+                {% endif %}
+
+                {% if can_send_workshop %}
+                    <a href="{% url 'cases:send_to_workshop' pk=case.id %}" class="btn btn-outline-info btn-sm">
+                        <i class="bi bi-truck me-1"></i> Enviar a Taller
+                    </a>
+                {% endif %}
+
+                {% if can_cancel_workshop_send %}
+                    <a href="{% url 'cases:cancel_workshop_send' pk=case.id %}" class="btn btn-outline-warning btn-sm">
+                        <i class="bi bi-x-circle me-1"></i> Cancelar Envío a Taller
+                    </a>
+                {% endif %}
+
+                {% if can_cancel_return %}
+                    <a href="{% url 'cases:cancel_return' pk=case.id %}" class="btn btn-outline-danger btn-sm">
+                        <i class="bi bi-x-circle me-1"></i> Cancelar Devolución
+                    </a>
+                {% endif %}
+
+                {% if can_manager_cancellation %}
+                    <a href="{% url 'cases:manager_confirm_cancellation' pk=case.id %}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-shield-check me-1"></i> Validar Cancelación
+                    </a>
+                {% endif %}
+
+                {% if can_warehouse_receive_cancelled %}
+                    <a href="{% url 'cases:warehouse_receive_cancelled' pk=case.id %}" class="btn btn-success btn-sm">
+                        <i class="bi bi-box-arrow-in-down me-1"></i> Recibir Cancelado en Almacén
+                    </a>
+                {% endif %}
+
+                {% if can_assign_folio %}
+                    <a href="{% url 'cases:assign_repair_folio' pk=case.id %}" class="btn btn-primary btn-sm">
+                        <i class="bi bi-tag me-1"></i> Asignar Folio de Oficina
+                    </a>
+                {% endif %}
+
+                {% if can_assign_engineer %}
+                    <a href="{% url 'cases:assign_engineer' pk=case.id %}" class="btn btn-info btn-sm text-white">
+                        <i class="bi bi-person-plus me-1"></i> Asignar a Ingeniero
+                    </a>
+                {% endif %}
+
+                {% if can_define %}
+                    <a href="{% url 'cases:technical_diagnosis' pk=case.id %}" class="btn btn-primary btn-sm">
+                        <i class="bi bi-tools me-1"></i> Definición Técnica
+                    </a>
+                {% endif %}
+
+                {% if can_boss_confirm %}
+                    <form method="POST" action="{% url 'cases:boss_confirm' pk=case.id %}" class="d-inline">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-success btn-sm">
+                            <i class="bi bi-check-all me-1"></i> Validar (Jefe Taller)
+                        </button>
+                    </form>
+                {% endif %}
+
+                {% if can_confirm_scrap %}
+                    <a href="{% url 'cases:confirm_scrap' pk=case.id %}" class="btn btn-warning btn-sm">
+                        <i class="bi bi-recycle me-1"></i> Confirmar Huesario
+                    </a>
+                {% endif %}
+
+                {% if can_deliver_scrap %}
+                    <a href="{% url 'cases:deliver_scrap' pk=case.id %}" class="btn btn-danger btn-sm">
+                        <i class="bi bi-archive-fill me-1"></i> Entregar a Huesario
+                    </a>
+                {% endif %}
+
+                {% if can_warehouse_entry %}
+                    <a href="{% url 'cases:warehouse_confirm_entry' pk=case.id %}" class="btn btn-success btn-sm">
+                        <i class="bi bi-box-arrow-in-down me-1"></i> Confirmar Entrada a Almacén
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <!-- Columna Izquierda: Datos del Caso y Equipo -->
+            <div class="col-12 col-lg-8">
+                <div class="ssit-card p-4 mb-4">
+                    <h5 class="fw-bold text-primary border-bottom pb-2 mb-3">Información del Equipo</h5>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Modelo Devuelto</label>
+                            <strong>{{ case.returned_model.name|default:case.returned_model_text|default:"-" }}</strong>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Número de Serie</label>
+                            <span class="badge bg-secondary font-monospace fs-6">{{ case.returned_serial }}</span>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Marca</label>
+                            <span>{{ case.returned_brand|default:case.returned_model.brand|default:"-" }}</span>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Ubicación</label>
+                            <span>{{ case.get_location_display }}</span>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Ruta de Atención</label>
+                            <strong>{{ case.get_route_display }}</strong>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Folio de Envío</label>
+                            <span class="font-monospace">{{ case.shipping_folio|default:"-" }}</span>
+                        </div>
+                        <div class="col-12">
+                            <label class="text-muted small d-block">Falla / Observaciones</label>
+                            <div class="p-2 rounded bg-dark border border-secondary small">{{ case.failure|default:"Sin observaciones registradas." }}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dictamen y Datos Técnicos -->
+                <div class="ssit-card p-4 mb-4">
+                    <h5 class="fw-bold text-primary border-bottom pb-2 mb-3">Dictamen y Reparación</h5>
+                    <div class="row g-3">
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Dictamen Almacén</label>
+                            <strong>{{ case.ruling.label|default:"Pendiente" }}</strong>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Folio de Reparación</label>
+                            <span class="font-monospace text-warning">{{ case.repair_folio|default:"Sin asignar" }}</span>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Ingeniero Asignado</label>
+                            <span>{{ case.assigned_engineer.get_full_name|default:"Sin asignar" }}</span>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Definición Técnica</label>
+                            {% if case.definition %}
+                                <span class="badge bg-info text-dark">{{ case.get_definition_display }}</span>
+                            {% else %}
+                                <span class="text-muted">Pendiente</span>
+                            {% endif %}
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Solución Garantía</label>
+                            <span>{{ case.get_warranty_solution_display|default:"-" }}</span>
+                        </div>
+                        <div class="col-6 col-md-4">
+                            <label class="text-muted small d-block">Almacén Destino Final</label>
+                            <span>{{ case.destination_warehouse|default:"STOCK" }}</span>
+                        </div>
+                        {% if case.repair_comments %}
+                        <div class="col-12">
+                            <label class="text-muted small d-block">Comentarios Técnicos</label>
+                            <div class="p-2 rounded bg-dark border border-secondary small">{{ case.repair_comments }}</div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <!-- Timeline de Auditoría CoreEvent -->
+                <div class="ssit-card p-4">
+                    <h5 class="fw-bold text-primary border-bottom pb-2 mb-3">Línea de Tiempo y Auditoría</h5>
+                    <div class="timeline">
+                        {% for ev in events %}
+                            <div class="d-flex gap-3 mb-3 pb-3 border-bottom border-dark">
+                                <div class="text-primary fs-5"><i class="bi bi-arrow-right-circle-fill"></i></div>
+                                <div>
+                                    <div class="fw-semibold">{{ ev.action_code }} - <span class="badge bg-secondary">{{ ev.to_stage }}</span></div>
+                                    <div class="small text-muted">
+                                        Por: <strong>{{ ev.user.get_full_name|default:ev.user.email }}</strong> | {{ ev.created_at|date:"d/m/Y H:i:s" }}
+                                    </div>
+                                    {% if ev.comment %}
+                                        <div class="small text-light mt-1 fst-italic">"{{ ev.comment }}"</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% empty %}
+                            <div class="text-muted small">No hay eventos registrados para este caso.</div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna Derecha: QR Code y Comprobantes -->
+            <div class="col-12 col-lg-4">
+                <div class="ssit-card p-4 text-center mb-4">
+                    <h6 class="fw-bold text-muted mb-3">CÓDIGO QR DE SEGUIMIENTO</h6>
+                    {% if case.return_qr %}
+                        <img src="{{ case.return_qr.url }}" alt="Código QR del Caso" class="img-fluid rounded border p-2 bg-white mb-2" style="max-width: 180px;">
+                    {% else %}
+                        <div class="p-4 border rounded text-muted small mb-2">QR no generado</div>
+                    {% endif %}
+                    <div class="font-monospace small text-muted">DEV-{{ case.id }}</div>
+                </div>
+
+                <div class="ssit-card p-4">
+                    <h6 class="fw-bold text-muted mb-3">RESUMEN OPERATIVO</h6>
+                    <ul class="list-unstyled small mb-0">
+                        <li class="mb-2"><strong>Registrado:</strong> {{ case.created_at|date:"d/m/Y H:i" }}</li>
+                        <li class="mb-2"><strong>Recibido por:</strong> {{ case.received_by.get_full_name|default:"Pendiente" }}</li>
+                        <li class="mb-2"><strong>Taller Asignado:</strong> {{ case.workshop_region.name|default:"No asignado" }}</li>
+                        <li class="mb-2"><strong>Última Modificación:</strong> {{ case.updated_at|date:"d/m/Y H:i" }}</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

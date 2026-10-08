@@ -1,0 +1,26 @@
+<div class="modal-header bg-primary text-white">
+    <h5 class="modal-title" id="mainModalLabel">
+        <i class="bi bi-lightning-charge-fill me-2"></i>Demostración de Modal HTMX
+    </h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+</div>
+<div class="modal-body p-4">
+    <div class="alert alert-success d-flex align-items-center mb-3">
+        <i class="bi bi-check-circle-fill fs-4 me-2"></i>
+        <div>
+            <strong>¡Modal dinámico cargado con éxito!</strong>
+            <div>Este diálogo se renderizó en el servidor vía HTMX sin recargar la página.</div>
+        </div>
+    </div>
+    <p class="text-muted">
+        Este componente servirá como plantilla base para las transiciones declarativas (autorización de vales, surtido de piezas con serie, asignación de técnicos y dictamen de almacén).
+    </p>
+    <div class="mb-3">
+        <label class="form-label fw-semibold">Comentarios de prueba</label>
+        <textarea class="form-control" rows="3" placeholder="Ingresa una nota u observación de prueba..."></textarea>
+    </div>
+</div>
+<div class="modal-footer bg-light">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Aceptar y Continuar</button>
+</div>

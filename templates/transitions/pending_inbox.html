@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% load core_tags %}
+
+{% block title %}Bandeja de Pendientes - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row g-3 mb-4">
+    <div class="col-12 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+        <div>
+            <h1 class="h3 fw-bold mb-1">Bandeja de Pendientes</h1>
+            <p class="text-muted small mb-0">
+                Registros activos según tus permisos y alcance operativo &bull; <strong>{{ total_pending }} pendientes encontrados</strong>
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- Filters Card -->
+<div class="ssit-card p-3 mb-4">
+    <form method="GET" class="row g-2 align-items-end">
+        <div class="col-6 col-md-3">
+            <label class="form-label small fw-semibold text-muted mb-1">Tipo de Registro</label>
+            <select name="entity_type" class="form-select form-select-sm">
+                <option value="ALL" {% if entity_type == 'ALL' %}selected{% endif %}>Todos los tipos</option>
+                <option value="VOUCHER" {% if entity_type == 'VOUCHER' %}selected{% endif %}>Vales de Salida</option>
+                <option value="CASE" {% if entity_type == 'CASE' %}selected{% endif %}>Casos de Devolución</option>
+            </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+            <label class="form-label small fw-semibold text-muted mb-1">Región</label>
+            <select name="region" class="form-select form-select-sm">
+                <option value="">Todas mis regiones</option>
+                {% for reg in allowed_regions %}
+                    <option value="{{ reg.code }}" {% if selected_region == reg.code %}selected{% endif %}>{{ reg.code }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+            <label class="form-label small fw-semibold text-muted mb-1">Folio</label>
+            <input type="text" name="folio" value="{{ folio_search }}" class="form-control form-select-sm" placeholder="Buscar folio...">
+        </div>
+
+        <div class="col-6 col-md-3">
+            <label class="form-label small fw-semibold text-muted mb-1">Número de Serie</label>
+            <input type="text" name="serial" value="{{ serial_search }}" class="form-control form-select-sm" placeholder="Buscar serie...">
+        </div>
+
+        <div class="col-12 col-md-2 d-flex gap-2">
+            <button type="submit" class="btn btn-primary btn-sm w-100">
+                <i class="bi bi-funnel-fill me-1"></i> Filtrar
+            </button>
+            <a href="{% url 'transitions:inbox' %}" class="btn btn-outline-secondary btn-sm" title="Limpiar filtros">
+                <i class="bi bi-arrow-counterclockwise"></i>
+            </a>
+        </div>
+    </form>
+</div>
+
+<!-- Pending Items Table -->
+<div class="ssit-card p-0">
+    <div class="table-responsive ssit-table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th class="ps-3">Tipo</th>
+                    <th>Referencia / Folio</th>
+                    <th>Región</th>
+                    <th>Estado</th>
+                    <th>Solicitante / Artículo</th>
+                    <th>Destino / Ubicación</th>
+                    <th>Fecha</th>
+                    <th class="text-end pe-3">Acciones Disponibles</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in pending_items %}
+                    <tr>
+                        <td class="ps-3 fw-semibold text-secondary">
+                            <i class="bi {% if item.entity_type == 'Vale' %}bi-receipt-cutoff text-primary{% else %}bi-arrow-return-left text-warning{% endif %} me-1"></i>
+                            {{ item.entity_type }}
+                        </td>
+                        <td class="fw-bold">{{ item.reference }}</td>
+                        <td><span class="badge bg-secondary">{{ item.region }}</span></td>
+                        <td>{% status_badge item.stage item.stage_label %}</td>
+                        <td class="small">{{ item.requested_by }}</td>
+                        <td class="small text-muted">{{ item.destination }}</td>
+                        <td class="small text-muted">{{ item.created_at|date:"d/m/Y H:i" }}</td>
+                        <td class="text-end pe-3">
+                            <div class="d-flex justify-content-end gap-1 flex-wrap">
+                                {% for trans in item.available_transitions %}
+                                    <button 
+                                        class="btn btn-sm btn-outline-primary"
+                                        hx-get="{% url 'transitions:transition_modal' item.entity_instance.entity_type_name|default:trans.entity item.id trans.code %}"
+                                        hx-target="#modal-dialog-content">
+                                        <i class="bi bi-play-circle me-1"></i> {{ trans.label }}
+                                    </button>
+                                {% empty %}
+                                    <span class="badge bg-light text-muted border">En espera</span>
+                                {% endfor %}
+                            </div>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center py-5 text-muted">
+                            <i class="bi bi-inbox fs-1 d-block mb-2 text-secondary"></i>
+                            <div class="fw-semibold">No hay pendientes con los filtros seleccionados</div>
+                            <div class="small">Todo está al día en tu bandeja operativa.</div>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

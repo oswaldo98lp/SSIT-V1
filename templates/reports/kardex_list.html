@@ -1,0 +1,172 @@
+{% extends "base.html" %}
+
+{% block title %}Kárdex de Movimientos | Admón Almacén SSIT 2.0{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item"><a href="{% url 'reports:dashboard' %}" class="text-secondary text-decoration-none">Reportes</a></li>
+                        <li class="breadcrumb-item active text-light" aria-current="page">Kárdex</li>
+                    </ol>
+                </nav>
+                <h2 class="h3 fw-bold mb-0 text-light"><i class="bi bi-journal-text text-primary me-2"></i>Kárdex de Movimientos</h2>
+            </div>
+            <div class="d-flex gap-2">
+                <a href="?{{ request.GET.urlencode }}&export=xlsx" class="btn btn-success">
+                    <i class="bi bi-file-earmark-excel me-1"></i> Exportar a Excel (XLSX)
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filtros -->
+    <div class="card bg-dark border-secondary mb-4 shadow-sm">
+        <div class="card-body">
+            <form method="get" class="row g-3">
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.start_date.label }}</label>
+                    {{ form.start_date }}
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.end_date.label }}</label>
+                    {{ form.end_date }}
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.region.label }}</label>
+                    {{ form.region }}
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.warehouse.label }}</label>
+                    {{ form.warehouse }}
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.condition.label }}</label>
+                    {{ form.condition }}
+                </div>
+                <div class="col-12 col-md-3">
+                    <label class="form-label text-secondary small">{{ form.model.label }}</label>
+                    {{ form.model }}
+                </div>
+                <div class="col-12 col-md-4">
+                    <label class="form-label text-secondary small">{{ form.serial_number.label }}</label>
+                    {{ form.serial_number }}
+                </div>
+                <div class="col-12 col-md-2 d-flex align-items-end gap-2">
+                    <button type="submit" class="btn btn-primary flex-grow-1">
+                        <i class="bi bi-filter me-1"></i> Filtrar
+                    </button>
+                    <a href="{% url 'reports:kardex_list' %}" class="btn btn-outline-secondary" title="Limpiar filtros">
+                        <i class="bi bi-x-circle"></i>
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Tabla de Movimientos -->
+    <div class="card bg-dark border-secondary shadow-sm">
+        <div class="card-header border-secondary bg-transparent d-flex justify-content-between align-items-center">
+            <span class="text-secondary small fw-bold text-uppercase">Registros Encontrados ({{ page_obj.paginator.count }})</span>
+            <span class="badge bg-secondary">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover table-striped mb-0 align-middle">
+                <thead>
+                    <tr class="text-secondary small text-uppercase">
+                        <th>ID</th>
+                        <th>Fecha</th>
+                        <th>Tipo Movimiento</th>
+                        <th>Artículo / Modelo</th>
+                        <th>Serie</th>
+                        <th>Cantidad</th>
+                        <th>Almacén</th>
+                        <th>Condición</th>
+                        <th>Región</th>
+                        <th>Folio / Ref</th>
+                        <th>Registrado Por</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in page_obj %}
+                    <tr>
+                        <td class="fw-semibold text-light">#{{ m.id }}</td>
+                        <td class="small">{{ m.moved_at|date:"d/m/Y H:i" }}</td>
+                        <td>
+                            {% if m.movement_type == "ENTRADA_SURTIDO" or m.movement_type == "ENTRADA_AJUSTE" or m.movement_type == "ENTRADA_GARANTIA" or m.movement_type == "ENTRADA_COUPA" %}
+                                <span class="badge bg-success"><i class="bi bi-arrow-down-left me-1"></i>{{ m.get_movement_type_display }}</span>
+                            {% elif m.movement_type == "SALIDA_VALE" or m.movement_type == "SALIDA_SCRAP" or m.movement_type == "SALIDA_HUESARIO" or m.movement_type == "SALIDA_AJUSTE" %}
+                                <span class="badge bg-danger"><i class="bi bi-arrow-up-right me-1"></i>{{ m.get_movement_type_display }}</span>
+                            {% else %}
+                                <span class="badge bg-info text-dark"><i class="bi bi-arrow-left-right me-1"></i>{{ m.get_movement_type_display }}</span>
+                            {% endif %}
+                        </td>
+                        <td class="text-light fw-medium">
+                            {{ m.equipment_model.name }}
+                            <div class="small text-secondary">{{ m.equipment_model.brand }}</div>
+                        </td>
+                        <td>
+                            {% if m.serial_number %}
+                                <code class="text-info">{{ m.serial_number }}</code>
+                            {% else %}
+                                <span class="text-secondary">-</span>
+                            {% endif %}
+                        </td>
+                        <td class="fw-bold {% if m.quantity > 0 %}text-success{% else %}text-danger{% endif %}">
+                            {% if m.quantity > 0 %}+{% endif %}{{ m.quantity }}
+                        </td>
+                        <td><span class="badge bg-secondary text-light">{{ m.get_warehouse_display }}</span></td>
+                        <td>
+                            {% if m.condition == "BUENO" %}
+                                <span class="badge bg-success-subtle text-success border border-success">Bueno</span>
+                            {% elif m.condition == "REGULAR" or m.condition == "DEFECTUOSO" %}
+                                <span class="badge bg-warning-subtle text-warning border border-warning">{{ m.get_condition_display }}</span>
+                            {% else %}
+                                <span class="badge bg-danger-subtle text-danger border border-danger">{{ m.get_condition_display }}</span>
+                            {% endif %}
+                        </td>
+                        <td><span class="badge bg-dark border text-light">{{ m.region.code }}</span></td>
+                        <td class="small">{{ m.transfer_folio|default:"-" }}</td>
+                        <td class="small text-secondary">{{ m.created_by.get_full_name|default:m.created_by.username }}</td>
+                    </tr>
+                    {% empty %}
+                    <tr>
+                        <td colspan="11" class="text-center text-secondary py-4">
+                            <i class="bi bi-inbox fs-2 d-block mb-2"></i>
+                            No se encontraron movimientos de inventario con los criterios seleccionados.
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Paginación -->
+        {% if page_obj.has_other_pages %}
+        <div class="card-footer border-secondary bg-transparent d-flex justify-content-center">
+            <nav aria-label="Paginación de Kárdex">
+                <ul class="pagination pagination-sm mb-0">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link bg-dark border-secondary text-light" href="?page={{ page_obj.previous_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Anterior</a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item disabled">
+                        <span class="page-link bg-dark border-secondary text-info">{{ page_obj.number }} / {{ page_obj.paginator.num_pages }}</span>
+                    </li>
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link bg-dark border-secondary text-light" href="?page={{ page_obj.next_page_number }}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}">Siguiente</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

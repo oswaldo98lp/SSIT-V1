@@ -1,0 +1,39 @@
+# Django Core & Database
+Django>=5.1,<5.3
+mysqlclient>=2.2.0; sys_platform != "win32"
+pymysql>=1.1.0
+cryptography>=43.0.0
+django-environ>=0.11.2
+requests>=2.31.0
+
+# Authentication & Permissions
+django-allauth>=65.0.0
+
+# History & Auditing
+django-simple-history>=3.7.0
+
+# UI, Templates & Filtering
+django-tables2>=2.7.0
+django-filter>=24.3
+django-crispy-forms>=2.3
+crispy-bootstrap5>=2024.10
+
+# Documents, Images & Formats
+WeasyPrint>=62.0; sys_platform != "win32"
+qrcode[pil]>=7.4.2
+openpyxl>=3.1.2
+Pillow>=10.4.0
+django-storages>=1.14.2
+
+# Testing & Quality
+pytest>=8.3.0
+pytest-django>=4.9.0
+factory-boy>=3.3.0
+pytest-cov>=5.0.0
+pytest-mock>=3.14.0
+ruff>=0.6.0
+playwright>=1.46.0
+
+# Server
+gunicorn>=23.0.0
+whitenoise>=6.7.0

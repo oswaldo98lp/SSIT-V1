@@ -1,0 +1,5642 @@
+[
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "SOPORTE_TI",
+    "permissions": [
+      [
+        "create_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "define_equipment",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "register_return",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "create_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "define_equipment",
+        "accounts",
+        "user"
+      ],
+      [
+        "register_return",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "user"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "JEFE_SOPORTE",
+    "permissions": [
+      [
+        "assign_engineer",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "authorize_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "cancel_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "review_definition_boss",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_zone_reports",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "assign_engineer",
+        "accounts",
+        "user"
+      ],
+      [
+        "authorize_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "cancel_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "review_definition_boss",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_zone_reports",
+        "accounts",
+        "user"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "GERENTE_SSIT",
+    "permissions": [
+      [
+        "assign_engineer",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "assign_repair_folio",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "assign_workshop_repair",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "authorize_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "cancel_dispatched_item",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "cancel_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "confirm_return",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "create_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "define_equipment",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "define_workshop_equipment",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "dispatch_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "manage_scrap",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "manage_workshop",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "register_return",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "register_return_without_dispatch",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "review_definition_boss",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "review_definition_warehouse",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_coupa_consumption",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_zone_reports",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "assign_engineer",
+        "accounts",
+        "user"
+      ],
+      [
+        "assign_repair_folio",
+        "accounts",
+        "user"
+      ],
+      [
+        "assign_workshop_repair",
+        "accounts",
+        "user"
+      ],
+      [
+        "authorize_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "cancel_dispatched_item",
+        "accounts",
+        "user"
+      ],
+      [
+        "cancel_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "confirm_return",
+        "accounts",
+        "user"
+      ],
+      [
+        "create_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "define_equipment",
+        "accounts",
+        "user"
+      ],
+      [
+        "define_workshop_equipment",
+        "accounts",
+        "user"
+      ],
+      [
+        "dispatch_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "user"
+      ],
+      [
+        "manage_scrap",
+        "accounts",
+        "user"
+      ],
+      [
+        "manage_workshop",
+        "accounts",
+        "user"
+      ],
+      [
+        "register_return",
+        "accounts",
+        "user"
+      ],
+      [
+        "register_return_without_dispatch",
+        "accounts",
+        "user"
+      ],
+      [
+        "review_definition_boss",
+        "accounts",
+        "user"
+      ],
+      [
+        "review_definition_warehouse",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_coupa_consumption",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_zone_reports",
+        "accounts",
+        "user"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "GERENTE_ZONA",
+    "permissions": [
+      [
+        "assign_engineer",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "authorize_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "cancel_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "review_definition_boss",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_zone_reports",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "assign_engineer",
+        "accounts",
+        "user"
+      ],
+      [
+        "authorize_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "cancel_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "user"
+      ],
+      [
+        "review_definition_boss",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_zone_reports",
+        "accounts",
+        "user"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "ALMACEN",
+    "permissions": [
+      [
+        "cancel_dispatched_item",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "confirm_return",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "dispatch_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "manage_scrap",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "review_definition_warehouse",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "cancel_dispatched_item",
+        "accounts",
+        "user"
+      ],
+      [
+        "confirm_return",
+        "accounts",
+        "user"
+      ],
+      [
+        "dispatch_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "user"
+      ],
+      [
+        "manage_scrap",
+        "accounts",
+        "user"
+      ],
+      [
+        "review_definition_warehouse",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "user"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "OFICINA",
+    "permissions": [
+      [
+        "assign_repair_folio",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "assign_repair_folio",
+        "accounts",
+        "user"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "user"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "JEFE_TALLER",
+    "permissions": [
+      [
+        "assign_engineer",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "assign_workshop_repair",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "authorize_voucher",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "manage_workshop",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "review_definition_boss",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "assign_engineer",
+        "accounts",
+        "user"
+      ],
+      [
+        "assign_workshop_repair",
+        "accounts",
+        "user"
+      ],
+      [
+        "authorize_voucher",
+        "accounts",
+        "user"
+      ],
+      [
+        "export_reports",
+        "accounts",
+        "user"
+      ],
+      [
+        "manage_workshop",
+        "accounts",
+        "user"
+      ],
+      [
+        "review_definition_boss",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "user"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "SOPORTE_TALLER",
+    "permissions": [
+      [
+        "define_equipment",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "define_workshop_equipment",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "businesspermission"
+      ],
+      [
+        "define_equipment",
+        "accounts",
+        "user"
+      ],
+      [
+        "define_workshop_equipment",
+        "accounts",
+        "user"
+      ],
+      [
+        "view_case",
+        "accounts",
+        "user"
+      ]
+    ]
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "EVENTUAL",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "ENCARGADO_SOPORTE",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "fields": {
+    "name": "GERENTE_TITULAR",
+    "permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "7erhiqiv22yffvm3h9r4hsz26lv9wtt4",
+  "fields": {
+    "session_data": ".eJxVkE1OwzAQhe8y62B5nDh2skLsOQFC0cR2iSG1o4wjiqreHRm66W70fr6R3hXIuXykMtFRlpBKdFRiTtM5lCV7hvHtCv83jLAR83fePTRABUY0A3atNboXHapOoWkgnCmuMALnLe8liEwX91wClyfmWMSaHa1we2_g7-F0cNinWNkID9pM7iukavhPSh9ZuJzKHmdRI-LusnjNPqwv9-wDYCFeahuN7Wdq0aOy2FmjtVGkpR1I4qmXqkWj5EmTHcjp3kkte7RoSZHXgeYK5cBcNwmXLe4_MMrbL44OZo4:1xEh3U:7eNQeWfzy7ylYyxM0Al5C5MxfEDNupFwFmHVMd_AFHw",
+    "expire_date": "2026-10-22T05:52:36.433Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "8ixs9ef3558mf0wsd54ucnhtb2fhf8dk",
+  "fields": {
+    "session_data": ".eJxVkM1OwzAQhN9lz8Fy4jT-OSHuPAFC0dreEFM3jrKOAFV9dxTopbfRzOgbaa6AIZR9qSPudaalpoA1lWW8UJ1LZHBvV_jX4GBF5q-yRWgAK7hW27ZXppVKKKuUMl0DdMGUwQGXtWyVRMWcaXuuxPWJOVWRS8AMt_cG_ibHnWkb00E38OB5DGdajiB-4vJRRChL3ZIXR0XcUxavJVJ-uXcfADPyDA7sKUgbtepNtFLbbhqM114b00evSE1yiIMhbenURWml8l3bximS9QG9VHhAmZiPV-h7TdsPOHn7Bcg5aLk:1xEgsx:_DF-MlBITzMdU2abHwIzrOVZY6nVgCpnwEfQFDJxvPU",
+    "expire_date": "2026-10-22T05:41:43.412Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "8zoxj9l3qxsn1g2w29ooawnr73cnxuqv",
+  "fields": {
+    "session_data": ".eJxVkMFuwyAQRP9lzy4yIRjwqeq9X1BV1rKQmtaGyIvVVFH-vaLNJbfRzOiNNFdAorLnOuFe55hrIqyp5GmNdS6BYXy7wr-GEc7I_F22AB1ghVEaJ4_K9YMUarDGaNtBXDEtMAIuK1LMouCFnmvk-sScqlgK4QK39w7-Bqed4zalxtbw4Hmkr5hbED4xfxRBJdctedEq4p6yeC0hLi_37gNgRp4b1lsjD9ohWdT2oAZHmiic_OC9ocHR0ZwQo1Vk-xCU8kppa6Sx0moX5aFBOTK3T-LlnLYfGPvbL8WyZ4Q:1xEh8P:5ZxgLmzAfkNhNlzU2XVsq6WxvvGFST5wD3hrsVtmWy0",
+    "expire_date": "2026-10-22T05:57:41.389Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "cj1sp93yed2uhf41glfcbglcoig98ijb",
+  "fields": {
+    "session_data": ".eJxVkMFuwyAQRP9lzynCgE3gVPXeL6gqa4FNTeJA5MVqqij_XrnNJbfRzOiNNDfAGOta2ohrm6i0HLHlWsYztakmBv9xg38NHi7I_F2XBDvABr6zrjPaKTOIfWec7fsd0BnzDB6OdCBR8RpfG3F7Yc5NzDXiDPfPHfytjSvTMuYNrODJCxhPVLYgHbF8VRFraUsOYquIR8rivSaa3x7dJ8CEPIEHVPtOH6LqldLRqBSCokEZLfUwmNRbY8maQIROEmmDZI3DKK2WyYUk9QZlYt4OoeslLz_g5f0XQAFmHg:1xEhBO:GV8oYkgAshI_9RQGlHl14Dpxv5ZBi9zsEkUmvAdl6TU",
+    "expire_date": "2026-10-22T06:00:46.834Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "givtju720l9twqtbffu8opkzg7m34ooo",
+  "fields": {
+    "session_data": ".eJxVkMFuwyAQRP9lzy4C4xjwqeq9X1BV1gLrmsYxFovVVlH-vXKbS26jmdEbaa6AIeR9rSPudaa1poA15XW8UJ1zZBjervCvYYANmb9yidAAVhiUcarTVslOOG2U064BumBaYADOWy6VRMVlofJciesTc6piyQEXuL038Dc57kxlTAfdwoPnMZxpPYL4ietHFiGvtSQvjoq4pyxec6Tl5d59AMzIMwzgTkG6aHRno5PGtVNvvfHG2i56TXqSfewtGUenNkontW-VilMk5wN6qfGAMjEfr9D3lsoPDPL2C9JxaMQ:1xEgsy:ZAmJGYxR442ssnsoRRqOdrDuXrLlkeM3Z32WY11DN5Q",
+    "expire_date": "2026-10-22T05:41:44.954Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "hlevqk99qb9c0m8se2doc5x5w0z4fexb",
+  "fields": {
+    "session_data": ".eJxVkE1OwzAQhe8y62DZThw7WSH2nAChaGK7xJB6oowjiqreHRm66W70fr6R3hXQezpymfAoS8wleSyJ8nSOZaHAML5d4f-GETZk_qY9QANYYFR2UF3rrHFC9rpzXdtAPGNaYQSmjfYSBeHFP5fI5Yk5FbGSxxVu7w38PZwOjvuUKlvBgzaj_4q5GuET8wcJT7nsaRY1Iu4ui1cKcX25Zx8AC_JS28q6fsZWBaWd6pw1xmo00g0o1amXulVWy5NBN6A3vZdG9sophxqDiThXKEfmukm8bGn_gVHefgGVdmaW:1xEh3W:SnO_5-uFd3z_oPtJ6Ogr6LRoHTmf5nPANIvmOrwb30k",
+    "expire_date": "2026-10-22T05:52:38.082Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "vwb3brgjkhmn6yvc79uuuvb5158l77rs",
+  "fields": {
+    "session_data": ".eJxVkMFqwzAQRP9lz66QJdmyfCq99wtKMStpUytxpOCVaUrIvxe3ueQ2zAxvYG6AIZQt1wm3OlOuKWBNJU9nqnOJDOPHDf41jHBB5u-yRmgAK4ytda3RTplBqM6prh8aoDOmBUY40oFEwWt4rcT1hTlVsZSAC9w_G_hbmzamdUo7WMGT5zGcKO9BPGL-KiKUXNfkxV4Rj5TFe4m0vD26T4AZeYYRUA2tPgTVKaWDUdF7Rb0yWuq-N7GzxpI1ngidJNIGyRqHQVoto_NR6h3KxLwfQtdLWn9glPdfP_1mHg:1xEhBQ:JBXHCetUcwjJgD-AMqnrrS07vZRgF7gns8LLPG7DC7c",
+    "expire_date": "2026-10-22T06:00:48.281Z"
+  }
+},
+{
+  "model": "sites.site",
+  "fields": {
+    "domain": "example.com",
+    "name": "example.com"
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$o0p8V16JFQ5TRfgWrqddjU$HAPFuEeTFC9w7XMVQrKiIfGaybAnjtM+kaXRHLQ/wGY=",
+    "last_login": "2026-10-08T05:52:38.074Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-08T00:06:36.505Z",
+    "email": "soporte.oaxc@test-ssit.local",
+    "employee_number": "EMP-1001",
+    "full_name": "Ingeniero Soporte TI Sintético",
+    "position": "Ingeniero de Soporte TI en Campo",
+    "center": 1,
+    "region": 1,
+    "has_global_scope": false,
+    "groups": [
+      [
+        "SOPORTE_TI"
+      ]
+    ],
+    "user_permissions": [],
+    "extra_regions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$BJWcInAcj8TUvX2Z8RCDlf$PXy+sZdQTVfoAOrJ7XkvZA0i5jRt/62CTYAahPpbOhE=",
+    "last_login": "2026-10-08T06:00:48.273Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-08T00:06:37.993Z",
+    "email": "jefe.oaxc@test-ssit.local",
+    "employee_number": "EMP-1002",
+    "full_name": "Jefe Soporte Oaxaca Sintético",
+    "position": "Jefe de Soporte Regional",
+    "center": 1,
+    "region": 1,
+    "has_global_scope": false,
+    "groups": [
+      [
+        "JEFE_SOPORTE"
+      ]
+    ],
+    "user_permissions": [],
+    "extra_regions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$KrhgRrBXyUSpwkZcyUDP6m$/wrYBgcTGzIIBFNF7LJ85zB0rJ4TU5phgpIEwrIQAh8=",
+    "last_login": "2026-10-08T05:27:57.980Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2026-10-08T00:06:39.337Z",
+    "email": "gerente.ssit@test-ssit.local",
+    "employee_number": "EMP-1003",
+    "full_name": "Gerente Nacional SSIT Sintético",
+    "position": "Gerente Nacional de SSIT",
+    "center": 21,
+    "region": 11,
+    "has_global_scope": true,
+    "groups": [
+      [
+        "GERENTE_SSIT"
+      ]
+    ],
+    "user_permissions": [],
+    "extra_regions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$RqnQD7oyCqzyxY8oM7ULZP$spgjwSgykj9+/18cUDpyswxlupCqNnQ0d66/tcFjAqI=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-08T00:06:40.721Z",
+    "email": "gerente.zona1@test-ssit.local",
+    "employee_number": "EMP-1004",
+    "full_name": "Gerente Zona 1 Sintético",
+    "position": "Gerente Operativo de Zona 1",
+    "center": 1,
+    "region": 1,
+    "has_global_scope": false,
+    "groups": [
+      [
+        "GERENTE_ZONA"
+      ]
+    ],
+    "user_permissions": [],
+    "extra_regions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$MyqUSoFUpgJvYbKHq52vXA$bmVSM8f+nfh5ayEKkn4nkrnVLSUbRa4JzFc5kGRklcE=",
+    "last_login": "2026-10-08T05:57:41.382Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-08T00:06:42.016Z",
+    "email": "almacen.oaxc@test-ssit.local",
+    "employee_number": "EMP-1005",
+    "full_name": "Encargado Almacén Oaxaca Sintético",
+    "position": "Encargado de Almacén y Surtido",
+    "center": 1,
+    "region": 1,
+    "has_global_scope": false,
+    "groups": [
+      [
+        "ALMACEN"
+      ]
+    ],
+    "user_permissions": [],
+    "extra_regions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$MaGJ54CcSUPpiNaB3rClFZ$o3rNWVV0svFv/sDymXRUBDCW09QidtrfPAyhg/FE+3Q=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-08T00:06:43.329Z",
+    "email": "oficina.central@test-ssit.local",
+    "employee_number": "EMP-1006",
+    "full_name": "Oficina Central de Folios Sintético",
+    "position": "Analista de Oficina de Soporte",
+    "center": 21,
+    "region": 11,
+    "has_global_scope": false,
+    "groups": [
+      [
+        "OFICINA"
+      ]
+    ],
+    "user_permissions": [],
+    "extra_regions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$Bx0yR36vdQgrmTpc9jcE2h$BeEAVVBPitxfMpIzdESsWP4zEr58vC5CriETNfXNBis=",
+    "last_login": null,
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-08T00:06:44.637Z",
+    "email": "jefe.taller@test-ssit.local",
+    "employee_number": "EMP-1007",
+    "full_name": "Jefe Taller Oaxaca Sintético",
+    "position": "Jefe de Taller Habilitado",
+    "center": 1,
+    "region": 1,
+    "has_global_scope": false,
+    "groups": [
+      [
+        "JEFE_TALLER"
+      ]
+    ],
+    "user_permissions": [],
+    "extra_regions": []
+  }
+},
+{
+  "model": "accounts.user",
+  "fields": {
+    "password": "pbkdf2_sha256$1500000$6UNuMgSAu2Rjfo2Im5Iy0g$F9/nEFJj7xZZMWz9Sd/JTJsJxPC6446t0v+IW2dQ06s=",
+    "last_login": "2026-10-08T05:41:44.946Z",
+    "is_superuser": false,
+    "first_name": "",
+    "last_name": "",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2026-10-08T00:06:45.942Z",
+    "email": "soporte.taller@test-ssit.local",
+    "employee_number": "EMP-1008",
+    "full_name": "Técnico Taller Oaxaca Sintético",
+    "position": "Técnico Especialista de Taller",
+    "center": 1,
+    "region": 1,
+    "has_global_scope": false,
+    "groups": [
+      [
+        "SOPORTE_TALLER"
+      ]
+    ],
+    "user_permissions": [],
+    "extra_regions": []
+  }
+},
+{
+  "model": "org.zone",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.787Z",
+    "updated_at": "2026-10-08T00:06:32.787Z",
+    "name": "Zona 1"
+  }
+},
+{
+  "model": "org.zone",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.053Z",
+    "updated_at": "2026-10-08T00:06:33.053Z",
+    "name": "Zona 2"
+  }
+},
+{
+  "model": "org.zone",
+  "pk": 3,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.253Z",
+    "updated_at": "2026-10-08T00:06:33.253Z",
+    "name": "Zona 3"
+  }
+},
+{
+  "model": "org.zone",
+  "pk": 4,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.483Z",
+    "updated_at": "2026-10-08T00:06:33.483Z",
+    "name": "Zona 4"
+  }
+},
+{
+  "model": "org.zone",
+  "pk": 5,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.679Z",
+    "updated_at": "2026-10-08T00:06:33.679Z",
+    "name": "Zona 5"
+  }
+},
+{
+  "model": "org.zone",
+  "pk": 6,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.878Z",
+    "updated_at": "2026-10-08T00:06:33.878Z",
+    "name": "Zona 6"
+  }
+},
+{
+  "model": "org.region",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.798Z",
+    "updated_at": "2026-10-08T05:06:32.410Z",
+    "code": "OAXC",
+    "name": "Oaxaca",
+    "zone": 1,
+    "is_workshop": true,
+    "workshop_name": "Taller Habilitado Oaxaca"
+  }
+},
+{
+  "model": "org.region",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.822Z",
+    "updated_at": "2026-10-08T05:06:32.433Z",
+    "code": "CRDB",
+    "name": "Córdoba",
+    "zone": 1,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 3,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.848Z",
+    "updated_at": "2026-10-08T05:06:32.453Z",
+    "code": "PBLA I",
+    "name": "Puebla I",
+    "zone": 1,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 4,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.877Z",
+    "updated_at": "2026-10-08T05:06:32.474Z",
+    "code": "PBLA II",
+    "name": "Puebla II",
+    "zone": 1,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 5,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.902Z",
+    "updated_at": "2026-10-08T05:06:32.494Z",
+    "code": "PZRC",
+    "name": "Poza Rica",
+    "zone": 1,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 6,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.926Z",
+    "updated_at": "2026-10-08T05:06:32.514Z",
+    "code": "SCRZ",
+    "name": "Salina Cruz",
+    "zone": 1,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 7,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.957Z",
+    "updated_at": "2026-10-08T05:06:32.535Z",
+    "code": "TXCC",
+    "name": "Tehuacán",
+    "zone": 1,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 8,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.984Z",
+    "updated_at": "2026-10-08T05:06:32.556Z",
+    "code": "TXTP",
+    "name": "Tuxtepec",
+    "zone": 1,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 9,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.006Z",
+    "updated_at": "2026-10-08T05:06:32.576Z",
+    "code": "VRCZ",
+    "name": "Veracruz",
+    "zone": 1,
+    "is_workshop": true,
+    "workshop_name": "Taller Habilitado Veracruz"
+  }
+},
+{
+  "model": "org.region",
+  "pk": 10,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.031Z",
+    "updated_at": "2026-10-08T05:06:32.597Z",
+    "code": "XLPA",
+    "name": "Xalapa",
+    "zone": 1,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 11,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.061Z",
+    "updated_at": "2026-10-08T05:06:32.618Z",
+    "code": "AZCP",
+    "name": "Azcapotzalco",
+    "zone": 2,
+    "is_workshop": true,
+    "workshop_name": "Taller Central Azcapotzalco"
+  }
+},
+{
+  "model": "org.region",
+  "pk": 12,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.083Z",
+    "updated_at": "2026-10-08T05:06:32.639Z",
+    "code": "CLYA",
+    "name": "Celaya",
+    "zone": 2,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 13,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.109Z",
+    "updated_at": "2026-10-08T05:06:32.660Z",
+    "code": "CTLZ",
+    "name": "Cuautitlán Izcalli",
+    "zone": 2,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 14,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.132Z",
+    "updated_at": "2026-10-08T05:06:32.680Z",
+    "code": "LCRS",
+    "name": "Lázaro Cárdenas",
+    "zone": 2,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 15,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.156Z",
+    "updated_at": "2026-10-08T05:06:32.701Z",
+    "code": "MORL",
+    "name": "Morelia",
+    "zone": 2,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 16,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.181Z",
+    "updated_at": "2026-10-08T05:06:32.721Z",
+    "code": "QRTO",
+    "name": "Querétaro",
+    "zone": 2,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 17,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.205Z",
+    "updated_at": "2026-10-08T05:06:32.741Z",
+    "code": "TCMC",
+    "name": "Tecámac",
+    "zone": 2,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 18,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.228Z",
+    "updated_at": "2026-10-08T05:06:32.790Z",
+    "code": "TOLC",
+    "name": "Toluca",
+    "zone": 2,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 19,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.262Z",
+    "updated_at": "2026-10-08T05:06:32.811Z",
+    "code": "ACPO",
+    "name": "Acapulco",
+    "zone": 3,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 20,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.288Z",
+    "updated_at": "2026-10-08T05:06:32.831Z",
+    "code": "CNCN",
+    "name": "Cancún",
+    "zone": 3,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 21,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.312Z",
+    "updated_at": "2026-10-08T05:06:32.853Z",
+    "code": "IGLA",
+    "name": "Iguala",
+    "zone": 3,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 22,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.339Z",
+    "updated_at": "2026-10-08T05:06:32.875Z",
+    "code": "IXTP",
+    "name": "Ixtepec",
+    "zone": 3,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 23,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.363Z",
+    "updated_at": "2026-10-08T05:06:32.898Z",
+    "code": "IZTP",
+    "name": "Iztapalapa",
+    "zone": 3,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 24,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.387Z",
+    "updated_at": "2026-10-08T05:06:32.921Z",
+    "code": "MRDA",
+    "name": "Mérida",
+    "zone": 3,
+    "is_workshop": true,
+    "workshop_name": "Taller Sureste Mérida"
+  }
+},
+{
+  "model": "org.region",
+  "pk": 25,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.410Z",
+    "updated_at": "2026-10-08T05:06:32.943Z",
+    "code": "TXGT",
+    "name": "Tuxtla Gutiérrez",
+    "zone": 3,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 26,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.436Z",
+    "updated_at": "2026-10-08T05:06:32.964Z",
+    "code": "CTZC",
+    "name": "Coatzacoalcos",
+    "zone": 3,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 27,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.460Z",
+    "updated_at": "2026-10-08T05:06:32.985Z",
+    "code": "VLLH",
+    "name": "Villahermosa",
+    "zone": 3,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 28,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.491Z",
+    "updated_at": "2026-10-08T05:06:33.009Z",
+    "code": "CLCN",
+    "name": "Culiacán",
+    "zone": 4,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 29,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.517Z",
+    "updated_at": "2026-10-08T05:06:33.031Z",
+    "code": "HLLO",
+    "name": "Hermosillo",
+    "zone": 4,
+    "is_workshop": true,
+    "workshop_name": "Taller Noroeste Hermosillo"
+  }
+},
+{
+  "model": "org.region",
+  "pk": 30,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.543Z",
+    "updated_at": "2026-10-08T05:06:33.058Z",
+    "code": "LMCH",
+    "name": "Los Mochis",
+    "zone": 4,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 31,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.569Z",
+    "updated_at": "2026-10-08T05:06:33.080Z",
+    "code": "LPAZ",
+    "name": "La Paz",
+    "zone": 4,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 32,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.595Z",
+    "updated_at": "2026-10-08T05:06:33.103Z",
+    "code": "MXLI",
+    "name": "Mexicali",
+    "zone": 4,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 33,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.620Z",
+    "updated_at": "2026-10-08T05:06:33.125Z",
+    "code": "TJNA",
+    "name": "Tijuana",
+    "zone": 4,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 34,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.647Z",
+    "updated_at": "2026-10-08T05:06:33.147Z",
+    "code": "MZTN",
+    "name": "Mazatlán",
+    "zone": 4,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 35,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.689Z",
+    "updated_at": "2026-10-08T05:06:33.173Z",
+    "code": "CDJZ",
+    "name": "Ciudad Juárez",
+    "zone": 5,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 36,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.715Z",
+    "updated_at": "2026-10-08T05:06:33.194Z",
+    "code": "CHUA",
+    "name": "Chihuahua",
+    "zone": 5,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 37,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.741Z",
+    "updated_at": "2026-10-08T05:06:33.215Z",
+    "code": "GDLP",
+    "name": "Guadalupe",
+    "zone": 5,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 38,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.769Z",
+    "updated_at": "2026-10-08T05:06:33.235Z",
+    "code": "GPLC",
+    "name": "Gómez Palacio",
+    "zone": 5,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 39,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.799Z",
+    "updated_at": "2026-10-08T05:06:33.256Z",
+    "code": "MNCV",
+    "name": "Monclova",
+    "zone": 5,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 40,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.825Z",
+    "updated_at": "2026-10-08T05:06:33.316Z",
+    "code": "MTRY",
+    "name": "Monterrey",
+    "zone": 5,
+    "is_workshop": true,
+    "workshop_name": "Taller Norte Monterrey"
+  }
+},
+{
+  "model": "org.region",
+  "pk": 41,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.852Z",
+    "updated_at": "2026-10-08T05:06:33.336Z",
+    "code": "TMPC",
+    "name": "Tampico",
+    "zone": 5,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 42,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.886Z",
+    "updated_at": "2026-10-08T05:06:33.357Z",
+    "code": "AGCS",
+    "name": "Aguascalientes",
+    "zone": 6,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 43,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.912Z",
+    "updated_at": "2026-10-08T05:06:33.377Z",
+    "code": "CLMA",
+    "name": "Colima",
+    "zone": 6,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 44,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.938Z",
+    "updated_at": "2026-10-08T05:06:33.397Z",
+    "code": "GDLJ",
+    "name": "Guadalajara",
+    "zone": 6,
+    "is_workshop": true,
+    "workshop_name": "Taller Occidente Guadalajara"
+  }
+},
+{
+  "model": "org.region",
+  "pk": 45,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.964Z",
+    "updated_at": "2026-10-08T05:06:33.418Z",
+    "code": "LEON",
+    "name": "León",
+    "zone": 6,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 46,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.992Z",
+    "updated_at": "2026-10-08T05:06:33.438Z",
+    "code": "SNLP",
+    "name": "San Luis Potosí",
+    "zone": 6,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 47,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:34.021Z",
+    "updated_at": "2026-10-08T05:06:33.459Z",
+    "code": "TLQP",
+    "name": "Tlaquepaque",
+    "zone": 6,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.region",
+  "pk": 48,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:34.053Z",
+    "updated_at": "2026-10-08T05:06:33.480Z",
+    "code": "TPIC",
+    "name": "Tepic",
+    "zone": 6,
+    "is_workshop": false,
+    "workshop_name": ""
+  }
+},
+{
+  "model": "org.center",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.807Z",
+    "updated_at": "2026-10-08T05:06:32.420Z",
+    "number": 101,
+    "name": "Oaxaca Tienda Principal",
+    "label": "101 - Oaxaca Tienda Principal",
+    "region": 1,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.815Z",
+    "updated_at": "2026-10-08T05:06:32.426Z",
+    "number": 102,
+    "name": "Oaxaca Almacén Regional",
+    "label": "102 - Oaxaca Almacén Regional",
+    "region": 1,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 3,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.830Z",
+    "updated_at": "2026-10-08T05:06:32.440Z",
+    "number": 103,
+    "name": "Córdoba Tienda Principal",
+    "label": "103 - Córdoba Tienda Principal",
+    "region": 2,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 4,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.839Z",
+    "updated_at": "2026-10-08T05:06:32.447Z",
+    "number": 104,
+    "name": "Córdoba Almacén Regional",
+    "label": "104 - Córdoba Almacén Regional",
+    "region": 2,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 5,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.857Z",
+    "updated_at": "2026-10-08T05:06:32.460Z",
+    "number": 105,
+    "name": "Puebla I Tienda Principal",
+    "label": "105 - Puebla I Tienda Principal",
+    "region": 3,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 6,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.868Z",
+    "updated_at": "2026-10-08T05:06:32.467Z",
+    "number": 106,
+    "name": "Puebla I Almacén Regional",
+    "label": "106 - Puebla I Almacén Regional",
+    "region": 3,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 7,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.886Z",
+    "updated_at": "2026-10-08T05:06:32.480Z",
+    "number": 107,
+    "name": "Puebla II Tienda Principal",
+    "label": "107 - Puebla II Tienda Principal",
+    "region": 4,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 8,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.894Z",
+    "updated_at": "2026-10-08T05:06:32.487Z",
+    "number": 108,
+    "name": "Puebla II Almacén Regional",
+    "label": "108 - Puebla II Almacén Regional",
+    "region": 4,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 9,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.910Z",
+    "updated_at": "2026-10-08T05:06:32.501Z",
+    "number": 109,
+    "name": "Poza Rica Tienda Principal",
+    "label": "109 - Poza Rica Tienda Principal",
+    "region": 5,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 10,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.918Z",
+    "updated_at": "2026-10-08T05:06:32.507Z",
+    "number": 110,
+    "name": "Poza Rica Almacén Regional",
+    "label": "110 - Poza Rica Almacén Regional",
+    "region": 5,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 11,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.937Z",
+    "updated_at": "2026-10-08T05:06:32.521Z",
+    "number": 111,
+    "name": "Salina Cruz Tienda Principal",
+    "label": "111 - Salina Cruz Tienda Principal",
+    "region": 6,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 12,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.948Z",
+    "updated_at": "2026-10-08T05:06:32.527Z",
+    "number": 112,
+    "name": "Salina Cruz Almacén Regional",
+    "label": "112 - Salina Cruz Almacén Regional",
+    "region": 6,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 13,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.967Z",
+    "updated_at": "2026-10-08T05:06:32.542Z",
+    "number": 113,
+    "name": "Tehuacán Tienda Principal",
+    "label": "113 - Tehuacán Tienda Principal",
+    "region": 7,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 14,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.976Z",
+    "updated_at": "2026-10-08T05:06:32.549Z",
+    "number": 114,
+    "name": "Tehuacán Almacén Regional",
+    "label": "114 - Tehuacán Almacén Regional",
+    "region": 7,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 15,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.991Z",
+    "updated_at": "2026-10-08T05:06:32.563Z",
+    "number": 115,
+    "name": "Tuxtepec Tienda Principal",
+    "label": "115 - Tuxtepec Tienda Principal",
+    "region": 8,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 16,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:32.999Z",
+    "updated_at": "2026-10-08T05:06:32.570Z",
+    "number": 116,
+    "name": "Tuxtepec Almacén Regional",
+    "label": "116 - Tuxtepec Almacén Regional",
+    "region": 8,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 17,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.015Z",
+    "updated_at": "2026-10-08T05:06:32.583Z",
+    "number": 117,
+    "name": "Veracruz Tienda Principal",
+    "label": "117 - Veracruz Tienda Principal",
+    "region": 9,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 18,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.023Z",
+    "updated_at": "2026-10-08T05:06:32.590Z",
+    "number": 118,
+    "name": "Veracruz Almacén Regional",
+    "label": "118 - Veracruz Almacén Regional",
+    "region": 9,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 19,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.038Z",
+    "updated_at": "2026-10-08T05:06:32.604Z",
+    "number": 119,
+    "name": "Xalapa Tienda Principal",
+    "label": "119 - Xalapa Tienda Principal",
+    "region": 10,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 20,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.046Z",
+    "updated_at": "2026-10-08T05:06:32.611Z",
+    "number": 120,
+    "name": "Xalapa Almacén Regional",
+    "label": "120 - Xalapa Almacén Regional",
+    "region": 10,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 21,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.068Z",
+    "updated_at": "2026-10-08T05:06:32.625Z",
+    "number": 121,
+    "name": "Azcapotzalco Tienda Principal",
+    "label": "121 - Azcapotzalco Tienda Principal",
+    "region": 11,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 22,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.076Z",
+    "updated_at": "2026-10-08T05:06:32.632Z",
+    "number": 122,
+    "name": "Azcapotzalco Almacén Regional",
+    "label": "122 - Azcapotzalco Almacén Regional",
+    "region": 11,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 23,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.092Z",
+    "updated_at": "2026-10-08T05:06:32.646Z",
+    "number": 123,
+    "name": "Celaya Tienda Principal",
+    "label": "123 - Celaya Tienda Principal",
+    "region": 12,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 24,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.100Z",
+    "updated_at": "2026-10-08T05:06:32.653Z",
+    "number": 124,
+    "name": "Celaya Almacén Regional",
+    "label": "124 - Celaya Almacén Regional",
+    "region": 12,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 25,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.117Z",
+    "updated_at": "2026-10-08T05:06:32.667Z",
+    "number": 125,
+    "name": "Cuautitlán Izcalli Tienda Principal",
+    "label": "125 - Cuautitlán Izcalli Tienda Principal",
+    "region": 13,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 26,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.125Z",
+    "updated_at": "2026-10-08T05:06:32.673Z",
+    "number": 126,
+    "name": "Cuautitlán Izcalli Almacén Regional",
+    "label": "126 - Cuautitlán Izcalli Almacén Regional",
+    "region": 13,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 27,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.140Z",
+    "updated_at": "2026-10-08T05:06:32.687Z",
+    "number": 127,
+    "name": "Lázaro Cárdenas Tienda Principal",
+    "label": "127 - Lázaro Cárdenas Tienda Principal",
+    "region": 14,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 28,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.149Z",
+    "updated_at": "2026-10-08T05:06:32.694Z",
+    "number": 128,
+    "name": "Lázaro Cárdenas Almacén Regional",
+    "label": "128 - Lázaro Cárdenas Almacén Regional",
+    "region": 14,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 29,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.165Z",
+    "updated_at": "2026-10-08T05:06:32.707Z",
+    "number": 129,
+    "name": "Morelia Tienda Principal",
+    "label": "129 - Morelia Tienda Principal",
+    "region": 15,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 30,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.173Z",
+    "updated_at": "2026-10-08T05:06:32.714Z",
+    "number": 130,
+    "name": "Morelia Almacén Regional",
+    "label": "130 - Morelia Almacén Regional",
+    "region": 15,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 31,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.189Z",
+    "updated_at": "2026-10-08T05:06:32.728Z",
+    "number": 131,
+    "name": "Querétaro Tienda Principal",
+    "label": "131 - Querétaro Tienda Principal",
+    "region": 16,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 32,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.197Z",
+    "updated_at": "2026-10-08T05:06:32.735Z",
+    "number": 132,
+    "name": "Querétaro Almacén Regional",
+    "label": "132 - Querétaro Almacén Regional",
+    "region": 16,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 33,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.212Z",
+    "updated_at": "2026-10-08T05:06:32.748Z",
+    "number": 133,
+    "name": "Tecámac Tienda Principal",
+    "label": "133 - Tecámac Tienda Principal",
+    "region": 17,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 34,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.220Z",
+    "updated_at": "2026-10-08T05:06:32.755Z",
+    "number": 134,
+    "name": "Tecámac Almacén Regional",
+    "label": "134 - Tecámac Almacén Regional",
+    "region": 17,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 35,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.236Z",
+    "updated_at": "2026-10-08T05:06:32.797Z",
+    "number": 135,
+    "name": "Toluca Tienda Principal",
+    "label": "135 - Toluca Tienda Principal",
+    "region": 18,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 36,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.245Z",
+    "updated_at": "2026-10-08T05:06:32.803Z",
+    "number": 136,
+    "name": "Toluca Almacén Regional",
+    "label": "136 - Toluca Almacén Regional",
+    "region": 18,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 37,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.271Z",
+    "updated_at": "2026-10-08T05:06:32.817Z",
+    "number": 137,
+    "name": "Acapulco Tienda Principal",
+    "label": "137 - Acapulco Tienda Principal",
+    "region": 19,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 38,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.280Z",
+    "updated_at": "2026-10-08T05:06:32.824Z",
+    "number": 138,
+    "name": "Acapulco Almacén Regional",
+    "label": "138 - Acapulco Almacén Regional",
+    "region": 19,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 39,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.296Z",
+    "updated_at": "2026-10-08T05:06:32.838Z",
+    "number": 139,
+    "name": "Cancún Tienda Principal",
+    "label": "139 - Cancún Tienda Principal",
+    "region": 20,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 40,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.304Z",
+    "updated_at": "2026-10-08T05:06:32.846Z",
+    "number": 140,
+    "name": "Cancún Almacén Regional",
+    "label": "140 - Cancún Almacén Regional",
+    "region": 20,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 41,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.321Z",
+    "updated_at": "2026-10-08T05:06:32.860Z",
+    "number": 141,
+    "name": "Iguala Tienda Principal",
+    "label": "141 - Iguala Tienda Principal",
+    "region": 21,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 42,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.330Z",
+    "updated_at": "2026-10-08T05:06:32.868Z",
+    "number": 142,
+    "name": "Iguala Almacén Regional",
+    "label": "142 - Iguala Almacén Regional",
+    "region": 21,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 43,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.347Z",
+    "updated_at": "2026-10-08T05:06:32.882Z",
+    "number": 143,
+    "name": "Ixtepec Tienda Principal",
+    "label": "143 - Ixtepec Tienda Principal",
+    "region": 22,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 44,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.355Z",
+    "updated_at": "2026-10-08T05:06:32.891Z",
+    "number": 144,
+    "name": "Ixtepec Almacén Regional",
+    "label": "144 - Ixtepec Almacén Regional",
+    "region": 22,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 45,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.371Z",
+    "updated_at": "2026-10-08T05:06:32.905Z",
+    "number": 145,
+    "name": "Iztapalapa Tienda Principal",
+    "label": "145 - Iztapalapa Tienda Principal",
+    "region": 23,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 46,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.379Z",
+    "updated_at": "2026-10-08T05:06:32.912Z",
+    "number": 146,
+    "name": "Iztapalapa Almacén Regional",
+    "label": "146 - Iztapalapa Almacén Regional",
+    "region": 23,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 47,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.394Z",
+    "updated_at": "2026-10-08T05:06:32.928Z",
+    "number": 147,
+    "name": "Mérida Tienda Principal",
+    "label": "147 - Mérida Tienda Principal",
+    "region": 24,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 48,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.402Z",
+    "updated_at": "2026-10-08T05:06:32.936Z",
+    "number": 148,
+    "name": "Mérida Almacén Regional",
+    "label": "148 - Mérida Almacén Regional",
+    "region": 24,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 49,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.419Z",
+    "updated_at": "2026-10-08T05:06:32.950Z",
+    "number": 149,
+    "name": "Tuxtla Gutiérrez Tienda Principal",
+    "label": "149 - Tuxtla Gutiérrez Tienda Principal",
+    "region": 25,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 50,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.428Z",
+    "updated_at": "2026-10-08T05:06:32.957Z",
+    "number": 150,
+    "name": "Tuxtla Gutiérrez Almacén Regional",
+    "label": "150 - Tuxtla Gutiérrez Almacén Regional",
+    "region": 25,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 51,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.444Z",
+    "updated_at": "2026-10-08T05:06:32.971Z",
+    "number": 151,
+    "name": "Coatzacoalcos Tienda Principal",
+    "label": "151 - Coatzacoalcos Tienda Principal",
+    "region": 26,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 52,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.452Z",
+    "updated_at": "2026-10-08T05:06:32.978Z",
+    "number": 152,
+    "name": "Coatzacoalcos Almacén Regional",
+    "label": "152 - Coatzacoalcos Almacén Regional",
+    "region": 26,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 53,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.468Z",
+    "updated_at": "2026-10-08T05:06:32.992Z",
+    "number": 153,
+    "name": "Villahermosa Tienda Principal",
+    "label": "153 - Villahermosa Tienda Principal",
+    "region": 27,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 54,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.476Z",
+    "updated_at": "2026-10-08T05:06:33.000Z",
+    "number": 154,
+    "name": "Villahermosa Almacén Regional",
+    "label": "154 - Villahermosa Almacén Regional",
+    "region": 27,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 55,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.499Z",
+    "updated_at": "2026-10-08T05:06:33.016Z",
+    "number": 155,
+    "name": "Culiacán Tienda Principal",
+    "label": "155 - Culiacán Tienda Principal",
+    "region": 28,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 56,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.508Z",
+    "updated_at": "2026-10-08T05:06:33.024Z",
+    "number": 156,
+    "name": "Culiacán Almacén Regional",
+    "label": "156 - Culiacán Almacén Regional",
+    "region": 28,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 57,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.526Z",
+    "updated_at": "2026-10-08T05:06:33.043Z",
+    "number": 157,
+    "name": "Hermosillo Tienda Principal",
+    "label": "157 - Hermosillo Tienda Principal",
+    "region": 29,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 58,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.534Z",
+    "updated_at": "2026-10-08T05:06:33.050Z",
+    "number": 158,
+    "name": "Hermosillo Almacén Regional",
+    "label": "158 - Hermosillo Almacén Regional",
+    "region": 29,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 59,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.552Z",
+    "updated_at": "2026-10-08T05:06:33.066Z",
+    "number": 159,
+    "name": "Los Mochis Tienda Principal",
+    "label": "159 - Los Mochis Tienda Principal",
+    "region": 30,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 60,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.561Z",
+    "updated_at": "2026-10-08T05:06:33.073Z",
+    "number": 160,
+    "name": "Los Mochis Almacén Regional",
+    "label": "160 - Los Mochis Almacén Regional",
+    "region": 30,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 61,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.579Z",
+    "updated_at": "2026-10-08T05:06:33.089Z",
+    "number": 161,
+    "name": "La Paz Tienda Principal",
+    "label": "161 - La Paz Tienda Principal",
+    "region": 31,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 62,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.587Z",
+    "updated_at": "2026-10-08T05:06:33.096Z",
+    "number": 162,
+    "name": "La Paz Almacén Regional",
+    "label": "162 - La Paz Almacén Regional",
+    "region": 31,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 63,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.604Z",
+    "updated_at": "2026-10-08T05:06:33.110Z",
+    "number": 163,
+    "name": "Mexicali Tienda Principal",
+    "label": "163 - Mexicali Tienda Principal",
+    "region": 32,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 64,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.611Z",
+    "updated_at": "2026-10-08T05:06:33.117Z",
+    "number": 164,
+    "name": "Mexicali Almacén Regional",
+    "label": "164 - Mexicali Almacén Regional",
+    "region": 32,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 65,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.629Z",
+    "updated_at": "2026-10-08T05:06:33.133Z",
+    "number": 165,
+    "name": "Tijuana Tienda Principal",
+    "label": "165 - Tijuana Tienda Principal",
+    "region": 33,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 66,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.638Z",
+    "updated_at": "2026-10-08T05:06:33.140Z",
+    "number": 166,
+    "name": "Tijuana Almacén Regional",
+    "label": "166 - Tijuana Almacén Regional",
+    "region": 33,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 67,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.662Z",
+    "updated_at": "2026-10-08T05:06:33.155Z",
+    "number": 167,
+    "name": "Mazatlán Tienda Principal",
+    "label": "167 - Mazatlán Tienda Principal",
+    "region": 34,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 68,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.670Z",
+    "updated_at": "2026-10-08T05:06:33.165Z",
+    "number": 168,
+    "name": "Mazatlán Almacén Regional",
+    "label": "168 - Mazatlán Almacén Regional",
+    "region": 34,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 69,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.697Z",
+    "updated_at": "2026-10-08T05:06:33.180Z",
+    "number": 169,
+    "name": "Ciudad Juárez Tienda Principal",
+    "label": "169 - Ciudad Juárez Tienda Principal",
+    "region": 35,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 70,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.706Z",
+    "updated_at": "2026-10-08T05:06:33.188Z",
+    "number": 170,
+    "name": "Ciudad Juárez Almacén Regional",
+    "label": "170 - Ciudad Juárez Almacén Regional",
+    "region": 35,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 71,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.725Z",
+    "updated_at": "2026-10-08T05:06:33.201Z",
+    "number": 171,
+    "name": "Chihuahua Tienda Principal",
+    "label": "171 - Chihuahua Tienda Principal",
+    "region": 36,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 72,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.734Z",
+    "updated_at": "2026-10-08T05:06:33.208Z",
+    "number": 172,
+    "name": "Chihuahua Almacén Regional",
+    "label": "172 - Chihuahua Almacén Regional",
+    "region": 36,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 73,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.752Z",
+    "updated_at": "2026-10-08T05:06:33.222Z",
+    "number": 173,
+    "name": "Guadalupe Tienda Principal",
+    "label": "173 - Guadalupe Tienda Principal",
+    "region": 37,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 74,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.761Z",
+    "updated_at": "2026-10-08T05:06:33.228Z",
+    "number": 174,
+    "name": "Guadalupe Almacén Regional",
+    "label": "174 - Guadalupe Almacén Regional",
+    "region": 37,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 75,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.781Z",
+    "updated_at": "2026-10-08T05:06:33.242Z",
+    "number": 175,
+    "name": "Gómez Palacio Tienda Principal",
+    "label": "175 - Gómez Palacio Tienda Principal",
+    "region": 38,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 76,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.789Z",
+    "updated_at": "2026-10-08T05:06:33.249Z",
+    "number": 176,
+    "name": "Gómez Palacio Almacén Regional",
+    "label": "176 - Gómez Palacio Almacén Regional",
+    "region": 38,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 77,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.808Z",
+    "updated_at": "2026-10-08T05:06:33.263Z",
+    "number": 177,
+    "name": "Monclova Tienda Principal",
+    "label": "177 - Monclova Tienda Principal",
+    "region": 39,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 78,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.816Z",
+    "updated_at": "2026-10-08T05:06:33.309Z",
+    "number": 178,
+    "name": "Monclova Almacén Regional",
+    "label": "178 - Monclova Almacén Regional",
+    "region": 39,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 79,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.833Z",
+    "updated_at": "2026-10-08T05:06:33.322Z",
+    "number": 179,
+    "name": "Monterrey Tienda Principal",
+    "label": "179 - Monterrey Tienda Principal",
+    "region": 40,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 80,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.842Z",
+    "updated_at": "2026-10-08T05:06:33.330Z",
+    "number": 180,
+    "name": "Monterrey Almacén Regional",
+    "label": "180 - Monterrey Almacén Regional",
+    "region": 40,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 81,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.861Z",
+    "updated_at": "2026-10-08T05:06:33.343Z",
+    "number": 181,
+    "name": "Tampico Tienda Principal",
+    "label": "181 - Tampico Tienda Principal",
+    "region": 41,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 82,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.869Z",
+    "updated_at": "2026-10-08T05:06:33.349Z",
+    "number": 182,
+    "name": "Tampico Almacén Regional",
+    "label": "182 - Tampico Almacén Regional",
+    "region": 41,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 83,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.895Z",
+    "updated_at": "2026-10-08T05:06:33.363Z",
+    "number": 183,
+    "name": "Aguascalientes Tienda Principal",
+    "label": "183 - Aguascalientes Tienda Principal",
+    "region": 42,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 84,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.904Z",
+    "updated_at": "2026-10-08T05:06:33.370Z",
+    "number": 184,
+    "name": "Aguascalientes Almacén Regional",
+    "label": "184 - Aguascalientes Almacén Regional",
+    "region": 42,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 85,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.920Z",
+    "updated_at": "2026-10-08T05:06:33.383Z",
+    "number": 185,
+    "name": "Colima Tienda Principal",
+    "label": "185 - Colima Tienda Principal",
+    "region": 43,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 86,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.929Z",
+    "updated_at": "2026-10-08T05:06:33.391Z",
+    "number": 186,
+    "name": "Colima Almacén Regional",
+    "label": "186 - Colima Almacén Regional",
+    "region": 43,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 87,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.946Z",
+    "updated_at": "2026-10-08T05:06:33.404Z",
+    "number": 187,
+    "name": "Guadalajara Tienda Principal",
+    "label": "187 - Guadalajara Tienda Principal",
+    "region": 44,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 88,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.955Z",
+    "updated_at": "2026-10-08T05:06:33.411Z",
+    "number": 188,
+    "name": "Guadalajara Almacén Regional",
+    "label": "188 - Guadalajara Almacén Regional",
+    "region": 44,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 89,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.973Z",
+    "updated_at": "2026-10-08T05:06:33.425Z",
+    "number": 189,
+    "name": "León Tienda Principal",
+    "label": "189 - León Tienda Principal",
+    "region": 45,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 90,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:33.982Z",
+    "updated_at": "2026-10-08T05:06:33.432Z",
+    "number": 190,
+    "name": "León Almacén Regional",
+    "label": "190 - León Almacén Regional",
+    "region": 45,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 91,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:34.002Z",
+    "updated_at": "2026-10-08T05:06:33.445Z",
+    "number": 191,
+    "name": "San Luis Potosí Tienda Principal",
+    "label": "191 - San Luis Potosí Tienda Principal",
+    "region": 46,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 92,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:34.012Z",
+    "updated_at": "2026-10-08T05:06:33.452Z",
+    "number": 192,
+    "name": "San Luis Potosí Almacén Regional",
+    "label": "192 - San Luis Potosí Almacén Regional",
+    "region": 46,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 93,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:34.030Z",
+    "updated_at": "2026-10-08T05:06:33.466Z",
+    "number": 193,
+    "name": "Tlaquepaque Tienda Principal",
+    "label": "193 - Tlaquepaque Tienda Principal",
+    "region": 47,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 94,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:34.042Z",
+    "updated_at": "2026-10-08T05:06:33.473Z",
+    "number": 194,
+    "name": "Tlaquepaque Almacén Regional",
+    "label": "194 - Tlaquepaque Almacén Regional",
+    "region": 47,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 95,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:34.063Z",
+    "updated_at": "2026-10-08T05:06:33.487Z",
+    "number": 195,
+    "name": "Tepic Tienda Principal",
+    "label": "195 - Tepic Tienda Principal",
+    "region": 48,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "org.center",
+  "pk": 96,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:34.072Z",
+    "updated_at": "2026-10-08T05:06:33.494Z",
+    "number": 196,
+    "name": "Tepic Almacén Regional",
+    "label": "196 - Tepic Almacén Regional",
+    "region": 48,
+    "address": "",
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.082Z",
+    "updated_at": "2026-10-08T05:06:29.280Z",
+    "catalog": "REQUEST_REASON",
+    "code": "FALLA_EQUIPO",
+    "label": "Falla de equipo en punto de atención",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.090Z",
+    "updated_at": "2026-10-08T05:06:29.289Z",
+    "catalog": "REQUEST_REASON",
+    "code": "NUEVA_APERTURA",
+    "label": "Apertura de nuevo centro o sucursal",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 3,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.098Z",
+    "updated_at": "2026-10-08T05:06:29.296Z",
+    "catalog": "REQUEST_REASON",
+    "code": "RENOVACION_TECNOLOGICA",
+    "label": "Renovación tecnológica programada",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 4,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.107Z",
+    "updated_at": "2026-10-08T05:06:29.303Z",
+    "catalog": "REQUEST_REASON",
+    "code": "REASIGNACION",
+    "label": "Reasignación de equipo a usuario",
+    "sort": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 5,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.115Z",
+    "updated_at": "2026-10-08T05:06:29.310Z",
+    "catalog": "REQUEST_REASON",
+    "code": "PROYECTO_ESPECIAL",
+    "label": "Proyecto especial o temporal",
+    "sort": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 6,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.123Z",
+    "updated_at": "2026-10-08T05:06:29.316Z",
+    "catalog": "REQUEST_REASON",
+    "code": "PRESTAMO",
+    "label": "Préstamo provisional",
+    "sort": 6,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 7,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.130Z",
+    "updated_at": "2026-10-08T05:06:29.323Z",
+    "catalog": "REQUEST_REASON",
+    "code": "EXPANSION_CAPACIDAD",
+    "label": "Expansión de capacidad operativa",
+    "sort": 7,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 8,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.137Z",
+    "updated_at": "2026-10-08T05:06:29.329Z",
+    "catalog": "REQUEST_REASON",
+    "code": "RESPALDO_LOCAL",
+    "label": "Equipo de respaldo local",
+    "sort": 8,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 9,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.145Z",
+    "updated_at": "2026-10-08T05:06:29.336Z",
+    "catalog": "REQUEST_REASON",
+    "code": "DANO_ACCIDENTAL",
+    "label": "Daño accidental / Siniestro",
+    "sort": 9,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 10,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.154Z",
+    "updated_at": "2026-10-08T05:06:29.342Z",
+    "catalog": "REQUEST_REASON",
+    "code": "MIGRACION_SISTEMA",
+    "label": "Migración de sistema operativo",
+    "sort": 10,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 11,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.162Z",
+    "updated_at": "2026-10-08T05:06:29.349Z",
+    "catalog": "REQUEST_REASON",
+    "code": "OTRO",
+    "label": "Otro motivo justificado",
+    "sort": 11,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 12,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.169Z",
+    "updated_at": "2026-10-08T05:06:29.356Z",
+    "catalog": "MATERIAL_CATEGORY",
+    "code": "EQUIPO_COMPUTO",
+    "label": "Equipo de Cómputo (PC, Laptop, All-in-One)",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 13,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.177Z",
+    "updated_at": "2026-10-08T05:06:29.362Z",
+    "catalog": "MATERIAL_CATEGORY",
+    "code": "IMPRESION_SCANNER",
+    "label": "Impresión y Escáner (Térmica, Láser, Escáner)",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 14,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.185Z",
+    "updated_at": "2026-10-08T05:06:29.369Z",
+    "catalog": "MATERIAL_CATEGORY",
+    "code": "REDES_COMUNICACIONES",
+    "label": "Redes y Telecomunicaciones (Switch, Router, AP)",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 15,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.192Z",
+    "updated_at": "2026-10-08T05:06:29.376Z",
+    "catalog": "MATERIAL_CATEGORY",
+    "code": "PERIFERICOS_ACCESORIOS",
+    "label": "Periféricos y Accesorios (Teclado, Mouse, Lector)",
+    "sort": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 16,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.201Z",
+    "updated_at": "2026-10-08T05:06:29.383Z",
+    "catalog": "MATERIAL_CATEGORY",
+    "code": "REFACCIONES_PARTES",
+    "label": "Refacciones y Componentes Internos",
+    "sort": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 17,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.208Z",
+    "updated_at": "2026-10-08T05:06:29.389Z",
+    "catalog": "VOUCHER_CANCEL_REASON",
+    "code": "SOLICITUD_DUPLICADA",
+    "label": "Solicitud duplicada por error",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 18,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.216Z",
+    "updated_at": "2026-10-08T05:06:29.396Z",
+    "catalog": "VOUCHER_CANCEL_REASON",
+    "code": "CANCELADO_POR_USUARIO",
+    "label": "Cancelado a petición del solicitante",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 19,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.224Z",
+    "updated_at": "2026-10-08T05:06:29.403Z",
+    "catalog": "VOUCHER_CANCEL_REASON",
+    "code": "EQUIPO_NO_REQUERIDO",
+    "label": "Equipo ya no requerido en centro",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 20,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.232Z",
+    "updated_at": "2026-10-08T05:06:29.410Z",
+    "catalog": "VOUCHER_CANCEL_REASON",
+    "code": "ERROR_DATOS_CENTRO",
+    "label": "Error en centro o datos de destino",
+    "sort": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 21,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.240Z",
+    "updated_at": "2026-10-08T05:06:29.417Z",
+    "catalog": "VOUCHER_CANCEL_REASON",
+    "code": "SIN_EXISTENCIA_ALMACEN",
+    "label": "Sin existencia disponible en almacén",
+    "sort": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 22,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.249Z",
+    "updated_at": "2026-10-08T05:06:29.425Z",
+    "catalog": "VOUCHER_CANCEL_REASON",
+    "code": "OTRO_CANCELACION",
+    "label": "Otro motivo de cancelación",
+    "sort": 6,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 23,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.257Z",
+    "updated_at": "2026-10-08T05:06:29.433Z",
+    "catalog": "MANAGER_CANCEL_REASON",
+    "code": "RECHAZO_POR_PRESUPUESTO",
+    "label": "Rechazado por restricciones presupuestales",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 24,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.265Z",
+    "updated_at": "2026-10-08T05:06:29.440Z",
+    "catalog": "MANAGER_CANCEL_REASON",
+    "code": "EQUIPO_EXISTENTE_EN_CENTRO",
+    "label": "Centro cuenta con equipo funcional",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 25,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.273Z",
+    "updated_at": "2026-10-08T05:06:29.448Z",
+    "catalog": "MANAGER_CANCEL_REASON",
+    "code": "NO_PROCEDE_DEVOLUCION",
+    "label": "No procede solicitud de devolución",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 26,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.280Z",
+    "updated_at": "2026-10-08T05:06:29.455Z",
+    "catalog": "MANAGER_CANCEL_REASON",
+    "code": "ERROR_EN_FOLIO",
+    "label": "Folio o datos incorrectos",
+    "sort": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 27,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.289Z",
+    "updated_at": "2026-10-08T05:06:29.464Z",
+    "catalog": "MANAGER_CANCEL_REASON",
+    "code": "GERENTE_OTRO",
+    "label": "Otro criterio gerencial",
+    "sort": 5,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 28,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.297Z",
+    "updated_at": "2026-10-08T05:06:29.473Z",
+    "catalog": "STOCK_DIRECT_REASON",
+    "code": "EQUIPO_NUEVO_SIN_USO",
+    "label": "Equipo nuevo sin uso en empaque original",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 29,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.305Z",
+    "updated_at": "2026-10-08T05:06:29.481Z",
+    "catalog": "STOCK_DIRECT_REASON",
+    "code": "SOBRANTE_PROYECTO",
+    "label": "Sobrante de proyecto en perfecto estado",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 30,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.312Z",
+    "updated_at": "2026-10-08T05:06:29.488Z",
+    "catalog": "STOCK_DIRECT_REASON",
+    "code": "EQUIPO_OPERATIVO_LIBERADO",
+    "label": "Equipo operativo liberado por centro",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 31,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.322Z",
+    "updated_at": "2026-10-08T05:06:29.495Z",
+    "catalog": "RULING",
+    "code": "REPARACION",
+    "label": "Pasa a Taller / Reparación",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 32,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.330Z",
+    "updated_at": "2026-10-08T05:06:29.503Z",
+    "catalog": "RULING",
+    "code": "TELECOMUNICACIONES",
+    "label": "Pasa a Telecomunicaciones",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 33,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.337Z",
+    "updated_at": "2026-10-08T05:06:29.510Z",
+    "catalog": "RULING",
+    "code": "OBSOLETO",
+    "label": "Equipo Obsoleto",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 34,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.345Z",
+    "updated_at": "2026-10-08T05:06:29.518Z",
+    "catalog": "RULING",
+    "code": "HUESARIO_DIRECTO",
+    "label": "Huesario Directo / Scrap",
+    "sort": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 35,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.353Z",
+    "updated_at": "2026-10-08T05:06:29.525Z",
+    "catalog": "PREDEFINITION",
+    "code": "FALLA_HARDWARE",
+    "label": "Falla de Hardware",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 36,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.361Z",
+    "updated_at": "2026-10-08T05:06:29.533Z",
+    "catalog": "PREDEFINITION",
+    "code": "FALLA_SOFTWARE",
+    "label": "Falla de Software o Configuración",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 37,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.369Z",
+    "updated_at": "2026-10-08T05:06:29.541Z",
+    "catalog": "PREDEFINITION",
+    "code": "OTRO",
+    "label": "Otro tipo de falla",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 38,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.378Z",
+    "updated_at": "2026-10-08T05:06:29.549Z",
+    "catalog": "APPLIES_REASON",
+    "code": "DIAGNOSTICO_COMPLEJO",
+    "label": "Requiere diagnóstico especializado en taller",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 39,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.385Z",
+    "updated_at": "2026-10-08T05:06:29.557Z",
+    "catalog": "APPLIES_REASON",
+    "code": "CAMBIO_COMPONENTES",
+    "label": "Requiere reemplazo de componentes internos",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 40,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.394Z",
+    "updated_at": "2026-10-08T05:06:29.564Z",
+    "catalog": "APPLIES_REASON",
+    "code": "MANTENIMIENTO_MAYOR",
+    "label": "Mantenimiento preventivo mayor",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 41,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.402Z",
+    "updated_at": "2026-10-08T05:06:29.571Z",
+    "catalog": "INSIGHT_NOTE",
+    "code": "ACTUALIZACION_SERIE",
+    "label": "Número de serie actualizado en Insight",
+    "sort": 1,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 42,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.409Z",
+    "updated_at": "2026-10-08T05:06:29.578Z",
+    "catalog": "INSIGHT_NOTE",
+    "code": "BAJA_ACTIVO_INSIGHT",
+    "label": "Baja de activo procesada en Insight",
+    "sort": 2,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 43,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.417Z",
+    "updated_at": "2026-10-08T05:06:29.585Z",
+    "catalog": "INSIGHT_NOTE",
+    "code": "ALTA_ACTIVO_INSIGHT",
+    "label": "Alta de nuevo activo registrada en Insight",
+    "sort": 3,
+    "is_active": true
+  }
+},
+{
+  "model": "catalog.catalogvalue",
+  "pk": 44,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:30.425Z",
+    "updated_at": "2026-10-08T05:06:29.593Z",
+    "catalog": "INSIGHT_NOTE",
+    "code": "TRANSFERENCIA_INSIGHT",
+    "label": "Transferencia de custodia en Insight",
+    "sort": 4,
+    "is_active": true
+  }
+},
+{
+  "model": "inventory.equipmentmodel",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:47.241Z",
+    "updated_at": "2026-10-08T05:06:46.704Z",
+    "name": "Impresora Térmica POS 80mm",
+    "brand": "Epson",
+    "model": "TM-T88VI",
+    "category": 13,
+    "is_inventoriable": true
+  }
+},
+{
+  "model": "inventory.equipmentmodel",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:47.249Z",
+    "updated_at": "2026-10-08T05:06:46.712Z",
+    "name": "Laptop Corporativa Core i5",
+    "brand": "Dell",
+    "model": "Latitude 3420",
+    "category": 12,
+    "is_inventoriable": true
+  }
+},
+{
+  "model": "inventory.equipmentmodel",
+  "pk": 3,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:47.258Z",
+    "updated_at": "2026-10-08T05:06:46.720Z",
+    "name": "Switch Administrable 24 Puertos Gigabit",
+    "brand": "Cisco",
+    "model": "Catalyst 1000",
+    "category": 14,
+    "is_inventoriable": true
+  }
+},
+{
+  "model": "inventory.equipmentmodel",
+  "pk": 4,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:47.268Z",
+    "updated_at": "2026-10-08T05:06:46.727Z",
+    "name": "Lector Código de Barras 2D Inalámbrico",
+    "brand": "Zebra",
+    "model": "DS2278",
+    "category": 15,
+    "is_inventoriable": true
+  }
+},
+{
+  "model": "inventory.equipmentmodel",
+  "pk": 5,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:06:47.275Z",
+    "updated_at": "2026-10-08T05:06:46.734Z",
+    "name": "Fuente de Poder 500W Certificada",
+    "brand": "EVGA",
+    "model": "500 W1",
+    "category": 16,
+    "is_inventoriable": true
+  }
+},
+{
+  "model": "vouchers.voucher",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T06:08:04.374Z",
+    "updated_at": "2026-10-08T06:08:04.374Z",
+    "origin_type": "VALE",
+    "coupa_id": null,
+    "report_folio": "AAA/KSJD/P-1",
+    "destination_center": 1,
+    "reason": 4,
+    "material_category": 13,
+    "shipping_type": "FISICO",
+    "requested_by": [
+      "soporte.taller@test-ssit.local"
+    ],
+    "region": 1,
+    "project_name": "NACIONAL",
+    "status": "PENDIENTE_SURTIDO",
+    "authorized_by": null,
+    "authorized_at": null,
+    "delivered_by": null,
+    "delivered_at": null,
+    "received_by": null,
+    "signature_image": "signatures/vouchers/2026/10/sig_voucher_1_20261008060954.png",
+    "pdf_file": "",
+    "comments": "REPOSICION DE EQUIPO",
+    "cancelled_by": null,
+    "cancelled_at": null,
+    "cancel_reason": null
+  }
+},
+{
+  "model": "vouchers.voucher",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T06:13:52.428Z",
+    "updated_at": "2026-10-08T06:13:52.428Z",
+    "origin_type": "VALE",
+    "coupa_id": null,
+    "report_folio": "AAA/KSJD/P-1",
+    "destination_center": 1,
+    "reason": 1,
+    "material_category": 13,
+    "shipping_type": "FISICO",
+    "requested_by": [
+      "soporte.taller@test-ssit.local"
+    ],
+    "region": 1,
+    "project_name": "PROYECTOS",
+    "status": "PENDIENTE_SURTIDO",
+    "authorized_by": null,
+    "authorized_at": null,
+    "delivered_by": null,
+    "delivered_at": null,
+    "received_by": null,
+    "signature_image": "",
+    "pdf_file": "",
+    "comments": "REPOSICION POR FALLA",
+    "cancelled_by": null,
+    "cancelled_at": null,
+    "cancel_reason": null
+  }
+},
+{
+  "model": "vouchers.voucherline",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T06:08:04.379Z",
+    "updated_at": "2026-10-08T06:08:04.379Z",
+    "voucher": 1,
+    "equipment_model": 1,
+    "requested_text": "",
+    "quantity": 1,
+    "status": "PENDIENTE",
+    "cancel_reason": null,
+    "comments": "REPOSICION POR FALLA"
+  }
+},
+{
+  "model": "vouchers.voucherline",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T06:13:52.434Z",
+    "updated_at": "2026-10-08T06:13:52.434Z",
+    "voucher": 2,
+    "equipment_model": 1,
+    "requested_text": "",
+    "quantity": 1,
+    "status": "PENDIENTE",
+    "cancel_reason": null,
+    "comments": ""
+  }
+},
+{
+  "model": "cases.equipmentcase",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:23:47.610Z",
+    "updated_at": "2026-10-08T05:47:33.987Z",
+    "item": null,
+    "location": "CENTRO",
+    "workshop_region": null,
+    "origin_region": 1,
+    "route": "TALLER_HABILITADO",
+    "applies_workshop_entry": true,
+    "applies_reason": 38,
+    "returned_model": 2,
+    "returned_brand": "DELL",
+    "returned_model_text": "",
+    "returned_serial": "AC-AH-677-XXX",
+    "shipping_type": "FISICO",
+    "shipping_folio": "",
+    "stock_direct_reason": null,
+    "return_status": "CONFIRMADO",
+    "received_by": [
+      "almacen.oaxc@test-ssit.local"
+    ],
+    "ruling": 31,
+    "predefinition": null,
+    "failure": "NO ENCENDIO",
+    "return_pdf": "docs/returns/2026/10/devolucion_1_20261008052347.html",
+    "return_qr": "qr/returns/2026/10/qr_case_1_20261008052347.png",
+    "repair_folio": "ADKNKAC",
+    "folio_date": "2026-10-09",
+    "attention_folio": "",
+    "assigned_engineer": [
+      "soporte.taller@test-ssit.local"
+    ],
+    "assigned_at": "2026-10-08T05:39:20.999Z",
+    "definition": "HUESARIO",
+    "repair_comments": "SU ESTADO ES MUY CRITICO Y NO CONTAMOS CON COMPONENTES PARA SU REPARACION",
+    "repaired_at": "2026-10-08T05:44:04.635Z",
+    "insight_repair_confirmed": false,
+    "insight_repair_note": null,
+    "insight_entry_confirmed": false,
+    "insight_entry_note": 41,
+    "destination_warehouse": "STOCK",
+    "warranty_solution": null,
+    "new_serial": "",
+    "review_reason": "",
+    "scrap_status": "ENVIADO",
+    "stage": "FINALIZADO_HUESARIO"
+  }
+},
+{
+  "model": "cases.equipmentcase",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:56:12.952Z",
+    "updated_at": "2026-10-08T06:05:05.993Z",
+    "item": null,
+    "location": "CENTRO",
+    "workshop_region": null,
+    "origin_region": 1,
+    "route": "TALLER_HABILITADO",
+    "applies_workshop_entry": true,
+    "applies_reason": 38,
+    "returned_model": 1,
+    "returned_brand": "EPSON",
+    "returned_model_text": "",
+    "returned_serial": "AAA/KSJD/P-1",
+    "shipping_type": "FISICO",
+    "shipping_folio": "",
+    "stock_direct_reason": null,
+    "return_status": "CONFIRMADO",
+    "received_by": [
+      "almacen.oaxc@test-ssit.local"
+    ],
+    "ruling": 31,
+    "predefinition": null,
+    "failure": "DEJO DE IMPRIMIR",
+    "return_pdf": "docs/returns/2026/10/devolucion_2_20261008055612.html",
+    "return_qr": "qr/returns/2026/10/qr_case_2_20261008055612.png",
+    "repair_folio": "",
+    "folio_date": null,
+    "attention_folio": "",
+    "assigned_engineer": [
+      "soporte.taller@test-ssit.local"
+    ],
+    "assigned_at": "2026-10-08T06:05:05.993Z",
+    "definition": null,
+    "repair_comments": "",
+    "repaired_at": null,
+    "insight_repair_confirmed": false,
+    "insight_repair_note": null,
+    "insight_entry_confirmed": false,
+    "insight_entry_note": null,
+    "destination_warehouse": "STOCK",
+    "warranty_solution": null,
+    "new_serial": "",
+    "review_reason": "",
+    "scrap_status": null,
+    "stage": "POR_REPARAR"
+  }
+},
+{
+  "model": "documents.document",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:23:47.966Z",
+    "updated_at": "2026-10-08T05:23:47.966Z",
+    "kind": "REGRESO_PDF",
+    "related_type": "EquipmentCase",
+    "related_id": 1,
+    "file": "docs/returns/2026/10/devolucion_1_20261008052347.html",
+    "created_by": [
+      "soporte.oaxc@test-ssit.local"
+    ]
+  }
+},
+{
+  "model": "documents.document",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:56:13.003Z",
+    "updated_at": "2026-10-08T05:56:13.003Z",
+    "kind": "REGRESO_PDF",
+    "related_type": "EquipmentCase",
+    "related_id": 2,
+    "file": "docs/returns/2026/10/devolucion_2_20261008055612.html",
+    "created_by": [
+      "soporte.oaxc@test-ssit.local"
+    ]
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 1,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.579Z",
+    "updated_at": "2026-10-08T05:06:49.433Z",
+    "code": "create_voucher",
+    "label": "Crear Vale de Salida",
+    "entity": "VOUCHER",
+    "from_stages": [
+      ""
+    ],
+    "to_stage": "PENDIENTE_SURTIDO",
+    "permission": "create_voucher",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "destination_center_id": {
+        "type": "integer",
+        "required": true
+      },
+      "reason_id": {
+        "type": "integer",
+        "required": true
+      },
+      "material_category_id": {
+        "type": "integer",
+        "required": false
+      },
+      "shipping_type": {
+        "type": "string",
+        "required": true
+      },
+      "report_folio": {
+        "type": "string",
+        "required": false
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      },
+      "lines": {
+        "type": "list",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 2,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.587Z",
+    "updated_at": "2026-10-08T05:06:49.441Z",
+    "code": "authorize_voucher",
+    "label": "Autorizar Vale",
+    "entity": "VOUCHER",
+    "from_stages": [
+      "PENDIENTE_SURTIDO"
+    ],
+    "to_stage": "PENDIENTE_SURTIDO",
+    "permission": "authorize_voucher",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {
+      "must_not_be_authorized": true
+    },
+    "kardex_effect": "NONE",
+    "is_bulk": true,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 3,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.595Z",
+    "updated_at": "2026-10-08T05:06:49.449Z",
+    "code": "cancel_voucher",
+    "label": "Cancelar Vale",
+    "entity": "VOUCHER",
+    "from_stages": [
+      "PENDIENTE_SURTIDO"
+    ],
+    "to_stage": "CANCELADO",
+    "permission": "cancel_voucher",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "cancel_reason_id": {
+        "type": "integer",
+        "required": true
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 4,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.603Z",
+    "updated_at": "2026-10-08T05:06:49.456Z",
+    "code": "cancel_line",
+    "label": "Cancelar Línea de Vale",
+    "entity": "LINE",
+    "from_stages": [
+      "PENDIENTE"
+    ],
+    "to_stage": "CANCELADO",
+    "permission": "cancel_voucher",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "cancel_reason_id": {
+        "type": "integer",
+        "required": true
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 5,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.610Z",
+    "updated_at": "2026-10-08T05:06:49.462Z",
+    "code": "dispatch_voucher",
+    "label": "Surtir Vale con Series",
+    "entity": "VOUCHER",
+    "from_stages": [
+      "PENDIENTE_SURTIDO"
+    ],
+    "to_stage": "SURTIDO",
+    "permission": "dispatch_voucher",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "received_by_id": {
+        "type": "integer",
+        "required": true
+      },
+      "items_data": {
+        "type": "list",
+        "required": true
+      },
+      "signature_data": {
+        "type": "string",
+        "required": false
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {
+      "require_authorization": true
+    },
+    "kardex_effect": "SALIDA",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 6,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.618Z",
+    "updated_at": "2026-10-08T05:06:49.469Z",
+    "code": "register_coupa_consumption",
+    "label": "Registrar Consumo Coupa",
+    "entity": "VOUCHER",
+    "from_stages": [
+      ""
+    ],
+    "to_stage": "SURTIDO",
+    "permission": "view_coupa_consumption",
+    "scope_rule": "GLOBAL",
+    "inputs_schema": {
+      "coupa_id": {
+        "type": "string",
+        "required": true
+      },
+      "destination_center_id": {
+        "type": "integer",
+        "required": true
+      },
+      "items_data": {
+        "type": "list",
+        "required": true
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "SALIDA",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 7,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.625Z",
+    "updated_at": "2026-10-08T05:06:49.475Z",
+    "code": "cancel_dispatched_item",
+    "label": "Cancelar Pieza Surtida",
+    "entity": "ITEM",
+    "from_stages": [
+      ""
+    ],
+    "to_stage": "CANCELADO",
+    "permission": "cancel_dispatched_item",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "cancel_note": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {
+      "max_hours_limit": 120,
+      "must_not_have_return_case": true
+    },
+    "kardex_effect": "ENTRADA",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 8,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.633Z",
+    "updated_at": "2026-10-08T05:06:49.482Z",
+    "code": "register_return",
+    "label": "Registrar Devolución en Centro",
+    "entity": "CASE",
+    "from_stages": [
+      ""
+    ],
+    "to_stage": "PENDIENTE_CONFIRMAR",
+    "permission": "register_return",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "item_id": {
+        "type": "integer",
+        "required": false
+      },
+      "returned_model_id": {
+        "type": "integer",
+        "required": true
+      },
+      "returned_serial": {
+        "type": "string",
+        "required": true
+      },
+      "returned_brand": {
+        "type": "string",
+        "required": false
+      },
+      "route": {
+        "type": "string",
+        "required": true
+      },
+      "shipping_type": {
+        "type": "string",
+        "required": true
+      },
+      "shipping_folio": {
+        "type": "string",
+        "required": false
+      },
+      "failure": {
+        "type": "string",
+        "required": false
+      },
+      "applies_workshop_entry": {
+        "type": "boolean",
+        "required": false
+      },
+      "applies_reason_id": {
+        "type": "integer",
+        "required": false
+      },
+      "insight_confirmed": {
+        "type": "boolean",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 9,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.641Z",
+    "updated_at": "2026-10-08T05:06:49.488Z",
+    "code": "register_return_without_dispatch",
+    "label": "Registrar Devolución sin Salida Previa",
+    "entity": "CASE",
+    "from_stages": [
+      ""
+    ],
+    "to_stage": "PENDIENTE_CONFIRMAR",
+    "permission": "register_return_without_dispatch",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "returned_model_id": {
+        "type": "integer",
+        "required": true
+      },
+      "returned_serial": {
+        "type": "string",
+        "required": true
+      },
+      "returned_brand": {
+        "type": "string",
+        "required": false
+      },
+      "route": {
+        "type": "string",
+        "required": true
+      },
+      "shipping_type": {
+        "type": "string",
+        "required": true
+      },
+      "failure": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 10,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.648Z",
+    "updated_at": "2026-10-08T05:06:49.495Z",
+    "code": "confirm_return",
+    "label": "Confirmar Devolución y Dictaminar (Almacén)",
+    "entity": "CASE",
+    "from_stages": [
+      "PENDIENTE_CONFIRMAR"
+    ],
+    "to_stage": "CONFIRMADO",
+    "permission": "confirm_return",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "ruling_id": {
+        "type": "integer",
+        "required": true
+      },
+      "returned_model_id": {
+        "type": "integer",
+        "required": true
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": true,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 11,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.657Z",
+    "updated_at": "2026-10-08T05:06:49.501Z",
+    "code": "confirm_na_return",
+    "label": "Confirmar N/A Devolución",
+    "entity": "CASE",
+    "from_stages": [
+      "PENDIENTE_CONFIRMAR"
+    ],
+    "to_stage": "SIN_DEVOLUCION",
+    "permission": "review_definition_boss",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 12,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.666Z",
+    "updated_at": "2026-10-08T05:06:49.507Z",
+    "code": "request_return_review",
+    "label": "Solicitar Revisión de Devolución",
+    "entity": "CASE",
+    "from_stages": [
+      "PENDIENTE_CONFIRMAR"
+    ],
+    "to_stage": "EN_REVISION",
+    "permission": "confirm_return",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "review_reason": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 13,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.674Z",
+    "updated_at": "2026-10-08T05:06:49.514Z",
+    "code": "assign_repair_folio",
+    "label": "Asignar Folio de Reparación (Oficina)",
+    "entity": "CASE",
+    "from_stages": [
+      "CONFIRMADO"
+    ],
+    "to_stage": "CONFIRMADO",
+    "permission": "assign_repair_folio",
+    "scope_rule": "GLOBAL",
+    "inputs_schema": {
+      "repair_folio": {
+        "type": "string",
+        "required": true
+      },
+      "folio_date": {
+        "type": "date",
+        "required": true
+      },
+      "insight_note_id": {
+        "type": "integer",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 14,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.683Z",
+    "updated_at": "2026-10-08T05:06:49.521Z",
+    "code": "assign_engineer",
+    "label": "Asignar Ingeniero para Reparación",
+    "entity": "CASE",
+    "from_stages": [
+      "CONFIRMADO"
+    ],
+    "to_stage": "POR_REPARAR",
+    "permission": "assign_engineer",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "assigned_engineer_id": {
+        "type": "integer",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": true,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 15,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.691Z",
+    "updated_at": "2026-10-08T05:06:49.527Z",
+    "code": "define_equipment",
+    "label": "Definir Equipo Técnico",
+    "entity": "CASE",
+    "from_stages": [
+      "POR_REPARAR"
+    ],
+    "to_stage": "DEFINIDO",
+    "permission": "define_equipment",
+    "scope_rule": "ASSIGNED",
+    "inputs_schema": {
+      "definition": {
+        "type": "string",
+        "required": true
+      },
+      "repair_comments": {
+        "type": "string",
+        "required": true
+      },
+      "insight_repair_confirmed": {
+        "type": "boolean",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 16,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.700Z",
+    "updated_at": "2026-10-08T05:06:49.533Z",
+    "code": "boss_confirm_definition",
+    "label": "Confirmar Definición Técnica (Jefe)",
+    "entity": "CASE",
+    "from_stages": [
+      "DEFINIDO"
+    ],
+    "to_stage": "CONFIRMADO_JEFE",
+    "permission": "review_definition_boss",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": true,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 17,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T00:18:17.710Z",
+    "updated_at": "2026-10-08T05:06:49.547Z",
+    "code": "warehouse_confirm_definition",
+    "label": "Confirmar Entrada a Almacén",
+    "entity": "CASE",
+    "from_stages": [
+      "CONFIRMADO_JEFE",
+      "DEFINIDO"
+    ],
+    "to_stage": "FINALIZADO",
+    "permission": "review_definition_warehouse",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "destination_warehouse": {
+        "type": "string",
+        "required": true
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "ENTRADA",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 18,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.540Z",
+    "updated_at": "2026-10-08T05:06:49.540Z",
+    "code": "boss_reject_definition",
+    "label": "Rechazar Definición Técnica (Jefe)",
+    "entity": "CASE",
+    "from_stages": [
+      "DEFINIDO"
+    ],
+    "to_stage": "POR_REPARAR",
+    "permission": "review_definition_boss",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 19,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.554Z",
+    "updated_at": "2026-10-08T05:06:49.554Z",
+    "code": "warehouse_reject_definition",
+    "label": "Rechazar Entrada a Almacén",
+    "entity": "CASE",
+    "from_stages": [
+      "CONFIRMADO_JEFE",
+      "DEFINIDO"
+    ],
+    "to_stage": "POR_REPARAR",
+    "permission": "review_definition_warehouse",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 20,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.561Z",
+    "updated_at": "2026-10-08T05:06:49.561Z",
+    "code": "confirm_scrap_boss",
+    "label": "Confirmar Envío a Huesario (Jefe)",
+    "entity": "CASE",
+    "from_stages": [
+      "DEFINIDO",
+      "CONFIRMADO_JEFE"
+    ],
+    "to_stage": "HUESARIO_CONFIRMADO",
+    "permission": "review_definition_boss",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": true,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 21,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.567Z",
+    "updated_at": "2026-10-08T05:06:49.567Z",
+    "code": "deliver_scrap",
+    "label": "Entregar a Huesario / Scrap Final",
+    "entity": "CASE",
+    "from_stages": [
+      "HUESARIO_CONFIRMADO",
+      "DEFINIDO"
+    ],
+    "to_stage": "FINALIZADO_HUESARIO",
+    "permission": "manage_scrap",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 22,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.574Z",
+    "updated_at": "2026-10-08T05:06:49.574Z",
+    "code": "return_scrap_to_repair",
+    "label": "Revertir Huesario a Reparación",
+    "entity": "CASE",
+    "from_stages": [
+      "HUESARIO_CONFIRMADO",
+      "DEFINIDO"
+    ],
+    "to_stage": "POR_REPARAR",
+    "permission": "review_definition_boss",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 23,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.581Z",
+    "updated_at": "2026-10-08T05:06:49.581Z",
+    "code": "set_warranty_solution",
+    "label": "Definir Solución de Garantía",
+    "entity": "CASE",
+    "from_stages": [
+      "DEFINIDO",
+      "POR_REPARAR"
+    ],
+    "to_stage": "DEFINIDO",
+    "permission": "define_equipment",
+    "scope_rule": "ASSIGNED",
+    "inputs_schema": {
+      "warranty_solution": {
+        "type": "string",
+        "required": true
+      },
+      "new_serial": {
+        "type": "string",
+        "required": false
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 24,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.588Z",
+    "updated_at": "2026-10-08T05:06:49.588Z",
+    "code": "send_to_cellular_workshop",
+    "label": "Enviar a Taller Celular (Garantía)",
+    "entity": "CASE",
+    "from_stages": [
+      "POR_REPARAR",
+      "CONFIRMADO"
+    ],
+    "to_stage": "ENVIADO_GARANTIA",
+    "permission": "define_equipment",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 25,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.595Z",
+    "updated_at": "2026-10-08T05:06:49.595Z",
+    "code": "cancel_return",
+    "label": "Cancelar Devolución en Centro",
+    "entity": "CASE",
+    "from_stages": [
+      "PENDIENTE_CONFIRMAR"
+    ],
+    "to_stage": "CANCELADA",
+    "permission": "register_return",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "cancel_reason": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 26,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.601Z",
+    "updated_at": "2026-10-08T05:06:49.601Z",
+    "code": "manager_confirm_cancellation",
+    "label": "Gerente Confirma Cancelación",
+    "entity": "CASE",
+    "from_stages": [
+      "CANCELADA"
+    ],
+    "to_stage": "CANCELACION_CONFIRMADA",
+    "permission": "authorize_voucher",
+    "scope_rule": "ZONE",
+    "inputs_schema": {
+      "cancel_reason_id": {
+        "type": "integer",
+        "required": true
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 27,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.608Z",
+    "updated_at": "2026-10-08T05:06:49.608Z",
+    "code": "manager_reject_cancellation",
+    "label": "Gerente Rechaza Cancelación",
+    "entity": "CASE",
+    "from_stages": [
+      "CANCELADA"
+    ],
+    "to_stage": "PENDIENTE_CONFIRMAR",
+    "permission": "authorize_voucher",
+    "scope_rule": "ZONE",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 28,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.615Z",
+    "updated_at": "2026-10-08T05:06:49.615Z",
+    "code": "warehouse_receive_cancelled",
+    "label": "Almacén Recibe Cancelado",
+    "entity": "CASE",
+    "from_stages": [
+      "CANCELACION_CONFIRMADA",
+      "CANCELADA"
+    ],
+    "to_stage": "FINALIZADO_CANCELADO",
+    "permission": "confirm_return",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "ENTRADA",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 29,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.623Z",
+    "updated_at": "2026-10-08T05:06:49.623Z",
+    "code": "confirm_unused_equipment",
+    "label": "Confirmar Equipo No Utilizado",
+    "entity": "CASE",
+    "from_stages": [
+      "PENDIENTE_CONFIRMAR"
+    ],
+    "to_stage": "CONFIRMADO",
+    "permission": "review_definition_boss",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 30,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.629Z",
+    "updated_at": "2026-10-08T05:06:49.629Z",
+    "code": "reject_unused_equipment",
+    "label": "Rechazar Equipo No Utilizado",
+    "entity": "CASE",
+    "from_stages": [
+      "PENDIENTE_CONFIRMAR"
+    ],
+    "to_stage": "SIN_DEVOLUCION",
+    "permission": "review_definition_boss",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 31,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.636Z",
+    "updated_at": "2026-10-08T05:06:49.636Z",
+    "code": "send_to_workshop",
+    "label": "Enviar a Taller Habilitado",
+    "entity": "CASE",
+    "from_stages": [
+      "CONFIRMADO",
+      "PENDIENTE_CONFIRMAR"
+    ],
+    "to_stage": "EN_TRANSITO_TALLER",
+    "permission": "confirm_return",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "workshop_region_id": {
+        "type": "integer",
+        "required": true
+      },
+      "shipping_folio": {
+        "type": "string",
+        "required": false
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 32,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.643Z",
+    "updated_at": "2026-10-08T05:06:49.643Z",
+    "code": "cancel_workshop_send",
+    "label": "Cancelar Envío a Taller Habilitado",
+    "entity": "CASE",
+    "from_stages": [
+      "EN_TRANSITO_TALLER"
+    ],
+    "to_stage": "CONFIRMADO",
+    "permission": "confirm_return",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 33,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.650Z",
+    "updated_at": "2026-10-08T05:06:49.650Z",
+    "code": "workshop_confirm_entry",
+    "label": "Confirmar Recepción en Taller Habilitado",
+    "entity": "CASE",
+    "from_stages": [
+      "EN_TRANSITO_TALLER"
+    ],
+    "to_stage": "EN_TALLER",
+    "permission": "manage_workshop",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "returned_model_id": {
+        "type": "integer",
+        "required": false
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 34,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.656Z",
+    "updated_at": "2026-10-08T05:06:49.657Z",
+    "code": "workshop_request_review",
+    "label": "Solicitar Revisión Técnica en Taller",
+    "entity": "CASE",
+    "from_stages": [
+      "EN_TALLER",
+      "EN_TRANSITO_TALLER"
+    ],
+    "to_stage": "EN_REVISION_TALLER",
+    "permission": "manage_workshop",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "review_reason": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 35,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.663Z",
+    "updated_at": "2026-10-08T05:06:49.663Z",
+    "code": "workshop_assign_engineer",
+    "label": "Asignar Técnico de Taller",
+    "entity": "CASE",
+    "from_stages": [
+      "EN_TALLER",
+      "CONFIRMADO",
+      "EN_REVISION_TALLER"
+    ],
+    "to_stage": "ASIGNADO",
+    "permission": "assign_workshop_repair",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "assigned_engineer_id": {
+        "type": "integer",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": true,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 36,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.670Z",
+    "updated_at": "2026-10-08T05:06:49.670Z",
+    "code": "workshop_wait_parts",
+    "label": "Poner en Espera de Refacción",
+    "entity": "CASE",
+    "from_stages": [
+      "EN_TALLER",
+      "ASIGNADO",
+      "POR_REPARAR"
+    ],
+    "to_stage": "EN_ESPERA_REFACCION",
+    "permission": "manage_workshop",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 37,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.677Z",
+    "updated_at": "2026-10-08T05:06:49.677Z",
+    "code": "workshop_define_equipment",
+    "label": "Definir Equipo en Taller Habilitado",
+    "entity": "CASE",
+    "from_stages": [
+      "ASIGNADO",
+      "EN_ESPERA_REFACCION",
+      "POR_REPARAR"
+    ],
+    "to_stage": "DEFINIDO",
+    "permission": "define_workshop_equipment",
+    "scope_rule": "ASSIGNED",
+    "inputs_schema": {
+      "definition": {
+        "type": "string",
+        "required": true
+      },
+      "repair_comments": {
+        "type": "string",
+        "required": true
+      },
+      "insight_repair_confirmed": {
+        "type": "boolean",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 38,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.684Z",
+    "updated_at": "2026-10-08T05:06:49.684Z",
+    "code": "workshop_confirm_definition",
+    "label": "Confirmar Definición en Taller (Jefe Taller)",
+    "entity": "CASE",
+    "from_stages": [
+      "DEFINIDO"
+    ],
+    "to_stage": "CONFIRMADO_JEFE",
+    "permission": "manage_workshop",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": true,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 39,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.690Z",
+    "updated_at": "2026-10-08T05:06:49.690Z",
+    "code": "workshop_request_rereview",
+    "label": "Rechazar / Solicitar Re-revisión en Taller",
+    "entity": "CASE",
+    "from_stages": [
+      "DEFINIDO"
+    ],
+    "to_stage": "ASIGNADO",
+    "permission": "manage_workshop",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "comments": {
+        "type": "string",
+        "required": true
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "NONE",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "transitions.transitionrule",
+  "pk": 40,
+  "fields": {
+    "legacy_id": null,
+    "created_at": "2026-10-08T05:06:49.698Z",
+    "updated_at": "2026-10-08T05:06:49.698Z",
+    "code": "workshop_warehouse_entry",
+    "label": "Reingreso a Almacén desde Taller Habilitado",
+    "entity": "CASE",
+    "from_stages": [
+      "CONFIRMADO_JEFE",
+      "DEFINIDO"
+    ],
+    "to_stage": "FINALIZADO",
+    "permission": "review_definition_warehouse",
+    "scope_rule": "REGION",
+    "inputs_schema": {
+      "destination_warehouse": {
+        "type": "string",
+        "required": true
+      },
+      "comments": {
+        "type": "string",
+        "required": false
+      }
+    },
+    "conditions": {},
+    "kardex_effect": "ENTRADA",
+    "is_bulk": false,
+    "is_active": true
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 1,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 1,
+    "action_code": "register_return",
+    "from_stage": "",
+    "to_stage": "PENDIENTE_CONFIRMAR",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "soporte.oaxc@test-ssit.local"
+    ],
+    "comment": "",
+    "reason_code": "",
+    "payload": {
+      "origin_region_id": 1,
+      "returned_model_id": 2,
+      "returned_serial": "AC-AH-677-XXX",
+      "returned_brand": "DELL",
+      "route": "TALLER_HABILITADO",
+      "shipping_type": "FISICO",
+      "shipping_folio": "",
+      "stock_direct_reason_id": null,
+      "applies_workshop_entry": true,
+      "applies_reason_id": 38,
+      "failure": "NO ENCENDIO",
+      "item_id": null
+    },
+    "created_at": "2026-10-08T05:23:47.616Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 2,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 1,
+    "action_code": "confirm_return",
+    "from_stage": "PENDIENTE_CONFIRMAR",
+    "to_stage": "CONFIRMADO",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "almacen.oaxc@test-ssit.local"
+    ],
+    "comment": "",
+    "reason_code": "31",
+    "payload": {
+      "ruling_id": 31,
+      "returned_model_id": 2,
+      "comments": ""
+    },
+    "created_at": "2026-10-08T05:27:24.880Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 3,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 1,
+    "action_code": "assign_repair_folio",
+    "from_stage": "CONFIRMADO",
+    "to_stage": "CONFIRMADO",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "gerente.ssit@test-ssit.local"
+    ],
+    "comment": "",
+    "reason_code": "",
+    "payload": {
+      "repair_folio": "ADKNKAC",
+      "folio_date": "2026-10-09",
+      "insight_note_id": 41
+    },
+    "created_at": "2026-10-08T05:28:50.519Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 4,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 1,
+    "action_code": "assign_engineer",
+    "from_stage": "CONFIRMADO",
+    "to_stage": "POR_REPARAR",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "gerente.ssit@test-ssit.local"
+    ],
+    "comment": "",
+    "reason_code": "",
+    "payload": {
+      "assigned_engineer_id": 8
+    },
+    "created_at": "2026-10-08T05:39:21.004Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 5,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 1,
+    "action_code": "define_equipment",
+    "from_stage": "POR_REPARAR",
+    "to_stage": "DEFINIDO",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "soporte.taller@test-ssit.local"
+    ],
+    "comment": "",
+    "reason_code": "",
+    "payload": {
+      "definition": "HUESARIO",
+      "repair_comments": "SU ESTADO ES MUY CRITICO Y NO CONTAMOS CON COMPONENTES PARA SU REPARACION",
+      "warranty_solution": "",
+      "new_serial": "",
+      "insight_repair_confirmed": true
+    },
+    "created_at": "2026-10-08T05:44:04.642Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 6,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 1,
+    "action_code": "confirm_scrap_boss",
+    "from_stage": "DEFINIDO",
+    "to_stage": "HUESARIO_CONFIRMADO",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "gerente.ssit@test-ssit.local"
+    ],
+    "comment": "ASI LO DETERMINO EL TALLER HABILITADO",
+    "reason_code": "",
+    "payload": {
+      "comments": "ASI LO DETERMINO EL TALLER HABILITADO"
+    },
+    "created_at": "2026-10-08T05:45:29.134Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 7,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 1,
+    "action_code": "deliver_scrap",
+    "from_stage": "HUESARIO_CONFIRMADO",
+    "to_stage": "FINALIZADO_HUESARIO",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "gerente.ssit@test-ssit.local"
+    ],
+    "comment": "LO DETERMINO TALLER HABILITADO",
+    "reason_code": "",
+    "payload": {
+      "comments": "LO DETERMINO TALLER HABILITADO"
+    },
+    "created_at": "2026-10-08T05:47:33.995Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 8,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 2,
+    "action_code": "register_return",
+    "from_stage": "",
+    "to_stage": "PENDIENTE_CONFIRMAR",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "soporte.oaxc@test-ssit.local"
+    ],
+    "comment": "",
+    "reason_code": "",
+    "payload": {
+      "origin_region_id": 1,
+      "returned_model_id": 1,
+      "returned_serial": "AAA/KSJD/P-1",
+      "returned_brand": "EPSON",
+      "route": "TALLER_HABILITADO",
+      "shipping_type": "FISICO",
+      "shipping_folio": "",
+      "stock_direct_reason_id": null,
+      "applies_workshop_entry": true,
+      "applies_reason_id": 38,
+      "failure": "DEJO DE IMPRIMIR",
+      "item_id": null
+    },
+    "created_at": "2026-10-08T05:56:12.959Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 9,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 2,
+    "action_code": "confirm_return",
+    "from_stage": "PENDIENTE_CONFIRMAR",
+    "to_stage": "CONFIRMADO",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "almacen.oaxc@test-ssit.local"
+    ],
+    "comment": "ENTRA A POSIBLE REPARACION",
+    "reason_code": "31",
+    "payload": {
+      "ruling_id": 31,
+      "returned_model_id": 1,
+      "comments": "ENTRA A POSIBLE REPARACION"
+    },
+    "created_at": "2026-10-08T06:04:07.382Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 10,
+  "fields": {
+    "entity_type": "EquipmentCase",
+    "entity_id": 2,
+    "action_code": "assign_engineer",
+    "from_stage": "CONFIRMADO",
+    "to_stage": "POR_REPARAR",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "jefe.oaxc@test-ssit.local"
+    ],
+    "comment": "",
+    "reason_code": "",
+    "payload": {
+      "assigned_engineer_id": 8
+    },
+    "created_at": "2026-10-08T06:05:06.000Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 11,
+  "fields": {
+    "entity_type": "Voucher",
+    "entity_id": 1,
+    "action_code": "create_voucher",
+    "from_stage": "",
+    "to_stage": "PENDIENTE_SURTIDO",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "soporte.taller@test-ssit.local"
+    ],
+    "comment": "REPOSICION DE EQUIPO",
+    "reason_code": "",
+    "payload": {},
+    "created_at": "2026-10-08T06:08:04.382Z"
+  }
+},
+{
+  "model": "core.coreevent",
+  "pk": 12,
+  "fields": {
+    "entity_type": "Voucher",
+    "entity_id": 2,
+    "action_code": "create_voucher",
+    "from_stage": "",
+    "to_stage": "PENDIENTE_SURTIDO",
+    "outcome": "CONFIRMADO",
+    "user": [
+      "soporte.taller@test-ssit.local"
+    ],
+    "comment": "REPOSICION POR FALLA",
+    "reason_code": "",
+    "payload": {},
+    "created_at": "2026-10-08T06:13:52.435Z"
+  }
+}
+]

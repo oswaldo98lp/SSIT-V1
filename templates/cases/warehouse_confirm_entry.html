@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% block title %}Confirmar Entrada a Almacén Caso #{{ case.id }} - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <a href="{% url 'cases:case_detail' pk=case.id %}" class="btn btn-outline-secondary btn-sm mb-2">
+                    <i class="bi bi-arrow-left me-1"></i> Volver al Detalle
+                </a>
+                <h1 class="h3 fw-bold mb-0">Confirmar Reingreso a Almacén</h1>
+                <p class="text-muted small mb-0">Generación de movimiento de Kárdex y entrada a inventario disponible (Pantalla 8/9).</p>
+            </div>
+        </div>
+
+        <div class="ssit-card p-4 mb-4">
+            <div class="bg-dark p-3 rounded border border-secondary mb-4">
+                <div class="row g-2 small">
+                    <div class="col-6"><strong>Caso:</strong> #{{ case.id }}</div>
+                    <div class="col-6"><strong>Serie:</strong> <span class="badge bg-secondary font-monospace">{{ case.returned_serial }}</span></div>
+                    <div class="col-6"><strong>Modelo:</strong> {{ case.returned_model.name|default:case.returned_model_text|default:"-" }}</div>
+                    <div class="col-6"><strong>Definición:</strong> {{ case.get_definition_display|default:"Reparado" }}</div>
+                </div>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Almacén Destino *</label>
+                    {{ form.destination_warehouse }}
+                    {% if form.destination_warehouse.errors %}<div class="text-danger small">{{ form.destination_warehouse.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Comentarios de Ingreso</label>
+                    {{ form.comments }}
+                    {% if form.comments.errors %}<div class="text-danger small">{{ form.comments.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{% url 'cases:case_detail' pk=case.id %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-success px-4">
+                        <i class="bi bi-box-arrow-in-down me-1"></i> Confirmar Entrada en Kárdex
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% load core_tags %}
+
+{% block title %}Validación Gerencial de Cancelación — Caso #{{ case.id }}{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-6">
+            <div class="card bg-dark border-secondary shadow-lg">
+                <div class="card-header bg-secondary bg-opacity-25 border-secondary py-3">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h4 class="h5 text-light mb-0 fw-bold">
+                            <i class="bi bi-shield-check text-info me-2"></i>Validación de Cancelación (Gerente)
+                        </h4>
+                        <span class="badge bg-info text-dark">Caso #{{ case.id }}</span>
+                    </div>
+                </div>
+                <div class="card-body p-4 text-light">
+                    <!-- Motivo reportado por el centro -->
+                    <div class="bg-black bg-opacity-25 rounded p-3 mb-3 border border-secondary">
+                        <span class="text-secondary small">Motivo reportado por el solicitante:</span>
+                        <div class="text-warning fw-semibold mt-1">{{ case.review_reason|default:"Sin detalle" }}</div>
+                    </div>
+
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">{{ form.cancel_reason.label }}</label>
+                            {{ form.cancel_reason }}
+                            {% if form.cancel_reason.errors %}
+                                <div class="text-danger small mt-1">{{ form.cancel_reason.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label fw-semibold">{{ form.comments.label }}</label>
+                            {{ form.comments }}
+                            {% if form.comments.errors %}
+                                <div class="text-danger small mt-1">{{ form.comments.errors.0 }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="d-flex justify-content-end gap-2 mt-4">
+                            <a href="{% url 'cases:case_detail' case.id %}" class="btn btn-outline-secondary">Volver</a>
+                            <button type="submit" class="btn btn-primary fw-semibold">
+                                <i class="bi bi-check2-circle me-1"></i> Confirmar Cancelación
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

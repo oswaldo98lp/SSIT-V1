@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}Solicitar Revisión Caso #{{ case.id }} - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <a href="{% url 'cases:warehouse_inbox' %}" class="btn btn-outline-secondary btn-sm mb-2">
+                    <i class="bi bi-arrow-left me-1"></i> Volver a Bandeja
+                </a>
+                <h1 class="h3 fw-bold mb-0">Solicitar Revisión de Devolución</h1>
+                <p class="text-muted small mb-0">Envío del caso a aclaración con el centro de origen.</p>
+            </div>
+        </div>
+
+        <div class="ssit-card p-4 mb-4">
+            <div class="bg-dark p-3 rounded border border-secondary mb-4">
+                <div class="row g-2 small">
+                    <div class="col-6"><strong>Caso:</strong> #{{ case.id }}</div>
+                    <div class="col-6"><strong>Serie:</strong> <span class="badge bg-secondary font-monospace">{{ case.returned_serial }}</span></div>
+                    <div class="col-12"><strong>Origen:</strong> {{ case.origin_region.code }} - {{ case.origin_region.name }}</div>
+                </div>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Motivo de la Solicitud de Revisión *</label>
+                    {{ form.review_reason }}
+                    <small class="text-muted">Describa la discrepancia (serie no coincide, modelo dañado, falta componente, etc.)</small>
+                    {% if form.review_reason.errors %}<div class="text-danger small">{{ form.review_reason.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{% url 'cases:warehouse_inbox' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-danger px-4">
+                        <i class="bi bi-question-circle me-1"></i> Enviar a Revisión
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

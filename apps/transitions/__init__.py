@@ -1,0 +1,1 @@
+"""Transitions app initialization."""

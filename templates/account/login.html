@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Iniciar Sesión - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-4 py-md-5">
+    <div class="col-12 col-sm-8 col-md-6 col-lg-4">
+        <div class="ssit-card p-4 p-md-5">
+            <div class="text-center mb-4">
+                <div class="d-inline-flex p-3 bg-primary-subtle text-primary rounded-circle mb-3">
+                    <i class="bi bi-person-lock fs-1"></i>
+                </div>
+                <h2 class="h4 fw-bold mb-1">Acceso al Sistema</h2>
+                <p class="text-muted small">Ingresa tus credenciales corporativas</p>
+            </div>
+
+            <form method="POST" action="{% url 'account_login' %}">
+                {% csrf_token %}
+                {{ form|crispy }}
+                
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary btn-lg" type="submit">
+                        <i class="bi bi-box-arrow-in-right me-2"></i> Iniciar Sesión
+                    </button>
+                </div>
+            </form>
+            
+            <div class="mt-4 pt-3 border-top text-center">
+                <p class="text-muted small mb-0">
+                    SSIT 2.0 &bull; Control de Acceso por Roles y Alcance
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

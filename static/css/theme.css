@@ -1,0 +1,150 @@
+/* ==========================================================================
+   Admón Almacén SSIT 2.0 - Theme & Component Design System
+   Mobile-First, Modern Ergonomics, 21 Status Color Rules
+   ========================================================================== */
+
+:root {
+  --ssit-primary: #0284c7;
+  --ssit-primary-dark: #0369a1;
+  --ssit-secondary: #475569;
+  --ssit-bg-main: #f8fafc;
+  --ssit-surface: #ffffff;
+  --ssit-border: #e2e8f0;
+  --ssit-text-main: #0f172a;
+  --ssit-text-muted: #64748b;
+  --ssit-radius: 0.75rem;
+  --ssit-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.07), 0 2px 4px -2px rgb(0 0 0 / 0.07);
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--ssit-bg-main);
+  color: var(--ssit-text-main);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ==========================================================================
+   21 Reglas de Formato Visual / Badges de Estados
+   ========================================================================== */
+.ssit-badge {
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+  border-width: 1px;
+  border-style: solid;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+/* Amber / Warning */
+.bg-amber-soft { background-color: #fef3c7; }
+.text-amber-900 { color: #78350f; }
+.border-amber-300 { border-color: #fcd34d; }
+
+/* Emerald / Success */
+.bg-emerald-soft { background-color: #d1fae5; }
+.text-emerald-900 { color: #064e3b; }
+.border-emerald-300 { border-color: #6ee7b7; }
+
+/* Rose / Danger / Cancelled */
+.bg-rose-soft { background-color: #ffe4e6; }
+.text-rose-900 { color: #881337; }
+.border-rose-300 { border-color: #fda4af; }
+
+/* Blue / Repair */
+.bg-blue-soft { background-color: #dbeafe; }
+.text-blue-900 { color: #1e3a8a; }
+.border-blue-300 { border-color: #93c5fd; }
+
+/* Indigo / Telecom */
+.bg-indigo-soft { background-color: #e0e7ff; }
+.text-indigo-900 { color: #312e81; }
+.border-indigo-300 { border-color: #a5b4fc; }
+
+/* Purple / Warranty */
+.bg-purple-soft { background-color: #f3e8ff; }
+.text-purple-900 { color: #581c87; }
+.border-purple-300 { border-color: #d8b4fe; }
+
+/* Orange / Scrap */
+.bg-orange-soft { background-color: #ffedd5; }
+.text-orange-900 { color: #7c2d12; }
+.border-orange-300 { border-color: #fdba74; }
+
+/* Cyan / Transit */
+.bg-cyan-soft { background-color: #cffafe; }
+.text-cyan-900 { color: #164e63; }
+.border-cyan-300 { border-color: #67e8f9; }
+
+/* Sky / Workshop */
+.bg-sky-soft { background-color: #e0f2fe; }
+.text-sky-900 { color: #0c4a6e; }
+.border-sky-300 { border-color: #7dd3fc; }
+
+/* Yellow / Revision */
+.bg-yellow-soft { background-color: #fef9c3; }
+.text-yellow-900 { color: #713f12; }
+.border-yellow-300 { border-color: #fde047; }
+
+/* Teal / Boss Approval */
+.bg-teal-soft { background-color: #ccfbf1; }
+.text-teal-900 { color: #134e4a; }
+.border-teal-300 { border-color: #5eead4; }
+
+/* Slate & Stone / Archive & Finished */
+.bg-slate-soft { background-color: #f1f5f9; }
+.text-slate-900 { color: #0f172a; }
+.border-slate-300 { border-color: #cbd5e1; }
+
+.bg-stone-soft { background-color: #f5f5f4; }
+.text-stone-900 { color: #1c1917; }
+.border-stone-300 { border-color: #d6d3d1; }
+
+.bg-secondary-soft { background-color: #e2e8f0; }
+
+/* ==========================================================================
+   Cards, Surfaces & Mobile Ergonomics
+   ========================================================================== */
+.ssit-card {
+  background-color: var(--ssit-surface);
+  border: 1px solid var(--ssit-border);
+  border-radius: var(--ssit-radius);
+  box-shadow: var(--ssit-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ssit-card-interactive:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.ssit-metric-card {
+  border-left: 4px solid var(--ssit-primary);
+}
+
+.ssit-metric-val {
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* HTMX indicator spinner */
+.htmx-indicator {
+  display: none;
+}
+.htmx-request .htmx-indicator,
+.htmx-request.htmx-indicator {
+  display: inline-block;
+}
+
+/* Table styling for mobile */
+@media (max-width: 768px) {
+  .ssit-table-responsive table {
+    font-size: 0.875rem;
+  }
+}

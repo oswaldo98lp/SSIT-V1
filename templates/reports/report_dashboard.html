@@ -1,0 +1,175 @@
+{% extends "base.html" %}
+
+{% block title %}Centro de Bitácoras y Reportes | Admón Almacén SSIT 2.0{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex align-items-center justify-content-between flex-wrap gap-2">
+                <div>
+                    <h2 class="h3 fw-bold mb-1"><i class="bi bi-folder2-open text-info me-2"></i>Centro de Bitácoras y Reportes</h2>
+                    <p class="text-secondary mb-0">Acceso consolidado a consultas de inventario, movimientos de kárdex y bitácoras operativas.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Módulos Principales de Inventario -->
+    <h5 class="fw-semibold text-light mb-3"><i class="bi bi-boxes me-2 text-primary"></i>Inventario y Kárdex</h5>
+    <div class="row g-4 mb-4">
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="p-3 bg-primary bg-opacity-25 rounded-circle me-3">
+                            <i class="bi bi-journal-text text-primary fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title fw-bold text-light mb-0">Movimientos de Kárdex</h5>
+                            <span class="badge bg-secondary text-light">Pantalla 9</span>
+                        </div>
+                    </div>
+                    <p class="card-text text-secondary flex-grow-1">
+                        Auditoría exhaustiva de entradas, salidas, traspasos, scrap y ajustes de inventario con trazabilidad por número de serie, región y usuario.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="{% url 'reports:kardex_list' %}" class="btn btn-primary flex-grow-1">
+                            <i class="bi bi-search me-1"></i> Consultar Kárdex
+                        </a>
+                        <a href="{% url 'reports:kardex_list' %}?export=xlsx" class="btn btn-outline-success">
+                            <i class="bi bi-file-earmark-excel me-1"></i> XLSX
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-6">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="p-3 bg-info bg-opacity-25 rounded-circle me-3">
+                            <i class="bi bi-layers text-info fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title fw-bold text-light mb-0">Existencias por Almacén</h5>
+                            <span class="badge bg-secondary text-light">Pantalla 9</span>
+                        </div>
+                    </div>
+                    <p class="card-text text-secondary flex-grow-1">
+                        Saldos consolidados en tiempo real por modelo, almacén (Bueno, Scrap, Tránsito, Huesario, Préstamos) y condición de equipo.
+                    </p>
+                    <div class="d-flex gap-2 mt-3">
+                        <a href="{% url 'reports:stock_balance' %}" class="btn btn-info flex-grow-1 text-dark fw-semibold">
+                            <i class="bi bi-eye me-1"></i> Ver Existencias
+                        </a>
+                        <a href="{% url 'reports:stock_balance' %}?export=xlsx" class="btn btn-outline-success">
+                            <i class="bi bi-file-earmark-excel me-1"></i> XLSX
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="card bg-dark border-secondary shadow-sm">
+                <div class="card-body d-flex align-items-center justify-content-between flex-wrap gap-3">
+                    <div class="d-flex align-items-center">
+                        <div class="p-3 bg-warning bg-opacity-25 rounded-circle me-3">
+                            <i class="bi bi-arrow-left-right text-warning fs-3"></i>
+                        </div>
+                        <div>
+                            <h5 class="card-title fw-bold text-light mb-1">Conciliación de Inventario Físico vs Kárdex</h5>
+                            <p class="card-text text-secondary mb-0 small">Módulo de auditoría y cuadre entre conteos físicos subidos en CSV y saldos teóricos del sistema.</p>
+                        </div>
+                    </div>
+                    <a href="{% url 'reports:reconciliation' %}" class="btn btn-warning text-dark fw-bold">
+                        <i class="bi bi-calculator me-1"></i> Abrir Conciliador
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bitácoras Operativas y Gerenciales -->
+    <h5 class="fw-semibold text-light mb-3"><i class="bi bi-file-earmark-spreadsheet me-2 text-warning"></i>Bitácoras Operativas y Gerenciales</h5>
+    <div class="row g-4">
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="p-2 bg-warning bg-opacity-25 rounded me-2">
+                            <i class="bi bi-receipt text-warning fs-4"></i>
+                        </div>
+                        <h6 class="card-title fw-bold text-light mb-0">Histórico de Vales</h6>
+                    </div>
+                    <p class="card-text text-secondary small flex-grow-1">
+                        Bitácora de vales creados, autorizados y surtidos por región y centro de costos.
+                    </p>
+                    <a href="{% url 'reports:vouchers_report' %}" class="btn btn-outline-warning btn-sm mt-2">
+                        <i class="bi bi-table me-1"></i> Abrir Bitácora
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="p-2 bg-success bg-opacity-25 rounded me-2">
+                            <i class="bi bi-tools text-success fs-4"></i>
+                        </div>
+                        <h6 class="card-title fw-bold text-light mb-0">Bitácora de Taller</h6>
+                    </div>
+                    <p class="card-text text-secondary small flex-grow-1">
+                        Control de diagnósticos técnicos, folios de reparación, scrap y equipos reingresados.
+                    </p>
+                    <a href="{% url 'reports:workshop_report' %}" class="btn btn-outline-success btn-sm mt-2">
+                        <i class="bi bi-table me-1"></i> Abrir Bitácora
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="p-2 bg-primary bg-opacity-25 rounded me-2">
+                            <i class="bi bi-pie-chart text-primary fs-4"></i>
+                        </div>
+                        <h6 class="card-title fw-bold text-light mb-0">Resumen de Zonas</h6>
+                    </div>
+                    <p class="card-text text-secondary small flex-grow-1">
+                        Métricas consolidadas de vales, equipos reparados y scrap por zona geográfica.
+                    </p>
+                    <a href="{% url 'reports:zone_summary' %}" class="btn btn-outline-primary btn-sm mt-2">
+                        <i class="bi bi-graph-up me-1"></i> Ver Métricas
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6 col-lg-3">
+            <div class="card bg-dark border-secondary h-100 shadow-sm">
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="p-2 bg-danger bg-opacity-25 rounded me-2">
+                            <i class="bi bi-cart-check text-danger fs-4"></i>
+                        </div>
+                        <h6 class="card-title fw-bold text-light mb-0">Consumos Coupa</h6>
+                    </div>
+                    <p class="card-text text-secondary small flex-grow-1">
+                        Bitácora exclusiva para Gerencia SSIT de vales y materiales surtidos por Coupa.
+                    </p>
+                    <a href="{% url 'reports:coupa_report' %}" class="btn btn-outline-danger btn-sm mt-2">
+                        <i class="bi bi-lock me-1"></i> Ver Consumos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

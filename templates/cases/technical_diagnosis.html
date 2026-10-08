@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}Definición Técnica Caso #{{ case.id }} - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <a href="{% url 'cases:workshop_inbox' %}" class="btn btn-outline-secondary btn-sm mb-2">
+                    <i class="bi bi-arrow-left me-1"></i> Volver a Taller
+                </a>
+                <h1 class="h3 fw-bold mb-0">Dictamen y Definición Técnica</h1>
+                <p class="text-muted small mb-0">Registro de resultados técnicos del equipo (Pantalla 8/9).</p>
+            </div>
+        </div>
+
+        <div class="ssit-card p-4 mb-4">
+            <div class="bg-dark p-3 rounded border border-secondary mb-4">
+                <div class="row g-2 small">
+                    <div class="col-6"><strong>Caso:</strong> #{{ case.id }}</div>
+                    <div class="col-6"><strong>Serie:</strong> <span class="badge bg-secondary font-monospace">{{ case.returned_serial }}</span></div>
+                    <div class="col-6"><strong>Modelo:</strong> {{ case.returned_model.name|default:case.returned_model_text|default:"-" }}</div>
+                    <div class="col-6"><strong>Folio Rep.:</strong> {{ case.repair_folio|default:"-" }}</div>
+                </div>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Definición Técnica *</label>
+                    {{ form.definition }}
+                    {% if form.definition.errors %}<div class="text-danger small">{{ form.definition.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Comentarios Técnicos / Trabajos Realizados *</label>
+                    {{ form.repair_comments }}
+                    {% if form.repair_comments.errors %}<div class="text-danger small">{{ form.repair_comments.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Solución de Garantía (si aplica)</label>
+                    {{ form.warranty_solution }}
+                    {% if form.warranty_solution.errors %}<div class="text-danger small">{{ form.warranty_solution.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Nueva Serie (si fue cambio de equipo)</label>
+                    {{ form.new_serial }}
+                    {% if form.new_serial.errors %}<div class="text-danger small">{{ form.new_serial.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <div class="form-check">
+                        {{ form.insight_repair_confirmed }}
+                        <label class="form-check-label fw-semibold" for="{{ form.insight_repair_confirmed.id_for_label }}">
+                            Confirmar registro en Insight
+                        </label>
+                    </div>
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{% url 'cases:workshop_inbox' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="bi bi-save me-1"></i> Guardar Definición
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

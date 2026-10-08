@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load core_tags %}
+
+{% block title %}Bandeja de Folios de Reparación - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row g-3 mb-4">
+    <div class="col-12 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+        <div>
+            <h1 class="h3 fw-bold mb-1">Folios de Reparación (Oficina)</h1>
+            <p class="text-muted small mb-0">
+                Asignación de folios y fechas compromiso a equipos confirmados (Pantalla 7)
+            </p>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="{% url 'cases:case_list' %}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-list me-1"></i> Todos los Casos
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="ssit-card p-0 overflow-hidden mb-4">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th class="ps-3">Caso</th>
+                    <th>Equipo / Modelo</th>
+                    <th>Número de Serie</th>
+                    <th>Origen</th>
+                    <th>Dictamen Almacén</th>
+                    <th>Folio Actual</th>
+                    <th>Fecha Folio</th>
+                    <th class="text-end pe-3">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for case in page_obj %}
+                    <tr>
+                        <td class="ps-3 fw-bold">#{{ case.id }}</td>
+                        <td>
+                            <div class="fw-semibold text-light">{{ case.returned_model.name|default:case.returned_model_text|default:"Sin modelo" }}</div>
+                            <small class="text-muted">{{ case.returned_brand|default:case.returned_model.brand|default:"-" }}</small>
+                        </td>
+                        <td>
+                            <span class="badge bg-secondary font-monospace">{{ case.returned_serial }}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-dark border border-secondary">{{ case.origin_region.code }}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-info text-dark">{{ case.ruling.label|default:"Confirmado" }}</span>
+                        </td>
+                        <td>
+                            {% if case.repair_folio %}
+                                <span class="badge bg-warning text-dark font-monospace">{{ case.repair_folio }}</span>
+                            {% else %}
+                                <span class="text-muted small">Sin asignar</span>
+                            {% endif %}
+                        </td>
+                        <td class="small text-muted">
+                            {{ case.folio_date|date:"d/m/Y"|default:"-" }}
+                        </td>
+                        <td class="text-end pe-3">
+                            <a href="{% url 'cases:assign_repair_folio' pk=case.id %}" class="btn btn-sm btn-primary">
+                                <i class="bi bi-pencil-square me-1"></i> Asignar Folio
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center py-5 text-muted">
+                            <i class="bi bi-check-circle fs-1 text-success d-block mb-2"></i>
+                            No hay casos pendientes de folio de reparación en este momento.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% if page_obj.has_other_pages %}
+<nav class="d-flex justify-content-center">
+    <ul class="pagination pagination-sm">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">Anterior</a></li>
+        {% endif %}
+        <li class="page-item disabled"><span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span></li>
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">Siguiente</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% endblock %}

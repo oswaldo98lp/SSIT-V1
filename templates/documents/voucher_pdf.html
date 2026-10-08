@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <title>Vale de Salida #{{ voucher.id }} - {{ app_name }}</title>
+    <style>
+        @page {
+            size: letter portrait;
+            margin: 1.5cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #1a202c;
+            line-height: 1.4;
+            font-size: 11pt;
+        }
+        .header-table {
+            width: 100%;
+            border-bottom: 2px solid #0284c7;
+            padding-bottom: 12px;
+            margin-bottom: 20px;
+        }
+        .title {
+            font-size: 16pt;
+            font-weight: bold;
+            color: #0369a1;
+            margin: 0;
+        }
+        .subtitle {
+            font-size: 10pt;
+            color: #64748b;
+        }
+        .voucher-id-badge {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #0f172a;
+            text-align: right;
+        }
+        .info-grid {
+            width: 100%;
+            margin-bottom: 20px;
+            border-collapse: collapse;
+        }
+        .info-grid td {
+            padding: 5px 8px;
+            vertical-align: top;
+            font-size: 10pt;
+        }
+        .info-label {
+            font-weight: bold;
+            color: #475569;
+            width: 25%;
+        }
+        .info-val {
+            color: #0f172a;
+            width: 25%;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 30px;
+        }
+        .items-table th {
+            background-color: #f1f5f9;
+            color: #1e293b;
+            font-weight: bold;
+            font-size: 9.5pt;
+            border: 1px solid #cbd5e1;
+            padding: 8px;
+            text-align: left;
+        }
+        .items-table td {
+            border: 1px solid #e2e8f0;
+            padding: 8px;
+            font-size: 9.5pt;
+        }
+        .signatures-container {
+            width: 100%;
+            margin-top: 40px;
+            border-collapse: collapse;
+        }
+        .signature-box {
+            width: 48%;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            padding: 12px;
+            text-align: center;
+            vertical-align: top;
+        }
+        .sig-image {
+            max-height: 70px;
+            max-width: 180px;
+            display: block;
+            margin: 0 auto 8px auto;
+        }
+        .sig-line {
+            border-top: 1px dashed #94a3b8;
+            margin-top: 45px;
+            padding-top: 5px;
+            font-size: 9pt;
+            font-weight: bold;
+        }
+        .footer-note {
+            font-size: 8pt;
+            color: #94a3b8;
+            text-align: center;
+            margin-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <table class="header-table">
+        <tr>
+            <td>
+                <div class="title">{{ app_name }}</div>
+                <div class="subtitle">Comprobante Oficial de Vale de Salida y Surtido de Material</div>
+            </td>
+            <td class="voucher-id-badge">
+                VALE #{{ voucher.id }}<br>
+                <span style="font-size: 9pt; font-weight: normal; color: #64748b;">Folio: {{ voucher.report_folio|default:"Sin Folio" }}</span>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Info Block -->
+    <table class="info-grid">
+        <tr>
+            <td class="info-label">Fecha de Solicitud:</td>
+            <td class="info-val">{{ voucher.created_at|date:"d/m/Y H:i" }}</td>
+            <td class="info-label">Región Operativa:</td>
+            <td class="info-val"><strong>{{ voucher.region.code }}</strong> - {{ voucher.region.name }}</td>
+        </tr>
+        <tr>
+            <td class="info-label">Solicitante:</td>
+            <td class="info-val">{{ voucher.requested_by.full_name|default:voucher.requested_by.email }}</td>
+            <td class="info-label">Centro Destino:</td>
+            <td class="info-val">{{ voucher.destination_center|default:"N/A" }}</td>
+        </tr>
+        <tr>
+            <td class="info-label">Motivo de Solicitud:</td>
+            <td class="info-val">{{ voucher.reason.label|default:"No especificado" }}</td>
+            <td class="info-label">Tipo de Envío:</td>
+            <td class="info-val">{{ voucher.get_shipping_type_display }}</td>
+        </tr>
+        <tr>
+            <td class="info-label">Autorizado por:</td>
+            <td class="info-val">{{ voucher.authorized_by.full_name|default:"Pendiente" }}</td>
+            <td class="info-label">Fecha Autorización:</td>
+            <td class="info-val">{{ voucher.authorized_at|date:"d/m/Y H:i"|default:"Pendiente" }}</td>
+        </tr>
+        {% if voucher.project_name %}
+        <tr>
+            <td class="info-label">Proyecto:</td>
+            <td class="info-val" colspan="3">{{ voucher.project_name }}</td>
+        </tr>
+        {% endif %}
+    </table>
+
+    <!-- Surtido Items Table -->
+    <h3 style="font-size: 11pt; color: #0f172a; margin-bottom: 8px; border-bottom: 1px solid #e2e8f0; padding-bottom: 4px;">
+        Partidas y Piezas Surtidas
+    </h3>
+    <table class="items-table">
+        <thead>
+            <tr>
+                <th style="width: 5%;">#</th>
+                <th style="width: 35%;">Artículo / Modelo</th>
+                <th style="width: 25%;">Número de Serie</th>
+                <th style="width: 15%;">Condición</th>
+                <th style="width: 20%;">Almacén Origen</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in items %}
+                <tr>
+                    <td style="text-align: center;">{{ forloop.counter }}</td>
+                    <td><strong>{{ item.equipment_model.name }}</strong> ({{ item.equipment_model.brand }} {{ item.equipment_model.model }})</td>
+                    <td style="font-family: monospace; font-weight: bold;">{{ item.serial_number }}</td>
+                    <td>{{ item.get_condition_display }}</td>
+                    <td>{{ item.get_warehouse_display }}</td>
+                </tr>
+            {% empty %}
+                {% for line in lines %}
+                    <tr>
+                        <td style="text-align: center;">{{ forloop.counter }}</td>
+                        <td>{{ line.equipment_model.name|default:line.requested_text }}</td>
+                        <td style="color: #94a3b8; font-style: italic;">Pendiente de captura</td>
+                        <td>-</td>
+                        <td>Cantidad: {{ line.quantity }}</td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Signatures -->
+    <table class="signatures-container">
+        <tr>
+            <!-- Entregado por -->
+            <td class="signature-box" style="margin-right: 4%;">
+                <div style="font-size: 9pt; color: #64748b; font-weight: bold; margin-bottom: 5px;">ENTREGADO POR (ALMACÉN)</div>
+                <div style="font-size: 10pt; font-weight: bold; margin-top: 15px;">
+                    {{ voucher.delivered_by.full_name|default:"Encargado de Almacén" }}
+                </div>
+                <div style="font-size: 8.5pt; color: #64748b;">
+                    Fecha: {{ voucher.delivered_at|date:"d/m/Y H:i"|default:generated_at|date:"d/m/Y H:i" }}
+                </div>
+                <div class="sig-line">Firma y Sello de Almacén</div>
+            </td>
+
+            <td style="width: 4%;"></td>
+
+            <!-- Recibido por -->
+            <td class="signature-box">
+                <div style="font-size: 9pt; color: #64748b; font-weight: bold; margin-bottom: 5px;">RECIBIDO POR (SOLICITANTE / RECEPTOR)</div>
+                {% if voucher.signature_image %}
+                    <img src="{{ voucher.signature_image.url }}" class="sig-image" alt="Firma de recepción">
+                {% else %}
+                    <div style="height: 45px;"></div>
+                {% endif %}
+                <div style="font-size: 10pt; font-weight: bold;">
+                    {{ voucher.received_by.full_name|default:voucher.requested_by.full_name }}
+                </div>
+                <div class="sig-line">Firma de Conformidad</div>
+            </td>
+        </tr>
+    </table>
+
+    <!-- Footer Note -->
+    <div class="footer-note">
+        Este documento ampara la salida física de inventario y la transferencia de custodia del equipo listado. Generado el {{ generated_at|date:"d/m/Y H:i:s" }} por {{ app_name }}.
+    </div>
+
+</body>
+</html>

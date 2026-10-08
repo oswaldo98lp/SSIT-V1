@@ -1,0 +1,52 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ main, master, "develop", "feature/*" ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    services:
+      mariadb:
+        image: mariadb:10.11
+        env:
+          MARIADB_ROOT_PASSWORD: root_ci_password
+          MARIADB_DATABASE: test_ssit_almacen_db
+          MARIADB_USER: ssit_user
+          MARIADB_PASSWORD: ssit_ci_password
+        ports:
+          - 3306:3306
+        options: --health-cmd="healthcheck.sh --connect --innodb_initialized" --health-interval=10s --health-timeout=5s --health-retries=5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libmariadb-dev libcairo2 libpango-1.0-0 libpangocairo-1.0-0 libgdk-pixbuf-2.0-0 libffi-dev shared-mime-info
+
+      - name: Install Python Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run Ruff Linting
+        run: |
+          ruff check .
+
+      - name: Run Tests with Coverage
+        env:
+          DATABASE_URL: mysql://ssit_user:ssit_ci_password@127.0.0.1:3306/test_ssit_almacen_db
+          SECRET_KEY: ci-test-key
+          DEBUG: "False"
+        run: |
+          pytest --cov=apps --cov-report=term-missing --cov-fail-under=80

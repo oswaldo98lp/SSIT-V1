@@ -1,0 +1,77 @@
+services:
+  db:
+    image: mariadb:11.4
+    container_name: ssit_mariadb
+    restart: always
+    environment:
+      MARIADB_DATABASE: ssit_db
+      MARIADB_USER: ssit_user
+      MARIADB_PASSWORD: ssit_strong_password_here
+      MARIADB_ROOT_PASSWORD: ssit_root_strong_password_here
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+      - --innodb-buffer-pool-size=512M
+      - --max-connections=150
+    volumes:
+      - mariadb_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "healthcheck.sh", "--connect", "--innodb_initialized"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+    networks:
+      - ssit_network
+
+  web:
+    build: .
+    container_name: ssit_web
+    restart: always
+    entrypoint: ["./entrypoint.sh"]
+    command: ["gunicorn", "--config", "gunicorn.conf.py", "config.wsgi:application"]
+    environment:
+      DJANGO_SETTINGS_MODULE: config.settings.production
+      DATABASE_URL: mysql://ssit_user:ssit_strong_password_here@db:3306/ssit_db
+      SECRET_KEY: ${SECRET_KEY:-django-insecure-prod-key-please-change-in-env}
+      DEBUG: "False"
+      ALLOWED_HOSTS: "almacen.ssit.internal,localhost,127.0.0.1,web"
+      CSRF_TRUSTED_ORIGINS: "https://almacen.ssit.internal,http://localhost:8000"
+      SECURE_SSL_REDIRECT: "False" # Gestionado por Nginx proxy
+    volumes:
+      - media_volume:/app/media
+      - static_volume:/app/staticfiles
+      - logs_volume:/app/logs
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - ssit_network
+    ports:
+      - "8000:8000"
+
+  nginx:
+    image: nginx:1.27-alpine
+    container_name: ssit_nginx
+    restart: always
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./deploy/nginx/ssit.conf:/etc/nginx/conf.d/default.conf:ro
+      - static_volume:/app/staticfiles:ro
+      - media_volume:/app/media:ro
+      - ./deploy/ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - web
+    networks:
+      - ssit_network
+
+volumes:
+  mariadb_data:
+  media_volume:
+  static_volume:
+  logs_volume:
+
+networks:
+  ssit_network:
+    driver: bridge

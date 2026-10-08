@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+
+{% block title %}Conciliación de Inventario Físico vs Kárdex | Admón Almacén SSIT 2.0{% endblock %}
+
+{% block content %}
+<div class="container-fluid py-4">
+    <!-- Header -->
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center flex-wrap gap-2">
+            <div>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-1">
+                        <li class="breadcrumb-item"><a href="{% url 'reports:dashboard' %}" class="text-secondary text-decoration-none">Reportes</a></li>
+                        <li class="breadcrumb-item active text-light" aria-current="page">Conciliación</li>
+                    </ol>
+                </nav>
+                <h2 class="h3 fw-bold mb-0 text-light"><i class="bi bi-arrow-left-right text-warning me-2"></i>Conciliación de Inventario Físico vs Kárdex</h2>
+                <p class="text-secondary small mb-0">Carga de conteos físicos, detección automática de discrepancias (sobrantes/faltantes) y conciliación contra saldos teóricos del sistema.</p>
+            </div>
+            {% if results %}
+            <form method="post" enctype="multipart/form-data" class="d-inline">
+                {% csrf_token %}
+                <input type="hidden" name="action" value="export_xlsx">
+                <!-- Se puede re-exportar con el mismo archivo -->
+            </form>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Formulario de Carga CSV -->
+    <div class="card bg-dark border-secondary mb-4 shadow-sm">
+        <div class="card-header border-secondary bg-transparent">
+            <h6 class="fw-bold text-light mb-0"><i class="bi bi-file-earmark-arrow-up me-2 text-info"></i>Cargar Archivo de Conteo Físico (CSV)</h6>
+        </div>
+        <div class="card-body">
+            <form method="post" enctype="multipart/form-data" class="row g-3 align-items-end">
+                {% csrf_token %}
+                <div class="col-12 col-md-7">
+                    <label class="form-label text-secondary small">Seleccione archivo CSV (Columnas: model_name, region_code, warehouse, condition, physical_quantity)</label>
+                    <input type="file" name="physical_file" class="form-control" accept=".csv" required>
+                </div>
+                <div class="col-12 col-md-5 d-flex gap-2">
+                    <button type="submit" name="action" value="reconcile" class="btn btn-warning flex-grow-1 text-dark fw-bold">
+                        <i class="bi bi-calculator me-1"></i> Ejecutar Conciliación
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    {% if results %}
+    <!-- Resumen de Métricas de Conciliación -->
+    <div class="row g-3 mb-4">
+        <div class="col-6 col-md-3">
+            <div class="card bg-dark border-secondary p-3 text-center shadow-sm">
+                <span class="text-secondary small">Total Registros</span>
+                <span class="fs-4 fw-bold text-light">{{ results.summary.total_lines }}</span>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card bg-dark border-secondary p-3 text-center shadow-sm">
+                <span class="text-success small"><i class="bi bi-check-circle me-1"></i>Coincidencias</span>
+                <span class="fs-4 fw-bold text-success">{{ results.summary.matched_count }}</span>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card bg-dark border-secondary p-3 text-center shadow-sm">
+                <span class="text-warning small"><i class="bi bi-plus-circle me-1"></i>Sobrantes (+)</span>
+                <span class="fs-4 fw-bold text-warning">{{ results.summary.surplus_count }}</span>
+            </div>
+        </div>
+        <div class="col-6 col-md-3">
+            <div class="card bg-dark border-secondary p-3 text-center shadow-sm">
+                <span class="text-danger small"><i class="bi bi-dash-circle me-1"></i>Faltantes (-)</span>
+                <span class="fs-4 fw-bold text-danger">{{ results.summary.shortage_count }}</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="alert alert-info d-flex align-items-center justify-content-between mb-4">
+        <div>
+            <i class="bi bi-pie-chart-fill me-2 fs-5"></i>
+            <strong>Tasa de Concordancia Global:</strong> {{ results.summary.match_rate }}% 
+            (Físico Total: <strong>{{ results.summary.total_physical }}</strong> | Teórico Kárdex: <strong>{{ results.summary.total_system }}</strong>)
+        </div>
+    </div>
+
+    <!-- Tabla Detallada de Discrepancias -->
+    <div class="card bg-dark border-secondary shadow-sm">
+        <div class="card-header border-secondary bg-transparent d-flex justify-content-between align-items-center">
+            <span class="text-secondary small fw-bold text-uppercase">Detalle de Conciliación por Línea</span>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-dark table-hover table-striped mb-0 align-middle">
+                <thead>
+                    <tr class="text-secondary small text-uppercase">
+                        <th>#</th>
+                        <th>Artículo / Modelo</th>
+                        <th>Marca</th>
+                        <th>Región</th>
+                        <th>Almacén</th>
+                        <th>Condición</th>
+                        <th class="text-end">Conteo Físico</th>
+                        <th class="text-end">Saldo Kárdex</th>
+                        <th class="text-end">Diferencia</th>
+                        <th class="text-center">Estatus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in results.lines %}
+                    <tr>
+                        <td class="small text-secondary">{{ item.line_number }}</td>
+                        <td class="text-light fw-medium">{{ item.model_name }}</td>
+                        <td class="text-secondary">{{ item.brand }}</td>
+                        <td><span class="badge bg-dark border text-light">{{ item.region_code }}</span></td>
+                        <td><span class="badge bg-secondary">{{ item.warehouse }}</span></td>
+                        <td><span class="badge bg-secondary">{{ item.condition }}</span></td>
+                        <td class="text-end fw-bold text-light">{{ item.physical_quantity }}</td>
+                        <td class="text-end fw-bold text-info">{{ item.system_quantity }}</td>
+                        <td class="text-end fw-bold {% if item.difference == 0 %}text-success{% elif item.difference > 0 %}text-warning{% else %}text-danger{% endif %}">
+                            {% if item.difference > 0 %}+{% endif %}{{ item.difference }}
+                        </td>
+                        <td class="text-center">
+                            {% if item.status == "COINCIDE" %}
+                                <span class="badge bg-success"><i class="bi bi-check2 me-1"></i>Coincide</span>
+                            {% elif item.status == "SOBRANTE" %}
+                                <span class="badge bg-warning text-dark"><i class="bi bi-arrow-up-circle me-1"></i>Sobrante</span>
+                            {% else %}
+                                <span class="badge bg-danger"><i class="bi bi-arrow-down-circle me-1"></i>Faltante</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

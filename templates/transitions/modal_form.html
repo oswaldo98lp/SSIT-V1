@@ -1,0 +1,82 @@
+<div class="modal-header bg-primary text-white">
+    <h5 class="modal-title" id="mainModalLabel">
+        <i class="bi bi-gear-wide-connected me-2"></i>{{ rule.label }}
+    </h5>
+    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+</div>
+
+<form method="POST" action="{% url 'transitions:transition_modal' entity_type entity_id rule.code %}" hx-post="{% url 'transitions:transition_modal' entity_type entity_id rule.code %}" hx-target="#modal-dialog-content">
+    {% csrf_token %}
+    <div class="modal-body p-4">
+        {% if error_message %}
+            <div class="alert alert-danger d-flex align-items-center mb-3">
+                <i class="bi bi-exclamation-triangle-fill fs-4 me-2"></i>
+                <div>
+                    <strong>Error de validación:</strong>
+                    <div>{{ error_message }}</div>
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="p-3 bg-light rounded-3 border mb-3">
+            <div class="row g-2 small">
+                <div class="col-6">
+                    <span class="text-muted">Registro:</span> <strong>{{ entity_type }} #{{ entity_id }}</strong>
+                </div>
+                <div class="col-6">
+                    <span class="text-muted">Etapa destino:</span> <span class="badge bg-primary">{{ rule.to_stage }}</span>
+                </div>
+                {% if rule.kardex_effect != "NONE" %}
+                    <div class="col-12 mt-2">
+                        <span class="badge bg-warning text-dark">
+                            <i class="bi bi-box-arrow-in-right me-1"></i> Movimiento de Kárdex: {{ rule.kardex_effect }}
+                        </span>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Dynamic Inputs based on transition schema -->
+        {% if rule.code == "authorize_voucher" %}
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Comentarios de Autorización</label>
+                <textarea name="comments" class="form-control" rows="3" placeholder="Ingresa comentarios de autorización (opcional)..."></textarea>
+            </div>
+        {% elif rule.code == "cancel_voucher" or rule.code == "cancel_line" %}
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Motivo de Cancelación <span class="text-danger">*</span></label>
+                <input type="text" name="cancel_reason_id" class="form-control" placeholder="ID de motivo o descripción de cancelación..." required>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Comentarios Adicionales</label>
+                <textarea name="comments" class="form-control" rows="3" placeholder="Detalles de la cancelación..."></textarea>
+            </div>
+        {% elif rule.code == "define_equipment" %}
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Definición Técnica <span class="text-danger">*</span></label>
+                <select name="definition" class="form-select" required>
+                    <option value="">Selecciona una definición...</option>
+                    <option value="REPARADO">Reparado (Operativo)</option>
+                    <option value="GARANTIA">Garantía con Proveedor</option>
+                    <option value="HUESARIO">Huesario / Scrap</option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Comentarios de Reparación / Diagnóstico <span class="text-danger">*</span></label>
+                <textarea name="repair_comments" class="form-control" rows="3" required placeholder="Describe las pruebas realizadas o motivo de descarte..."></textarea>
+            </div>
+        {% else %}
+            <div class="mb-3">
+                <label class="form-label fw-semibold">Observaciones / Comentarios</label>
+                <textarea name="comments" class="form-control" rows="3" placeholder="Ingresa notas u observaciones..."></textarea>
+            </div>
+        {% endif %}
+    </div>
+
+    <div class="modal-footer bg-light">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-check2-circle me-1"></i> Confirmar y Ejecutar
+        </button>
+    </div>
+</form>

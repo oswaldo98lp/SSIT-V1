@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Nuevo Vale de Salida - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-lg-10">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+                <h1 class="h3 fw-bold mb-1">Nuevo Vale de Salida</h1>
+                <p class="text-muted small mb-0">Captura la información general de la solicitud y las partidas de material requeridas.</p>
+            </div>
+            <a href="{% url 'vouchers:list' %}" class="btn btn-outline-secondary btn-sm">
+                <i class="bi bi-arrow-left me-1"></i> Volver a Vales
+            </a>
+        </div>
+
+        <form method="POST">
+            {% csrf_token %}
+            
+            <!-- General Info Card -->
+            <div class="ssit-card p-4 mb-4">
+                <h5 class="fw-bold mb-3 text-primary d-flex align-items-center">
+                    <i class="bi bi-card-checklist me-2"></i> 1. Datos Generales de la Solicitud
+                </h5>
+                <div class="row g-3">
+                    <div class="col-12 col-md-4">
+                        {{ form.report_folio|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-8">
+                        {{ form.destination_center|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-4">
+                        {{ form.reason|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-4">
+                        {{ form.material_category|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-4">
+                        {{ form.shipping_type|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-6">
+                        {{ form.project_name|as_crispy_field }}
+                    </div>
+                    <div class="col-12 col-md-6">
+                        {{ form.comments|as_crispy_field }}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Lines Formset Card -->
+            <div class="ssit-card p-4 mb-4">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="fw-bold text-primary mb-0 d-flex align-items-center">
+                        <i class="bi bi-list-ol me-2"></i> 2. Partidas de Material Solicitadas
+                    </h5>
+                </div>
+                
+                {{ lines_formset.management_form }}
+                
+                <div class="table-responsive ssit-table-responsive">
+                    <table class="table table-bordered align-middle" id="lines-table">
+                        <thead class="table-light">
+                            <tr>
+                                <th style="width: 35%;">Modelo de Equipo (Catálogo)</th>
+                                <th style="width: 30%;">Descripción Libre (si no está en catálogo)</th>
+                                <th style="width: 15%;">Cantidad</th>
+                                <th style="width: 20%;">Notas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for line_form in lines_formset %}
+                                <tr>
+                                    <td>
+                                        {{ line_form.id }}
+                                        {{ line_form.equipment_model }}
+                                    </td>
+                                    <td>{{ line_form.requested_text }}</td>
+                                    <td>{{ line_form.quantity }}</td>
+                                    <td>{{ line_form.comments }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="form-text small text-muted">
+                    * Puedes seleccionar un modelo del catálogo o escribir una descripción libre para consumibles/partes sin serie fija.
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="d-flex justify-content-end gap-2 mb-5">
+                <a href="{% url 'vouchers:list' %}" class="btn btn-secondary">Cancelar</a>
+                <button type="submit" class="btn btn-primary px-4">
+                    <i class="bi bi-save me-1"></i> Guardar y Crear Vale
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

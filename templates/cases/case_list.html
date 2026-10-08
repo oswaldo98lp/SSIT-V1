@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% load core_tags %}
+
+{% block title %}Devoluciones y Casos - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row g-3 mb-4">
+    <div class="col-12 d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2">
+        <div>
+            <h1 class="h3 fw-bold mb-1">Devoluciones y Casos de Equipo</h1>
+            <p class="text-muted small mb-0">
+                Gestión de retornos, dictamen técnico, taller habilitado y reingreso a almacén
+            </p>
+        </div>
+        <div class="d-flex gap-2">
+            <a href="{% url 'cases:warehouse_inbox' %}" class="btn btn-outline-warning btn-sm">
+                <i class="bi bi-box-seam me-1"></i> Dictamen Almacén
+            </a>
+            <a href="{% url 'cases:workshop_inbox' %}" class="btn btn-outline-info btn-sm">
+                <i class="bi bi-tools me-1"></i> Taller Habilitado
+            </a>
+            <a href="{% url 'cases:case_create' %}" class="btn btn-primary btn-sm">
+                <i class="bi bi-plus-lg me-1"></i> Registrar Devolución
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Filters -->
+<div class="ssit-card p-3 mb-4">
+    <form method="GET" class="row g-2 align-items-end">
+        <div class="col-6 col-md-2">
+            <label class="form-label small fw-semibold text-muted mb-1">Etapa</label>
+            <select name="stage" class="form-select form-select-sm">
+                <option value="">Todas las etapas</option>
+                {% for st_val, st_label in stages %}
+                    <option value="{{ st_val }}" {% if stage_filter == st_val %}selected{% endif %}>{{ st_label }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+            <label class="form-label small fw-semibold text-muted mb-1">Región Origen</label>
+            <select name="region" class="form-select form-select-sm">
+                <option value="">Todas</option>
+                {% for reg in regions %}
+                    <option value="{{ reg.id }}" {% if region_filter == reg.id|stringformat:"s" %}selected{% endif %}>{{ reg.code }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+            <label class="form-label small fw-semibold text-muted mb-1">Ubicación</label>
+            <select name="location" class="form-select form-select-sm">
+                <option value="">Todas</option>
+                <option value="CENTRO" {% if location_filter == 'CENTRO' %}selected{% endif %}>Centro / Campo</option>
+                <option value="TALLER" {% if location_filter == 'TALLER' %}selected{% endif %}>Taller Habilitado</option>
+            </select>
+        </div>
+
+        <div class="col-6 col-md-2">
+            <label class="form-label small fw-semibold text-muted mb-1">Ruta</label>
+            <select name="route" class="form-select form-select-sm">
+                <option value="">Todas</option>
+                <option value="EVALUACION_CENTRO" {% if route_filter == 'EVALUACION_CENTRO' %}selected{% endif %}>Evaluación Centro</option>
+                <option value="TALLER_HABILITADO" {% if route_filter == 'TALLER_HABILITADO' %}selected{% endif %}>Taller Habilitado</option>
+                <option value="STOCK_DIRECTO" {% if route_filter == 'STOCK_DIRECTO' %}selected{% endif %}>Stock Directo</option>
+            </select>
+        </div>
+
+        <div class="col-8 col-md-3">
+            <label class="form-label small fw-semibold text-muted mb-1">Búsqueda</label>
+            <input type="text" name="q" value="{{ search_query }}" class="form-control form-select-sm" placeholder="Serie, folio, modelo...">
+        </div>
+
+        <div class="col-4 col-md-1 d-flex gap-1">
+            <button type="submit" class="btn btn-primary btn-sm w-100" title="Filtrar">
+                <i class="bi bi-search"></i>
+            </button>
+            <a href="{% url 'cases:case_list' %}" class="btn btn-light btn-sm" title="Limpiar">
+                <i class="bi bi-x-lg"></i>
+            </a>
+        </div>
+    </form>
+</div>
+
+<!-- Cases Table -->
+<div class="ssit-card p-0 overflow-hidden mb-4">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th class="ps-3" style="width: 80px;">Caso</th>
+                    <th>Equipo / Modelo</th>
+                    <th>Número de Serie</th>
+                    <th>Origen</th>
+                    <th>Ruta</th>
+                    <th>Folio Envío</th>
+                    <th>Etapa</th>
+                    <th class="text-end pe-3">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for case in page_obj %}
+                    <tr>
+                        <td class="ps-3 fw-bold">#{{ case.id }}</td>
+                        <td>
+                            <div class="fw-semibold text-light">{{ case.returned_model.name|default:case.returned_model_text|default:"Sin modelo" }}</div>
+                            <small class="text-muted">{{ case.returned_brand|default:case.returned_model.brand|default:"-" }}</small>
+                        </td>
+                        <td>
+                            <span class="badge bg-secondary font-monospace">{{ case.returned_serial }}</span>
+                        </td>
+                        <td>
+                            <span class="badge bg-dark border border-secondary">{{ case.origin_region.code }}</span>
+                            <small class="text-muted d-block">{{ case.created_at|date:"d/m/Y" }}</small>
+                        </td>
+                        <td>
+                            <span class="small text-muted">{{ case.get_route_display }}</span>
+                        </td>
+                        <td>
+                            {% if case.shipping_folio %}
+                                <span class="badge bg-light text-dark font-monospace">{{ case.shipping_folio }}</span>
+                            {% else %}
+                                <span class="text-muted small">-</span>
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% status_badge case.stage %}
+                        </td>
+                        <td class="text-end pe-3">
+                            <a href="{% url 'cases:case_detail' pk=case.id %}" class="btn btn-sm btn-outline-light" title="Ver Detalle">
+                                <i class="bi bi-eye"></i>
+                            </a>
+                        </td>
+                    </tr>
+                {% empty %}
+                    <tr>
+                        <td colspan="8" class="text-center py-5 text-muted">
+                            <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                            No se encontraron casos de devolución con los filtros seleccionados.
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Pagination -->
+{% if page_obj.has_other_pages %}
+<nav class="d-flex justify-content-center">
+    <ul class="pagination pagination-sm">
+        {% if page_obj.has_previous %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}&stage={{ stage_filter }}&region={{ region_filter }}&q={{ search_query }}">Anterior</a></li>
+        {% endif %}
+        <li class="page-item disabled"><span class="page-link">Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span></li>
+        {% if page_obj.has_next %}
+            <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}&stage={{ stage_filter }}&region={{ region_filter }}&q={{ search_query }}">Siguiente</a></li>
+        {% endif %}
+    </ul>
+</nav>
+{% endif %}
+
+{% endblock %}

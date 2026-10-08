@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Asignar Folio de Reparación Caso #{{ case.id }} - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <a href="{% url 'cases:repair_folio_inbox' %}" class="btn btn-outline-secondary btn-sm mb-2">
+                    <i class="bi bi-arrow-left me-1"></i> Volver a Bandeja
+                </a>
+                <h1 class="h3 fw-bold mb-0">Asignar Folio de Reparación</h1>
+                <p class="text-muted small mb-0">Control administrativo y fecha compromiso en Oficina (Pantalla 7).</p>
+            </div>
+        </div>
+
+        <div class="ssit-card p-4 mb-4">
+            <div class="bg-dark p-3 rounded border border-secondary mb-4">
+                <div class="row g-2 small">
+                    <div class="col-6"><strong>Caso:</strong> #{{ case.id }}</div>
+                    <div class="col-6"><strong>Serie:</strong> <span class="badge bg-secondary font-monospace">{{ case.returned_serial }}</span></div>
+                    <div class="col-6"><strong>Modelo:</strong> {{ case.returned_model.name|default:case.returned_model_text|default:"-" }}</div>
+                    <div class="col-6"><strong>Dictamen:</strong> {{ case.ruling.label|default:"Confirmado" }}</div>
+                </div>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Folio de Reparación *</label>
+                    {{ form.repair_folio }}
+                    {% if form.repair_folio.errors %}<div class="text-danger small">{{ form.repair_folio.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Fecha del Folio *</label>
+                    {{ form.folio_date }}
+                    {% if form.folio_date.errors %}<div class="text-danger small">{{ form.folio_date.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Nota Insight (Opcional)</label>
+                    {{ form.insight_note }}
+                    {% if form.insight_note.errors %}<div class="text-danger small">{{ form.insight_note.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{% url 'cases:repair_folio_inbox' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-primary px-4">
+                        <i class="bi bi-save me-1"></i> Guardar Folio
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

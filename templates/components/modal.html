@@ -1,0 +1,17 @@
+<!-- Universal HTMX Modal Container -->
+<div class="modal fade" id="main-modal" tabindex="-1" aria-labelledby="mainModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content" id="modal-dialog-content">
+            <!-- Dynamic content loaded via HTMX will replace this inner block -->
+            <div class="modal-header">
+                <h5 class="modal-title" id="mainModalLabel">Cargando...</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+            <div class="modal-body text-center py-5">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Cargando...</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

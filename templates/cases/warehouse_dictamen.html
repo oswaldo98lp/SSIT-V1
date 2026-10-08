@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Emitir Dictamen Caso #{{ case.id }} - {{ APP_NAME }}{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-6">
+
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div>
+                <a href="{% url 'cases:warehouse_inbox' %}" class="btn btn-outline-secondary btn-sm mb-2">
+                    <i class="bi bi-arrow-left me-1"></i> Volver a Bandeja
+                </a>
+                <h1 class="h3 fw-bold mb-0">Emitir Dictamen de Almacén</h1>
+                <p class="text-muted small mb-0">Inspección física y clasificación de destino.</p>
+            </div>
+        </div>
+
+        <div class="ssit-card p-4 mb-4">
+            <div class="bg-dark p-3 rounded border border-secondary mb-4">
+                <div class="row g-2 small">
+                    <div class="col-6"><strong>Caso:</strong> #{{ case.id }}</div>
+                    <div class="col-6"><strong>Serie:</strong> <span class="badge bg-secondary font-monospace">{{ case.returned_serial }}</span></div>
+                    <div class="col-6"><strong>Modelo:</strong> {{ case.returned_model.name|default:case.returned_model_text|default:"-" }}</div>
+                    <div class="col-6"><strong>Origen:</strong> {{ case.origin_region.code }}</div>
+                    <div class="col-12"><strong>Falla reportada:</strong> {{ case.failure|default:"Ninguna" }}</div>
+                </div>
+            </div>
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Dictamen de Almacén *</label>
+                    {{ form.ruling }}
+                    {% if form.ruling.errors %}<div class="text-danger small">{{ form.ruling.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-semibold">Modelo Confirmado</label>
+                    {{ form.returned_model }}
+                    <small class="text-muted">Corregir si el modelo físico difiere del registrado en la devolución.</small>
+                    {% if form.returned_model.errors %}<div class="text-danger small">{{ form.returned_model.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label fw-semibold">Observaciones de Recepción</label>
+                    {{ form.comments }}
+                    {% if form.comments.errors %}<div class="text-danger small">{{ form.comments.errors.0 }}</div>{% endif %}
+                </div>
+
+                <div class="d-flex justify-content-end gap-2">
+                    <a href="{% url 'cases:warehouse_inbox' %}" class="btn btn-secondary">Cancelar</a>
+                    <button type="submit" class="btn btn-warning px-4">
+                        <i class="bi bi-check-circle me-1"></i> Confirmar Dictamen
+                    </button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

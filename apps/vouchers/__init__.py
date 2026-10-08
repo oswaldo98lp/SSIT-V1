@@ -1,0 +1,1 @@
+"""Vouchers app initialization."""
